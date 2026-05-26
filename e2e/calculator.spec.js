@@ -5,13 +5,16 @@ test("calculator captures a lead and renders the report", async ({ page }) => {
   await expect(page).toHaveTitle(/MuleSoft Cost & Utilization Risk Calculator/);
 
   await page.getByRole("button", { name: "PT" }).click();
-  await expect(page.getByRole("heading", { name: /Encontre desperdício/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Identifique custo desnecessário/i })).toBeVisible();
 
   await page.getByRole("button", { name: "ES" }).click();
-  await expect(page.getByRole("heading", { name: /Encuentra desperdicio/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Detecta costo innecesario/i })).toBeVisible();
 
   await page.getByRole("button", { name: "EN" }).click();
   await expect(page.getByRole("heading", { name: /Find MuleSoft waste/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Start calculator/i })).toBeVisible();
+  await page.getByRole("link", { name: /Start calculator/i }).click();
+  await expect(page.getByRole("heading", { name: "MuleSoft usage" })).toBeVisible();
 
   await page.selectOption("select[name=deploymentModel]", "cloudhub2");
   await page.selectOption("select[name=commercialModel]", "vcore");

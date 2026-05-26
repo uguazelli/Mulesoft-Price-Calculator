@@ -50,27 +50,33 @@
           </p>
           <div class="summary-strip" aria-label="Report outputs">
             <div>
-              <strong data-i18n="hero.riskTitle">Risk level</strong>
-              <span data-i18n="hero.riskText">Low to Critical</span>
+              <strong data-i18n="hero.riskTitle">Renewal risk</strong>
+              <span data-i18n="hero.riskText">How urgent it looks</span>
             </div>
             <div>
-              <strong data-i18n="hero.wasteTitle">Waste estimate</strong>
-              <span data-i18n="hero.wasteText">Directional capacity review</span>
+              <strong data-i18n="hero.wasteTitle">Capacity to review</strong>
+              <span data-i18n="hero.wasteText">Idle or oversized capacity</span>
             </div>
             <div>
-              <strong data-i18n="hero.actionsTitle">Next actions</strong>
-              <span data-i18n="hero.actionsText">Audit recommendations</span>
+              <strong data-i18n="hero.actionsTitle">What to fix</strong>
+              <span data-i18n="hero.actionsText">Practical audit steps</span>
             </div>
           </div>
           <p class="disclaimer" data-i18n="hero.disclaimer">
             This tool provides directional optimization signals, not official MuleSoft pricing. MuleSoft commercial
-            terms may vary by legacy core/vCore contracts, flow/message packaging, deployment model, Salesforce bundle,
+            terms may vary by legacy core/vCore contracts, Flows/Messages packages, deployment model, Salesforce bundle,
             and negotiated terms.
           </p>
+          <a class="scroll-cue" href="#calculator">
+            <span data-i18n="hero.scrollCue">Start calculator</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </a>
         </div>
       </section>
 
-      <section class="workspace" aria-label="Calculator workspace">
+      <section id="calculator" class="workspace" aria-label="Calculator workspace">
         <form id="leadForm" class="calculator" novalidate>
           <div class="form-section">
             <div class="section-heading">
@@ -99,7 +105,7 @@
                 <select name="commercialModel" required>
                   <option value="" data-i18n="form.chooseOne">Choose one</option>
                   <option value="vcore">vCore/Core</option>
-                  <option value="flowMessage" data-i18n="commercial.flowMessage">Flow/Message usage-based</option>
+                  <option value="flowMessage" data-i18n="commercial.flowMessage">Flows/Messages package</option>
                   <option value="unsure" data-i18n="common.unsure">Unsure</option>
                 </select>
               </label>
@@ -159,7 +165,7 @@
             <span class="preview-kicker" data-i18n="preview.kicker">Preview ready</span>
             <strong data-i18n="preview.title">We can produce a directional risk report from these inputs.</strong>
             <p data-i18n="preview.text">
-              Share your contact details to unlock the full utilization score, waste estimate, and audit next step.
+              Share your contact details to unlock the full score and recommendations.
             </p>
           </div>
 

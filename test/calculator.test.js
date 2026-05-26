@@ -28,7 +28,7 @@ test("low utilization produces higher waste and risk", () => {
 
   assert.equal(low.risk.level, "Critical");
   assert.ok(low.waste.estimatedPercent >= 65);
-  assert.ok(low.signals.some((signal) => signal.title === "Low utilization signal"));
+  assert.ok(low.signals.some((signal) => signal.title === "Low utilization"));
 });
 
 test("high utilization produces lower waste and risk", () => {
@@ -53,7 +53,7 @@ test("high sandbox allocation increases optimization signal", () => {
 
   assert.ok(
     result.signals.some(
-      (signal) => signal.title === "Environment balance signal" && signal.severity === "high"
+      (signal) => signal.title === "Production vs. sandbox capacity" && signal.severity === "high"
     )
   );
 });
@@ -65,5 +65,5 @@ test("unsure commercial model adds renewal-risk recommendation", () => {
   });
 
   assert.ok(result.recommendations[0].includes("renewal readiness review"));
-  assert.ok(result.signals.some((signal) => signal.title === "Commercial model warning" && signal.severity === "high"));
+  assert.ok(result.signals.some((signal) => signal.title === "Pricing model clarity" && signal.severity === "high"));
 });

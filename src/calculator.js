@@ -27,17 +27,17 @@ const DEPLOYMENT_LABEL_SETS = {
 const COMMERCIAL_MODEL_LABEL_SETS = {
   en: {
     vcore: "vCore/Core",
-    flowMessage: "Flow/Message usage-based",
+    flowMessage: "Flows/Messages package",
     unsure: "Unsure"
   },
   pt: {
     vcore: "vCore/Core",
-    flowMessage: "Uso por Flow/Message",
+    flowMessage: "Pacote por Flows/Messages",
     unsure: "Não sei"
   },
   es: {
     vcore: "vCore/Core",
-    flowMessage: "Uso por Flow/Message",
+    flowMessage: "Paquete por Flows/Messages",
     unsure: "No sé"
   }
 };
@@ -75,49 +75,48 @@ const COPY = {
       medium: "Medium",
       low: "Low"
     },
-    lowUtilizationTitle: "Low utilization signal",
+    lowUtilizationTitle: "Low utilization",
     lowUtilizationMessage: (pct) =>
-      `Average utilization at ${pct}% suggests meaningful paid capacity may be idle or reserved for workloads that could be resized.`,
-    moderateUtilizationTitle: "Moderate utilization signal",
+      `Average utilization is ${pct}%, so some paid capacity may be idle or larger than the workloads need.`,
+    moderateUtilizationTitle: "Moderate utilization",
     moderateUtilizationMessage: (pct) =>
-      `Average utilization at ${pct}% leaves room to review worker sizing, replica strategy, and environment allocations.`,
-    healthyUtilizationTitle: "Healthy utilization signal",
+      `Average utilization is ${pct}%. Review worker size, replicas, and environment allocation before buying more capacity.`,
+    healthyUtilizationTitle: "Healthy utilization",
     healthyUtilizationMessage: (pct) =>
-      `Average utilization at ${pct}% suggests capacity is being used more actively, though deployment and renewal fit should still be reviewed.`,
-    appDensityTitle: "Application density signal",
+      `Average utilization is ${pct}%, which suggests capacity is being used more actively. Renewal and deployment alignment should still be reviewed.`,
+    appDensityTitle: "Apps per production core",
     appDensityLowMessage: (ratio) =>
-      `You are running about ${ratio} applications per production core/vCore, which may indicate over-allocation or consolidation opportunity.`,
+      `You are running about ${ratio} applications per production core/vCore. That can point to over-allocation or consolidation opportunity.`,
     appDensityHighMessage: (ratio) =>
       `You are running about ${ratio} applications per production core/vCore, so resilience and isolation should be checked before reducing capacity.`,
-    appDensityHealthyMessage:
-      "Your app-to-capacity ratio does not show an obvious consolidation issue from this high-level input.",
-    envBalanceTitle: "Environment balance signal",
+    appDensityHealthyMessage: "Your apps-per-capacity ratio does not show an obvious consolidation issue from these inputs.",
+    envBalanceTitle: "Production vs. sandbox capacity",
     envBalanceHighMessage:
-      "Sandbox/pre-production allocation is higher than production, which is a common place to find contract and capacity cleanup opportunities.",
+      "Sandbox/pre-production capacity is higher than production. That is a common place to find capacity cleanup opportunities.",
     envBalanceMediumMessage:
       "Sandbox/pre-production allocation is close to production capacity, so environment governance is worth reviewing before renewal.",
     envBalanceLowMessage: "Sandbox/pre-production allocation appears proportionate to production from this high-level view.",
-    commercialWarningTitle: "Commercial model warning",
+    commercialWarningTitle: "Pricing model clarity",
     commercialUnsureMessage:
-      "Your commercial model is unclear. That uncertainty is itself a renewal risk because MuleSoft customers may be on legacy core/vCore terms or newer flow/message packaging.",
+      "Your pricing model is unclear. That uncertainty is a renewal risk because MuleSoft customers may be on legacy core/vCore terms or newer Flows/Messages packages.",
     commercialVcoreMessage:
       "Legacy core/vCore terms can hide under-utilization. Compare deployed flows, messages, cores, and renewal options before changing capacity.",
     commercialFlowMessage:
-      "Usage-based flow/message packaging still needs governance. Review whether deployed flows and message volumes match business value.",
+      "Flows/Messages packaging still needs governance. Review whether deployed flows and message volumes match business value.",
     recommendations: [
       "Export current Anypoint usage by environment and business group before renewal discussions.",
       "Review worker sizes, replicas, and stopped/idle applications before buying additional capacity.",
       "Compare production and pre-production allocation against release cadence and support needs."
     ],
     renewalRecommendation: "Run a focused renewal readiness review before your next Salesforce/MuleSoft commercial conversation.",
-    apiRecommendation: "Check API Manager and governance usage for API sprawl, duplicated policies, and unmanaged ownership.",
+    apiRecommendation: "Check API Manager and governance usage for API sprawl, duplicated policies, and unclear ownership.",
     mqRecommendation:
       "Review MQ usage patterns separately from runtime capacity because messaging workloads often drive hidden operational cost.",
     wasteMessage: (pct) =>
-      `Directional waste estimate: ${pct}% of allocated MuleSoft capacity may deserve review. This is not an official pricing estimate.`,
+      `Capacity to review: ${pct}% of allocated MuleSoft capacity may be idle or oversized. This is directional, not official pricing.`,
     ctaHeadline: "Book a MuleSoft optimization audit with VeriDataPro",
     ctaMessage:
-      "A short audit can validate capacity waste, renewal exposure, and architecture fit using your actual Anypoint data.",
+      "A short audit can validate idle capacity, renewal exposure, and architecture alignment using your actual Anypoint data.",
     disclaimer: "This tool provides directional optimization signals, not official MuleSoft pricing."
   },
   pt: {
@@ -127,49 +126,48 @@ const COPY = {
       medium: "Médio",
       low: "Baixo"
     },
-    lowUtilizationTitle: "Sinal de baixa utilização",
+    lowUtilizationTitle: "Baixa utilização",
     lowUtilizationMessage: (pct) =>
-      `A utilização média de ${pct}% sugere que uma parte relevante da capacidade paga pode estar ociosa ou reservada para workloads que poderiam ser redimensionados.`,
-    moderateUtilizationTitle: "Sinal de utilização moderada",
+      `A utilização média é ${pct}%, então parte da capacidade paga pode estar ociosa ou acima do necessário.`,
+    moderateUtilizationTitle: "Utilização moderada",
     moderateUtilizationMessage: (pct) =>
-      `A utilização média de ${pct}% ainda deixa espaço para revisar tamanho de workers, réplicas e alocação por ambiente.`,
-    healthyUtilizationTitle: "Sinal de utilização saudável",
+      `A utilização média é ${pct}%. Revise tamanho de workers, réplicas e alocação por ambiente antes de comprar mais capacidade.`,
+    healthyUtilizationTitle: "Utilização saudável",
     healthyUtilizationMessage: (pct) =>
-      `A utilização média de ${pct}% sugere que a capacidade está sendo usada de forma mais ativa, mas o fit de implantação e renovação ainda deve ser revisado.`,
-    appDensityTitle: "Sinal de densidade de aplicações",
+      `A utilização média é ${pct}%, o que sugere uso mais ativo da capacidade. A adequação da implantação e da renovação ainda deve ser revisada.`,
+    appDensityTitle: "Aplicações por core de produção",
     appDensityLowMessage: (ratio) =>
-      `Você executa cerca de ${ratio} aplicações por core/vCore de produção, o que pode indicar sobrealocação ou oportunidade de consolidação.`,
+      `Você executa cerca de ${ratio} aplicações por core/vCore de produção. Isso pode indicar sobrealocação ou oportunidade de consolidação.`,
     appDensityHighMessage: (ratio) =>
       `Você executa cerca de ${ratio} aplicações por core/vCore de produção; por isso, resiliência e isolamento devem ser avaliados antes de reduzir capacidade.`,
-    appDensityHealthyMessage:
-      "A relação entre aplicações e capacidade não mostra um problema óbvio de consolidação nesta visão de alto nível.",
-    envBalanceTitle: "Sinal de equilíbrio entre ambientes",
+    appDensityHealthyMessage: "A relação entre aplicações e capacidade não mostra um problema óbvio de consolidação com estes dados.",
+    envBalanceTitle: "Produção vs. sandbox",
     envBalanceHighMessage:
-      "A alocação de sandbox/pré-produção está acima da produção, um ponto comum para encontrar oportunidades de limpeza contratual e de capacidade.",
+      "A capacidade de sandbox/pré-produção está acima da produção. Esse costuma ser um ponto claro para reduzir capacidade mal alocada.",
     envBalanceMediumMessage:
       "A alocação de sandbox/pré-produção está próxima da capacidade de produção, então vale revisar a governança de ambientes antes da renovação.",
     envBalanceLowMessage: "A alocação de sandbox/pré-produção parece proporcional à produção nesta visão de alto nível.",
-    commercialWarningTitle: "Alerta de modelo comercial",
+    commercialWarningTitle: "Clareza do modelo comercial",
     commercialUnsureMessage:
-      "Seu modelo comercial não está claro. Essa incerteza já é um risco de renovação, pois clientes MuleSoft podem estar em termos legados core/vCore ou em pacotes mais novos por flow/message.",
+      "Seu modelo comercial não está claro. Essa incerteza já é um risco de renovação, pois clientes MuleSoft podem estar em contratos legados core/vCore ou pacotes por Flows/Messages.",
     commercialVcoreMessage:
-      "Termos legados core/vCore podem esconder subutilização. Compare flows, messages, cores e opções de renovação antes de alterar capacidade.",
+      "Contratos legados core/vCore podem esconder subutilização. Compare flows, messages, cores e opções de renovação antes de alterar capacidade.",
     commercialFlowMessage:
-      "Pacotes por flow/message também exigem governança. Revise se flows implantados e volumes de mensagens acompanham valor de negócio.",
+      "Pacotes por Flows/Messages também exigem governança. Revise se flows implantados e volumes de mensagens acompanham valor de negócio.",
     recommendations: [
-      "Exporte o uso atual do Anypoint por ambiente e business group antes das conversas de renovação.",
+      "Exporte o uso atual do Anypoint por ambiente e business group antes da renovação.",
       "Revise tamanhos de workers, réplicas e aplicações paradas/ociosas antes de comprar capacidade adicional.",
       "Compare a alocação de produção e pré-produção com a cadência de releases e necessidades de suporte."
     ],
     renewalRecommendation: "Faça uma revisão focada de prontidão para renovação antes da próxima conversa comercial Salesforce/MuleSoft.",
-    apiRecommendation: "Revise API Manager e governança para identificar excesso de APIs, políticas duplicadas e ownership indefinido.",
+    apiRecommendation: "Revise API Manager e governança para identificar excesso de APIs, políticas duplicadas e responsáveis indefinidos.",
     mqRecommendation:
       "Revise o uso de MQ separadamente da capacidade de runtime, porque workloads de mensageria costumam gerar custo operacional oculto.",
     wasteMessage: (pct) =>
-      `Estimativa direcional de desperdício: ${pct}% da capacidade MuleSoft alocada pode merecer revisão. Isto não é uma estimativa oficial de preço.`,
+      `Capacidade a revisar: ${pct}% da capacidade MuleSoft alocada pode estar ociosa ou acima do necessário. Este é um sinal direcional, não preço oficial.`,
     ctaHeadline: "Agende uma auditoria de otimização MuleSoft com a VeriDataPro",
     ctaMessage:
-      "Uma auditoria curta pode validar desperdício de capacidade, exposição na renovação e fit de arquitetura usando seus dados reais do Anypoint.",
+      "Uma auditoria curta pode validar capacidade ociosa, risco na renovação e adequação da arquitetura usando seus dados reais do Anypoint.",
     disclaimer: "Esta ferramenta fornece sinais direcionais de otimização, não preços oficiais do MuleSoft."
   },
   es: {
@@ -179,49 +177,48 @@ const COPY = {
       medium: "Medio",
       low: "Bajo"
     },
-    lowUtilizationTitle: "Señal de baja utilización",
+    lowUtilizationTitle: "Baja utilización",
     lowUtilizationMessage: (pct) =>
-      `La utilización promedio de ${pct}% sugiere que una parte relevante de la capacidad pagada podría estar ociosa o reservada para cargas que podrían redimensionarse.`,
-    moderateUtilizationTitle: "Señal de utilización moderada",
+      `La utilización promedio es ${pct}%, por lo que parte de la capacidad pagada podría estar ociosa o sobredimensionada.`,
+    moderateUtilizationTitle: "Utilización moderada",
     moderateUtilizationMessage: (pct) =>
-      `La utilización promedio de ${pct}% deja espacio para revisar tamaño de workers, réplicas y asignación por ambiente.`,
-    healthyUtilizationTitle: "Señal de utilización saludable",
+      `La utilización promedio es ${pct}%. Revisa tamaño de workers, réplicas y asignación por ambiente antes de comprar más capacidad.`,
+    healthyUtilizationTitle: "Utilización saludable",
     healthyUtilizationMessage: (pct) =>
-      `La utilización promedio de ${pct}% sugiere que la capacidad se usa de forma más activa, aunque el fit de despliegue y renovación aún debe revisarse.`,
-    appDensityTitle: "Señal de densidad de aplicaciones",
+      `La utilización promedio es ${pct}%, lo que sugiere un uso más activo de la capacidad. El ajuste de despliegue y renovación aún debe revisarse.`,
+    appDensityTitle: "Aplicaciones por core de producción",
     appDensityLowMessage: (ratio) =>
-      `Estás ejecutando cerca de ${ratio} aplicaciones por core/vCore de producción, lo que puede indicar sobreasignación u oportunidad de consolidación.`,
+      `Estás ejecutando cerca de ${ratio} aplicaciones por core/vCore de producción. Eso puede indicar sobreasignación u oportunidad de consolidación.`,
     appDensityHighMessage: (ratio) =>
       `Estás ejecutando cerca de ${ratio} aplicaciones por core/vCore de producción; por eso, resiliencia y aislamiento deben revisarse antes de reducir capacidad.`,
-    appDensityHealthyMessage:
-      "La relación entre aplicaciones y capacidad no muestra un problema obvio de consolidación en esta vista de alto nivel.",
-    envBalanceTitle: "Señal de balance entre ambientes",
+    appDensityHealthyMessage: "La relación entre aplicaciones y capacidad no muestra un problema obvio de consolidación con estos datos.",
+    envBalanceTitle: "Producción vs. sandbox",
     envBalanceHighMessage:
-      "La asignación de sandbox/pre-producción es mayor que producción, un lugar común para encontrar oportunidades de limpieza contractual y de capacidad.",
+      "La capacidad de sandbox/pre-producción es mayor que producción. Suele ser un punto claro para reducir capacidad mal asignada.",
     envBalanceMediumMessage:
       "La asignación de sandbox/pre-producción está cerca de la capacidad de producción, así que conviene revisar la gobernanza de ambientes antes de renovar.",
     envBalanceLowMessage: "La asignación de sandbox/pre-producción parece proporcional a producción en esta vista de alto nivel.",
-    commercialWarningTitle: "Alerta de modelo comercial",
+    commercialWarningTitle: "Claridad del modelo comercial",
     commercialUnsureMessage:
-      "Tu modelo comercial no está claro. Esa incertidumbre ya es un riesgo de renovación porque clientes MuleSoft pueden estar en términos heredados core/vCore o en paquetes más nuevos por flow/message.",
+      "Tu modelo comercial no está claro. Esa incertidumbre ya es un riesgo de renovación porque clientes MuleSoft pueden estar en contratos heredados core/vCore o paquetes por Flows/Messages.",
     commercialVcoreMessage:
-      "Los términos heredados core/vCore pueden esconder subutilización. Compara flows, messages, cores y opciones de renovación antes de cambiar capacidad.",
+      "Los contratos heredados core/vCore pueden esconder subutilización. Compara flows, messages, cores y opciones de renovación antes de cambiar capacidad.",
     commercialFlowMessage:
-      "Los paquetes por flow/message también necesitan gobernanza. Revisa si los flows desplegados y los volúmenes de mensajes se alinean con el valor de negocio.",
+      "Los paquetes por Flows/Messages también necesitan gobernanza. Revisa si los flows desplegados y los volúmenes de mensajes se alinean con el valor de negocio.",
     recommendations: [
-      "Exporta el uso actual de Anypoint por ambiente y business group antes de conversaciones de renovación.",
+      "Exporta el uso actual de Anypoint por ambiente y business group antes de renovar.",
       "Revisa tamaños de workers, réplicas y aplicaciones detenidas/ociosas antes de comprar capacidad adicional.",
       "Compara la asignación de producción y pre-producción con la cadencia de releases y necesidades de soporte."
     ],
     renewalRecommendation: "Ejecuta una revisión enfocada de preparación para renovación antes de tu próxima conversación comercial Salesforce/MuleSoft.",
-    apiRecommendation: "Revisa API Manager y gobernanza para identificar exceso de APIs, políticas duplicadas y ownership indefinido.",
+    apiRecommendation: "Revisa API Manager y gobernanza para identificar exceso de APIs, políticas duplicadas y responsables indefinidos.",
     mqRecommendation:
       "Revisa el uso de MQ por separado de la capacidad de runtime, porque las cargas de mensajería suelen generar costo operativo oculto.",
     wasteMessage: (pct) =>
-      `Estimación direccional de desperdicio: ${pct}% de la capacidad MuleSoft asignada podría merecer revisión. Esto no es una estimación oficial de precio.`,
+      `Capacidad a revisar: ${pct}% de la capacidad MuleSoft asignada podría estar ociosa o sobredimensionada. Esta es una señal direccional, no precio oficial.`,
     ctaHeadline: "Agenda una auditoría de optimización MuleSoft con VeriDataPro",
     ctaMessage:
-      "Una auditoría corta puede validar desperdicio de capacidad, exposición de renovación y fit de arquitectura usando tus datos reales de Anypoint.",
+      "Una auditoría corta puede validar capacidad ociosa, riesgo de renovación y ajuste de arquitectura usando tus datos reales de Anypoint.",
     disclaimer: "Esta herramienta entrega señales direccionales de optimización, no precios oficiales de MuleSoft."
   }
 };
