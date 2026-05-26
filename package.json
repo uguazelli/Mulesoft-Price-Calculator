@@ -1,0 +1,29 @@
+{
+  "name": "mulesoft-cost-utilization-calculator",
+  "version": "1.0.0",
+  "description": "VeriDataPro MuleSoft cost and utilization risk calculator.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test",
+    "test:e2e": "playwright test"
+  },
+  "keywords": [
+    "mulesoft",
+    "calculator",
+    "express",
+    "lead-capture"
+  ],
+  "author": "VeriDataPro",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}
