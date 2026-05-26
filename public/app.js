@@ -10,6 +10,7 @@ const languageButtons = document.querySelectorAll("[data-language-button]");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const headerMenu = document.querySelector("[data-header-menu]");
+const APP_BASE_PATH = window.APP_BASE_PATH || "";
 
 const LANGUAGES = new Set(["en", "pt", "es"]);
 const HTML_LANG = {
@@ -441,7 +442,7 @@ async function submitForm(event) {
   submitLabel.textContent = t("form.calculating");
 
   try {
-    const response = await fetch("/api/calculate", {
+    const response = await fetch(`${APP_BASE_PATH}/api/calculate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

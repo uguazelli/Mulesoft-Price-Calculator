@@ -33,7 +33,7 @@ function close(server) {
 }
 
 async function postJson(port, payload) {
-  return fetch(`http://127.0.0.1:${port}/api/calculate`, {
+  return fetch(`http://127.0.0.1:${port}/mulesoft-calculator/api/calculate`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

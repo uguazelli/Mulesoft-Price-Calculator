@@ -1,23 +1,51 @@
 const path = require("node:path");
+const fs = require("node:fs");
 const express = require("express");
 const { calculateAssessment } = require("./calculator");
 const { appendLead } = require("./csvStore");
 const { validateSubmission } = require("./validation");
 
+function normalizeBasePath(value = "/mulesoft-calculator") {
+  const trimmed = String(value || "").trim();
+  if (!trimmed || trimmed === "/") return "";
+  return `/${trimmed.replace(/^\/+|\/+$/g, "")}`;
+}
+
 function createApp(options = {}) {
   const app = express();
   const publicDir = options.publicDir || path.join(__dirname, "..", "public");
   const leadsCsvPath = options.leadsCsvPath || process.env.LEADS_CSV_PATH || path.join(__dirname, "..", "data", "leads.csv");
+  const basePath = normalizeBasePath(options.basePath || process.env.BASE_PATH || "/mulesoft-calculator");
+  const indexTemplate = fs.readFileSync(path.join(publicDir, "index.html"), "utf8");
+  const indexHtml = indexTemplate.replaceAll("__BASE_PATH__", basePath || "");
 
   app.disable("x-powered-by");
   app.use(express.json({ limit: "50kb" }));
-  app.use(express.static(publicDir));
+
+  if (basePath) {
+    app.get(basePath, (req, res, next) => {
+      if (req.path === basePath) {
+        return res.redirect(308, `${basePath}/`);
+      }
+      return next();
+    });
+  }
+
+  app.get(`${basePath || ""}/`, (req, res) => {
+    res.type("html").send(indexHtml);
+  });
+
+  app.use(basePath || "/", express.static(publicDir, { index: false }));
 
   app.get("/health", (req, res) => {
     res.json({ status: "ok" });
   });
 
-  app.post("/api/calculate", async (req, res, next) => {
+  app.get(`${basePath || ""}/health`, (req, res) => {
+    res.json({ status: "ok", basePath: basePath || "/" });
+  });
+
+  app.post(`${basePath || ""}/api/calculate`, async (req, res, next) => {
     try {
       const validation = validateSubmission(req.body || {});
       if (!validation.valid) {
@@ -46,5 +74,6 @@ function createApp(options = {}) {
 }
 
 module.exports = {
-  createApp
+  createApp,
+  normalizeBasePath
 };

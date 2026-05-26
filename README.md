@@ -9,18 +9,20 @@ npm install
 npm start
 ```
 
-The app listens on `http://localhost:3000` by default.
+The app listens on `http://localhost:3000/mulesoft-calculator` by default.
 
 Environment variables:
 
 - `PORT`: server port, default `3000`
+- `BASE_PATH`: URL path where the tool is mounted, default `/mulesoft-calculator`
 - `LEADS_CSV_PATH`: CSV output path, default `data/leads.csv`
 
 ## Endpoints
 
-- `GET /`: calculator frontend
-- `POST /api/calculate`: validates input, saves the lead, and returns the assessment JSON
+- `GET /mulesoft-calculator`: calculator frontend
+- `POST /mulesoft-calculator/api/calculate`: validates input, saves the lead, and returns the assessment JSON
 - `GET /health`: basic health check for deployment
+- `GET /mulesoft-calculator/health`: tool-level health check
 
 ## Tests
 

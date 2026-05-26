@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test("calculator captures a lead and renders the report", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/mulesoft-calculator/");
   await expect(page).toHaveTitle(/MuleSoft Cost & Utilization Risk Calculator/);
 
   async function openMobileMenuIfNeeded() {
