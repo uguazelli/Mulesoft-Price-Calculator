@@ -109,21 +109,44 @@ a {
   text-underline-offset: 4px;
 }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+}
+
+.language-switcher button {
+  min-width: 38px;
+  min-height: 32px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.language-switcher button[aria-pressed="true"] {
+  background: var(--teal-dark);
+  color: #fff;
+}
+
 .shell {
   width: min(1320px, calc(100% - 36px));
   margin: 30px auto 50px;
 }
 
 .intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(300px, 430px);
-  gap: 22px;
-  align-items: stretch;
   margin-bottom: 22px;
 }
 
-.intro > div,
-.disclaimer,
+.intro-card,
 .calculator,
 .result-panel {
   border: 1px solid var(--line);
@@ -132,7 +155,7 @@ a {
   box-shadow: var(--shadow);
 }
 
-.intro > div {
+.intro-card {
   padding: clamp(24px, 4vw, 42px);
 }
 
@@ -199,13 +222,15 @@ h1 {
 }
 
 .disclaimer {
-  display: grid;
-  align-content: center;
-  padding: 22px;
+  max-width: 960px;
+  margin: 22px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
   border-left: 6px solid var(--amber);
+  border-radius: 8px;
+  background: var(--panel-soft);
   color: var(--muted);
   line-height: 1.55;
-  box-shadow: none;
 }
 
 .workspace {
@@ -678,7 +703,6 @@ legend {
 }
 
 @media (max-width: 1080px) {
-  .intro,
   .workspace {
     grid-template-columns: 1fr;
   }
@@ -700,7 +724,7 @@ legend {
   .header-actions {
     align-items: flex-start;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
   }
 
   .shell {
@@ -715,11 +739,7 @@ legend {
     grid-template-columns: 1fr;
   }
 
-  .intro {
-    gap: 12px;
-  }
-
-  .intro > div {
+  .intro-card {
     padding: 24px;
   }
 
@@ -743,6 +763,7 @@ legend {
   }
 
   .disclaimer {
+    margin-top: 14px;
     padding: 15px 18px;
     font-size: 0.94rem;
   }

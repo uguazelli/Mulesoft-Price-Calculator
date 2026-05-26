@@ -4,6 +4,15 @@ test("calculator captures a lead and renders the report", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/MuleSoft Cost & Utilization Risk Calculator/);
 
+  await page.getByRole("button", { name: "PT" }).click();
+  await expect(page.getByRole("heading", { name: /Encontre desperdício/i })).toBeVisible();
+
+  await page.getByRole("button", { name: "ES" }).click();
+  await expect(page.getByRole("heading", { name: /Encuentra desperdicio/i })).toBeVisible();
+
+  await page.getByRole("button", { name: "EN" }).click();
+  await expect(page.getByRole("heading", { name: /Find MuleSoft waste/i })).toBeVisible();
+
   await page.selectOption("select[name=deploymentModel]", "cloudhub2");
   await page.selectOption("select[name=commercialModel]", "vcore");
   await page.fill("input[name=productionCores]", "12");

@@ -3,6 +3,7 @@ const path = require("node:path");
 
 const HEADERS = [
   "timestamp",
+  "language",
   "fullName",
   "email",
   "company",
@@ -43,6 +44,7 @@ async function appendLead(filePath, lead, result, userAgent) {
 
   const row = [
     new Date().toISOString(),
+    lead.language,
     lead.fullName,
     lead.email,
     lead.company,

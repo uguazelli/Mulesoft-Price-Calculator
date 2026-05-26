@@ -14,55 +14,60 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="/Veridata_Icon-no-bg.svg" type="image/svg+xml" />
+    <link rel="icon" href="/Veridata_Icon-no-bg%20green.png" type="image/png" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="https://veridatapro.com/" target="_blank" rel="noreferrer" aria-label="VeriDataPro home">
         <span class="brand-mark">
-          <img src="/Veridata_Icon-no-bg.svg" alt="" />
+          <img src="/Veridata_Icon-no-bg%20green.png" alt="" />
         </span>
         <span>
           <strong>VeriDataPro</strong>
-          <small>MuleSoft integration services</small>
+          <small data-i18n="brand.subtitle">MuleSoft integration services</small>
         </span>
       </a>
       <nav class="header-actions" aria-label="Primary links">
+        <div class="language-switcher" role="group" aria-label="Language">
+          <button type="button" data-language-button data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-language-button data-lang="pt" aria-pressed="false">PT</button>
+          <button type="button" data-language-button data-lang="es" aria-pressed="false">ES</button>
+        </div>
         <a href="https://veridatapro.com/" target="_blank" rel="noreferrer">veridatapro.com</a>
-        <span>Directional signals, not official pricing</span>
+        <span data-i18n="header.note">Directional signals, not official pricing</span>
       </nav>
     </header>
 
     <main class="shell">
       <section class="intro" aria-labelledby="page-title">
-        <div>
-          <p class="eyebrow">MuleSoft cost review</p>
-          <h1 id="page-title">Find MuleSoft waste before renewal</h1>
-          <p class="lede">
+        <div class="intro-card">
+          <p class="eyebrow" data-i18n="hero.eyebrow">MuleSoft cost review</p>
+          <h1 id="page-title" data-i18n="hero.title">Find MuleSoft waste before renewal</h1>
+          <p class="lede" data-i18n="hero.lede">
             Enter your footprint and get a directional view of paid capacity that may be idle, misallocated, or hard
             to defend in commercial conversations.
           </p>
           <div class="summary-strip" aria-label="Report outputs">
             <div>
-              <strong>Risk level</strong>
-              <span>Low to Critical</span>
+              <strong data-i18n="hero.riskTitle">Risk level</strong>
+              <span data-i18n="hero.riskText">Low to Critical</span>
             </div>
             <div>
-              <strong>Waste estimate</strong>
-              <span>Directional capacity review</span>
+              <strong data-i18n="hero.wasteTitle">Waste estimate</strong>
+              <span data-i18n="hero.wasteText">Directional capacity review</span>
             </div>
             <div>
-              <strong>Next actions</strong>
-              <span>Audit recommendations</span>
+              <strong data-i18n="hero.actionsTitle">Next actions</strong>
+              <span data-i18n="hero.actionsText">Audit recommendations</span>
             </div>
           </div>
+          <p class="disclaimer" data-i18n="hero.disclaimer">
+            This tool provides directional optimization signals, not official MuleSoft pricing. MuleSoft commercial
+            terms may vary by legacy core/vCore contracts, flow/message packaging, deployment model, Salesforce bundle,
+            and negotiated terms.
+          </p>
         </div>
-        <aside class="disclaimer">
-          This tool provides directional optimization signals, not official MuleSoft pricing. MuleSoft commercial
-          terms may vary by legacy core/vCore contracts, flow/message packaging, deployment model, Salesforce bundle,
-          and negotiated terms.
-        </aside>
       </section>
 
       <section class="workspace" aria-label="Calculator workspace">
@@ -71,111 +76,113 @@
             <div class="section-heading">
               <span class="step">01</span>
               <div>
-                <h2>MuleSoft usage</h2>
-                <p>Best estimates are enough for a first-pass risk signal.</p>
+                <h2 data-i18n="form.usageTitle">MuleSoft usage</h2>
+                <p data-i18n="form.usageText">Best estimates are enough for a first-pass risk signal.</p>
               </div>
             </div>
 
             <div class="grid two">
               <label>
-                Deployment model
+                <span data-i18n="form.deploymentModel">Deployment model</span>
                 <select name="deploymentModel" required>
-                  <option value="">Choose one</option>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
                   <option value="cloudhub1">CloudHub 1.0</option>
                   <option value="cloudhub2">CloudHub 2.0</option>
                   <option value="runtimeFabric">Runtime Fabric</option>
-                  <option value="hybrid">Hybrid</option>
-                  <option value="unsure">Unsure</option>
+                  <option value="hybrid" data-i18n="deployment.hybrid">Hybrid</option>
+                  <option value="unsure" data-i18n="common.unsure">Unsure</option>
                 </select>
               </label>
 
               <label>
-                Commercial model
+                <span data-i18n="form.commercialModel">Commercial model</span>
                 <select name="commercialModel" required>
-                  <option value="">Choose one</option>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
                   <option value="vcore">vCore/Core</option>
-                  <option value="flowMessage">Flow/Message usage-based</option>
-                  <option value="unsure">Unsure</option>
+                  <option value="flowMessage" data-i18n="commercial.flowMessage">Flow/Message usage-based</option>
+                  <option value="unsure" data-i18n="common.unsure">Unsure</option>
                 </select>
               </label>
             </div>
 
             <div class="grid four">
               <label>
-                Production capacity
+                <span data-i18n="form.productionCapacity">Production capacity</span>
                 <input name="productionCores" type="number" min="0" step="0.1" placeholder="12" required />
               </label>
               <label>
-                Sandbox/pre-prod capacity
+                <span data-i18n="form.sandboxCapacity">Sandbox/pre-prod capacity</span>
                 <input name="sandboxCores" type="number" min="0" step="0.1" placeholder="8" required />
               </label>
               <label>
-                Running applications
+                <span data-i18n="form.runningApplications">Running applications</span>
                 <input name="runningApplications" type="number" min="0" step="1" placeholder="28" required />
               </label>
               <label>
-                Managed APIs
+                <span data-i18n="form.managedApis">Managed APIs</span>
                 <input name="managedApis" type="number" min="0" step="1" placeholder="45" required />
               </label>
             </div>
 
             <label class="range-label">
-              <span>Average vCore/Core utilization</span>
+              <span data-i18n="form.utilization">Average vCore/Core utilization</span>
               <strong><output id="utilizationValue">45</output>%</strong>
               <input name="utilizationPct" type="range" min="0" max="100" value="45" required />
             </label>
 
             <fieldset>
-              <legend>Add-ons in use</legend>
+              <legend data-i18n="form.addons">Add-ons in use</legend>
               <div class="chips">
                 <label><input type="checkbox" name="addons" value="apiManager" /> API Manager</label>
                 <label><input type="checkbox" name="addons" value="mq" /> MQ</label>
                 <label><input type="checkbox" name="addons" value="objectStore" /> Object Store</label>
                 <label><input type="checkbox" name="addons" value="monitoring" /> Monitoring</label>
                 <label><input type="checkbox" name="addons" value="flexGateway" /> Flex Gateway</label>
-                <label><input type="checkbox" name="addons" value="other" /> Other</label>
-                <label><input type="checkbox" name="addons" value="unsure" /> Unsure</label>
+                <label><input type="checkbox" name="addons" value="other" /> <span data-i18n="common.other">Other</span></label>
+                <label><input type="checkbox" name="addons" value="unsure" /> <span data-i18n="common.unsure">Unsure</span></label>
               </div>
             </fieldset>
 
             <label>
-              Renewal timeline
+              <span data-i18n="form.renewalTimeline">Renewal timeline</span>
               <select name="renewalTimeline" required>
-                <option value="">Choose one</option>
-                <option value="0-3">0-3 months</option>
-                <option value="3-6">3-6 months</option>
-                <option value="6-12">6-12 months</option>
-                <option value="notSure">Not sure</option>
+                <option value="" data-i18n="form.chooseOne">Choose one</option>
+                <option value="0-3" data-i18n="renewal.0-3">0-3 months</option>
+                <option value="3-6" data-i18n="renewal.3-6">3-6 months</option>
+                <option value="6-12" data-i18n="renewal.6-12">6-12 months</option>
+                <option value="notSure" data-i18n="renewal.notSure">Not sure</option>
               </select>
             </label>
           </div>
 
           <div id="preview" class="preview-panel" hidden>
-            <span class="preview-kicker">Preview ready</span>
-            <strong>We can produce a directional risk report from these inputs.</strong>
-            <p>Share your contact details to unlock the full utilization score, waste estimate, and audit next step.</p>
+            <span class="preview-kicker" data-i18n="preview.kicker">Preview ready</span>
+            <strong data-i18n="preview.title">We can produce a directional risk report from these inputs.</strong>
+            <p data-i18n="preview.text">
+              Share your contact details to unlock the full utilization score, waste estimate, and audit next step.
+            </p>
           </div>
 
           <div class="form-section">
             <div class="section-heading">
               <span class="step">02</span>
               <div>
-                <h2>Unlock full report</h2>
-                <p>Lead details are saved with the assessment inputs for follow-up.</p>
+                <h2 data-i18n="form.contactTitle">Unlock full report</h2>
+                <p data-i18n="form.contactText">Lead details are saved with the assessment inputs for follow-up.</p>
               </div>
             </div>
 
             <div class="grid three">
               <label>
-                Name
+                <span data-i18n="form.name">Name</span>
                 <input name="fullName" autocomplete="name" placeholder="Alex Rivera" required />
               </label>
               <label>
-                Business email
+                <span data-i18n="form.email">Business email</span>
                 <input name="email" type="email" autocomplete="email" placeholder="alex@company.com" required />
               </label>
               <label>
-                Company
+                <span data-i18n="form.company">Company</span>
                 <input name="company" autocomplete="organization" placeholder="Company Inc." required />
               </label>
             </div>
@@ -183,7 +190,7 @@
             <p id="formError" class="form-error" role="alert" hidden></p>
 
             <button class="submit-button" type="submit">
-              <span>Calculate risk report</span>
+              <span data-submit-label data-i18n="form.submit">Calculate risk report</span>
               <svg aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" />
               </svg>
@@ -191,25 +198,14 @@
           </div>
         </form>
 
-        <aside id="resultPanel" class="result-panel idle" aria-live="polite">
-          <div class="result-empty">
-            <span class="mono">VDP / AUDIT SIGNALS</span>
-            <h2>Result preview</h2>
-            <p>
-              Submit the calculator to see one clear risk level, a waste estimate, and specific optimization signals.
-            </p>
-            <ul class="empty-list">
-              <li>Utilization risk score</li>
-              <li>Capacity waste estimate</li>
-              <li>Renewal audit next step</li>
-            </ul>
-          </div>
-        </aside>
+        <aside id="resultPanel" class="result-panel idle" aria-live="polite"></aside>
       </section>
 
       <section class="references" aria-label="Source references">
-        <a class="vdp-link" href="https://veridatapro.com/" rel="noreferrer" target="_blank">Visit VeriDataPro</a>
-        <h2>Pricing model references</h2>
+        <a class="vdp-link" href="https://veridatapro.com/" rel="noreferrer" target="_blank" data-i18n="references.vdp">
+          Visit VeriDataPro
+        </a>
+        <h2 data-i18n="references.title">Pricing model references</h2>
         <a href="https://www.salesforce.com/mulesoft/anypoint-platform/pricing/" rel="noreferrer" target="_blank">
           Salesforce MuleSoft pricing
         </a>

@@ -1,4 +1,4 @@
-const { DEPLOYMENT_LABELS, COMMERCIAL_MODEL_LABELS, RENEWAL_LABELS } = require("./calculator");
+const { DEPLOYMENT_LABELS, COMMERCIAL_MODEL_LABELS, RENEWAL_LABELS, SUPPORTED_LANGUAGES } = require("./calculator");
 
 const ADDONS = new Set(["apiManager", "mq", "objectStore", "monitoring", "flexGateway", "other", "unsure"]);
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -35,6 +35,7 @@ function validateSubmission(body) {
   const deploymentModel = cleanString(body.deploymentModel);
   const commercialModel = cleanString(body.commercialModel);
   const renewalTimeline = cleanString(body.renewalTimeline);
+  const language = cleanString(body.language) || "en";
   const addons = Array.isArray(body.addons) ? body.addons.map(cleanString).filter(Boolean) : [];
 
   if (!fullName) errors.fullName = "Name is required.";
@@ -49,6 +50,7 @@ function validateSubmission(body) {
   if (!Object.hasOwn(DEPLOYMENT_LABELS, deploymentModel)) errors.deploymentModel = "Choose a deployment model.";
   if (!Object.hasOwn(COMMERCIAL_MODEL_LABELS, commercialModel)) errors.commercialModel = "Choose a commercial model.";
   if (!Object.hasOwn(RENEWAL_LABELS, renewalTimeline)) errors.renewalTimeline = "Choose a renewal timeline.";
+  if (!SUPPORTED_LANGUAGES.has(language)) errors.language = "Choose a supported language.";
 
   const productionCores = parseNumber(body.productionCores, "productionCores", errors, { min: 0, max: 10000 });
   const sandboxCores = parseNumber(body.sandboxCores, "sandboxCores", errors, { min: 0, max: 10000 });
@@ -70,6 +72,7 @@ function validateSubmission(body) {
       fullName,
       email,
       company,
+      language,
       deploymentModel,
       commercialModel,
       productionCores,

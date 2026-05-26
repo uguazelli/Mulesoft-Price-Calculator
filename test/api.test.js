@@ -59,8 +59,34 @@ test("valid submission returns result JSON and appends one CSV row", async () =>
     const csv = await fs.readFile(csvPath, "utf8");
     const lines = csv.trim().split("\n");
     assert.equal(lines.length, 2);
-    assert.match(lines[0], /^timestamp,fullName,email,company/);
+    assert.match(lines[0], /^timestamp,language,fullName,email,company/);
     assert.match(lines[1], /Alex Rivera/);
+  } finally {
+    await close(server);
+  }
+});
+
+test("language selection localizes the API result and CSV row", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "mulesoft-calc-"));
+  const csvPath = path.join(dir, "leads.csv");
+  const app = createApp({ leadsCsvPath: csvPath });
+  const server = await listen(app);
+
+  try {
+    const response = await postJson(server.address().port, {
+      ...validPayload,
+      language: "es",
+      commercialModel: "unsure"
+    });
+    const body = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(body.result.language, "es");
+    assert.match(body.result.cta.headline, /auditoría/);
+    assert.match(body.result.signals.at(-1).message, /renovación/);
+
+    const csv = await fs.readFile(csvPath, "utf8");
+    assert.match(csv, /Z,es,Alex Rivera/);
   } finally {
     await close(server);
   }
