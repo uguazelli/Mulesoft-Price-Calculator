@@ -28,7 +28,19 @@
           <small data-i18n="brand.subtitle">MuleSoft integration services</small>
         </span>
       </a>
-      <nav class="header-actions" aria-label="Primary links">
+      <button
+        class="menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-controls="header-menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <nav id="header-menu" class="header-actions" aria-label="Primary links" data-header-menu>
         <div class="language-switcher" role="group" aria-label="Language">
           <button type="button" data-language-button data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-language-button data-lang="pt" aria-pressed="false">PT</button>

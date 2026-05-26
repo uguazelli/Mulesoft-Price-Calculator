@@ -4,13 +4,24 @@ test("calculator captures a lead and renders the report", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/MuleSoft Cost & Utilization Risk Calculator/);
 
-  await page.getByRole("button", { name: "PT" }).click();
+  async function openMobileMenuIfNeeded() {
+    const menuButton = page.locator("[data-menu-toggle]");
+    if (await menuButton.isVisible()) {
+      await menuButton.click();
+      await expect(menuButton).toHaveAttribute("aria-expanded", "true");
+    }
+  }
+
+  await openMobileMenuIfNeeded();
+  await page.getByRole("button", { name: "PT", exact: true }).click();
   await expect(page.getByRole("heading", { name: /Identifique custo desnecessário/i })).toBeVisible();
 
-  await page.getByRole("button", { name: "ES" }).click();
+  await openMobileMenuIfNeeded();
+  await page.getByRole("button", { name: "ES", exact: true }).click();
   await expect(page.getByRole("heading", { name: /Detecta costo innecesario/i })).toBeVisible();
 
-  await page.getByRole("button", { name: "EN" }).click();
+  await openMobileMenuIfNeeded();
+  await page.getByRole("button", { name: "EN", exact: true }).click();
   await expect(page.getByRole("heading", { name: /Find MuleSoft waste/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Start calculator/i })).toBeVisible();
   await page.getByRole("link", { name: /Start calculator/i }).click();

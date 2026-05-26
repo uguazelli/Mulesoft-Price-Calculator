@@ -7,6 +7,9 @@ const utilizationValue = document.querySelector("#utilizationValue");
 const submitButton = form.querySelector('button[type="submit"]');
 const submitLabel = submitButton.querySelector("[data-submit-label]");
 const languageButtons = document.querySelectorAll("[data-language-button]");
+const siteHeader = document.querySelector(".site-header");
+const menuToggle = document.querySelector("[data-menu-toggle]");
+const headerMenu = document.querySelector("[data-header-menu]");
 
 const LANGUAGES = new Set(["en", "pt", "es"]);
 const HTML_LANG = {
@@ -21,6 +24,8 @@ const TRANSLATIONS = {
     "meta.description": "A directional MuleSoft utilization and renewal risk calculator from VeriDataPro.",
     "brand.subtitle": "MuleSoft integration services",
     "header.note": "Directional signals, not official pricing",
+    "menu.open": "Open menu",
+    "menu.close": "Close menu",
     "hero.eyebrow": "MuleSoft cost review",
     "hero.title": "Find MuleSoft waste before renewal",
     "hero.lede":
@@ -87,6 +92,8 @@ const TRANSLATIONS = {
     "meta.description": "Uma calculadora direcional de utilização e risco de renovação do MuleSoft da VeriDataPro.",
     "brand.subtitle": "Serviços de integração MuleSoft",
     "header.note": "Sinais direcionais, não preços oficiais",
+    "menu.open": "Abrir menu",
+    "menu.close": "Fechar menu",
     "hero.eyebrow": "Revisão de custos MuleSoft",
     "hero.title": "Identifique custo desnecessário no MuleSoft antes da renovação",
     "hero.lede":
@@ -153,6 +160,8 @@ const TRANSLATIONS = {
     "meta.description": "Una calculadora direccional de utilización y riesgo de renovación de MuleSoft de VeriDataPro.",
     "brand.subtitle": "Servicios de integración MuleSoft",
     "header.note": "Señales direccionales, no precios oficiales",
+    "menu.open": "Abrir menú",
+    "menu.close": "Cerrar menú",
     "hero.eyebrow": "Revisión de costos MuleSoft",
     "hero.title": "Detecta costo innecesario en MuleSoft antes de renovar",
     "hero.lede":
@@ -266,6 +275,25 @@ function applyTranslations() {
     const isActive = button.dataset.lang === currentLanguage;
     button.setAttribute("aria-pressed", String(isActive));
   });
+
+  syncMenuLabel();
+}
+
+function isMenuOpen() {
+  return menuToggle?.getAttribute("aria-expanded") === "true";
+}
+
+function syncMenuLabel() {
+  if (!menuToggle) return;
+  menuToggle.setAttribute("aria-label", t(isMenuOpen() ? "menu.close" : "menu.open"));
+}
+
+function setMenuOpen(open) {
+  if (!menuToggle || !siteHeader) return;
+
+  menuToggle.setAttribute("aria-expanded", String(open));
+  siteHeader.classList.toggle("menu-open", open);
+  syncMenuLabel();
 }
 
 function renderEmptyResult() {
@@ -440,7 +468,33 @@ async function submitForm(event) {
 }
 
 languageButtons.forEach((button) => {
-  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.lang);
+    setMenuOpen(false);
+  });
+});
+
+menuToggle?.addEventListener("click", () => {
+  setMenuOpen(!isMenuOpen());
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    setMenuOpen(false);
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (!isMenuOpen()) return;
+  if (siteHeader.contains(event.target)) {
+    if (event.target.closest("[data-menu-toggle]")) return;
+    if (event.target.closest("[data-header-menu]")) return;
+  }
+  setMenuOpen(false);
+});
+
+headerMenu?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => setMenuOpen(false));
 });
 
 form.addEventListener("input", updatePreview);

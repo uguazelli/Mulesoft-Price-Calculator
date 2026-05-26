@@ -113,6 +113,10 @@ a {
   text-underline-offset: 4px;
 }
 
+.menu-toggle {
+  display: none;
+}
+
 .language-switcher {
   display: inline-flex;
   align-items: center;
@@ -763,16 +767,109 @@ legend {
 
 @media (max-width: 760px) {
   .site-header {
-    align-items: flex-start;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     gap: 10px;
     padding: 12px 18px;
   }
 
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand-mark img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand strong {
+    font-size: 0.98rem;
+  }
+
+  .brand small {
+    font-size: 0.78rem;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--panel-soft);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .menu-line {
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 10px);
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .menu-line:nth-child(1) {
+    transform: translateY(-7px);
+  }
+
+  .menu-line:nth-child(2) {
+    transform: none;
+  }
+
+  .menu-line:nth-child(3) {
+    transform: translateY(7px);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-line:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-line:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
   .header-actions {
+    display: none;
+    grid-column: 1 / -1;
+    width: 100%;
     align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    box-shadow: 0 14px 32px rgba(24, 32, 29, 0.12);
+  }
+
+  .site-header.menu-open .header-actions {
+    display: grid;
+  }
+
+  .language-switcher {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .language-switcher button {
+    flex: 1;
   }
 
   .shell {
