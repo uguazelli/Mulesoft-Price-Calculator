@@ -8,6 +8,10 @@ const languageButtons = document.querySelectorAll("[data-language-button]");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const headerMenu = document.querySelector("[data-header-menu]");
+const progressBar = document.querySelector("#progressBar");
+const progressLabel = document.querySelector("#progressLabel");
+const progressTrack = document.querySelector("#progressTrack");
+const TOTAL_QUESTIONS = 12;
 const APP_BASE_PATH = window.APP_BASE_PATH || "";
 
 const LANGUAGES = new Set(["en", "pt", "es"]);
@@ -502,6 +506,23 @@ function renderEmptyResult() {
       <span class="mono">${escapeHtml(t("result.emptyKicker"))}</span>
       <h2>${escapeHtml(t("result.emptyTitle"))}</h2>
       <p>${escapeHtml(t("result.emptyText"))}</p>
+      <div class="result-teaser" aria-hidden="true">
+        <div class="teaser-score-row">
+          <div class="teaser-meter"><div class="teaser-meter-inner">?</div></div>
+          <div class="teaser-lines">
+            <div class="teaser-pill"></div>
+            <div class="teaser-line"></div>
+            <div class="teaser-line" style="width:60%"></div>
+          </div>
+        </div>
+        <div class="teaser-bars">
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:72%"></div></div>
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:44%"></div></div>
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:63%"></div></div>
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:55%"></div></div>
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:38%"></div></div>
+        </div>
+      </div>
       <ul class="empty-list">
         <li>${escapeHtml(t("result.emptyScore"))}</li>
         <li>${escapeHtml(t("result.emptyPain"))}</li>
@@ -602,7 +623,20 @@ function isAssessmentComplete() {
   return ANSWER_FIELDS.every((field) => String(data.get(field) || "").trim() !== "") && data.getAll("systemTypes").length > 0;
 }
 
+function updateProgress() {
+  if (!progressBar || !progressLabel || !progressTrack) return;
+  const data = new FormData(form);
+  const answered =
+    ANSWER_FIELDS.filter((f) => String(data.get(f) || "").trim() !== "").length +
+    (data.getAll("systemTypes").length > 0 ? 1 : 0);
+  const pct = Math.round((answered / TOTAL_QUESTIONS) * 100);
+  progressBar.style.setProperty("--progress", pct + "%");
+  progressTrack.setAttribute("aria-valuenow", answered);
+  progressLabel.textContent = `${answered} / ${TOTAL_QUESTIONS}`;
+}
+
 function updatePreview() {
+  updateProgress();
   preview.hidden = !isAssessmentComplete();
 }
 

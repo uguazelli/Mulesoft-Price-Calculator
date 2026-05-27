@@ -21,7 +21,7 @@ const TRANSLATIONS = {
     "meta.title": "Integration Audit Template Pack | VeriDataPro",
     "meta.description":
       "Download VeriDataPro's integration audit template pack for mapping systems, ownership, manual work, API readiness, risk, and next steps.",
-    "brand.subtitle": "Integration audit toolkit",
+    "brand.subtitle": "Systems integration and automation",
     "header.note": "Word document download",
     "menu.open": "Open menu",
     "menu.close": "Close menu",
@@ -307,6 +307,21 @@ function renderEmptyResult() {
       <span class="mono">${escapeHtml(t("result.emptyKicker"))}</span>
       <h2>${escapeHtml(t("result.emptyTitle"))}</h2>
       <p>${escapeHtml(t("result.emptyText"))}</p>
+      <div class="result-teaser" aria-hidden="true">
+        <div class="teaser-score-row">
+          <div class="teaser-meter"><div class="teaser-meter-inner">?</div></div>
+          <div class="teaser-lines">
+            <div class="teaser-pill"></div>
+            <div class="teaser-line"></div>
+            <div class="teaser-line" style="width:65%"></div>
+          </div>
+        </div>
+        <div class="teaser-bars">
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:68%"></div></div>
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:52%"></div></div>
+          <div class="teaser-bar-row"><div class="teaser-bar-label"></div><div class="teaser-bar-fill" style="width:79%"></div></div>
+        </div>
+      </div>
       <ul class="document-list">
         <li>${escapeHtml(t("result.itemOne"))}</li>
         <li>${escapeHtml(t("result.itemTwo"))}</li>
