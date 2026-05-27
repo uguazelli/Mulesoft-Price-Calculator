@@ -4,6 +4,7 @@ const { mountErrorHandler, mountNotFoundHandler } = require("./shared/errorRoute
 const { mountStaticTool, mountToolHealth } = require("./shared/staticToolRoutes");
 const { normalizeBasePath } = require("./shared/basePath");
 const { API_READINESS_HTML_PATH, mountApiReadinessApi } = require("./tools/api-readiness/routes");
+const { TOOLS_INDEX_HTML_PATH } = require("./tools/directory/routes");
 const { FILE_VALIDATOR_HTML_PATH } = require("./tools/file-validator/routes");
 const { INTEGRATION_AUDIT_PACK_HTML_PATH, mountIntegrationAuditPackApi } = require("./tools/integration-audit-pack/routes");
 const { MULESOFT_CALCULATOR_HTML_PATH, mountMulesoftCalculatorApi } = require("./tools/mulesoft-calculator/routes");
@@ -11,6 +12,7 @@ const { MULESOFT_CALCULATOR_HTML_PATH, mountMulesoftCalculatorApi } = require(".
 function buildConfig(options = {}) {
   const publicDir = options.publicDir || path.join(__dirname, "..", "public");
   const paths = {
+    tools: normalizeBasePath(options.toolsBasePath || process.env.TOOLS_BASE_PATH || "/tools"),
     mulesoft: normalizeBasePath(options.basePath || process.env.BASE_PATH || "/mulesoft-calculator"),
     apiReadiness: normalizeBasePath(options.apiReadinessBasePath || process.env.API_READINESS_BASE_PATH || "/api-readiness-assessment"),
     fileValidator: normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator"),
@@ -38,6 +40,11 @@ function createApp(options = {}) {
   app.disable("x-powered-by");
   app.use(express.json({ limit: "50kb" }));
 
+  mountStaticTool(app, {
+    basePath: config.paths.tools,
+    publicDir: config.publicDir,
+    htmlPath: TOOLS_INDEX_HTML_PATH
+  });
   mountStaticTool(app, {
     basePath: config.paths.mulesoft,
     publicDir: config.publicDir,

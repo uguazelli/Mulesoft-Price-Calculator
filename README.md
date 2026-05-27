@@ -18,6 +18,7 @@ npm start
 
 The app listens on these paths by default:
 
+- `http://localhost:3000/tools`
 - `http://localhost:3000/mulesoft-calculator`
 - `http://localhost:3000/api-readiness-assessment`
 - `http://localhost:3000/file-validator`
@@ -26,6 +27,7 @@ The app listens on these paths by default:
 Environment variables:
 
 - `PORT`: server port, default `3000`
+- `TOOLS_BASE_PATH`: tools directory URL path, default `/tools`
 - `BASE_PATH`: MuleSoft calculator URL path, default `/mulesoft-calculator`
 - `LEADS_CSV_PATH`: MuleSoft CSV output path, default `data/leads.csv`
 - `API_READINESS_BASE_PATH`: API readiness tool URL path, default `/api-readiness-assessment`
@@ -36,6 +38,7 @@ Environment variables:
 
 ## Endpoints
 
+- `GET /tools`: tools directory page
 - `GET /mulesoft-calculator`: calculator frontend
 - `POST /mulesoft-calculator/api/calculate`: validates input, saves the lead, and returns the assessment JSON
 - `GET /api-readiness-assessment`: API readiness assessment frontend
@@ -44,6 +47,7 @@ Environment variables:
 - `GET /integration-audit-pack`: audit pack lead form frontend
 - `POST /integration-audit-pack/api/request`: validates input, saves the lead, and returns the document download URL
 - `GET /health`: basic health check for deployment
+- `GET /tools/health`: tools directory health check
 - `GET /mulesoft-calculator/health`: tool-level health check
 - `GET /api-readiness-assessment/health`: tool-level health check
 - `GET /file-validator/health`: tool-level health check

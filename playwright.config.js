@@ -1,17 +1,20 @@
 const { defineConfig } = require("@playwright/test");
 
+const port = process.env.PLAYWRIGHT_PORT || "3100";
+const baseURL = `http://127.0.0.1:${port}`;
+
 module.exports = defineConfig({
   testDir: "./e2e",
   timeout: 30_000,
   fullyParallel: false,
   use: {
-    baseURL: "http://127.0.0.1:3100",
+    baseURL,
     trace: "retain-on-failure",
     screenshot: "only-on-failure"
   },
   webServer: {
-    command: "PORT=3100 npm start",
-    url: "http://127.0.0.1:3100/health",
+    command: `PORT=${port} npm start`,
+    url: `${baseURL}/health`,
     reuseExistingServer: !process.env.CI,
     timeout: 30_000
   },
