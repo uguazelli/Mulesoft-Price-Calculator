@@ -1,6 +1,12 @@
-# MuleSoft Cost & Utilization Risk Calculator
+# VeriDataPro Integration Tools
 
-Plain Node.js + Express app for VeriDataPro lead generation. The calculator captures MuleSoft footprint inputs, returns directional utilization and renewal-risk signals, and saves leads to CSV.
+Plain Node.js + Express app for VeriDataPro lead generation. It currently includes three no-framework tools:
+
+- MuleSoft Cost & Utilization Risk Calculator
+- API Readiness Assessment Tool
+- Flat File Validation Tool
+
+The MuleSoft and API readiness tools capture qualified lead details, return directional diagnostic reports, and save submissions to CSV. The flat file validator runs fully in the browser and does not upload files to the server.
 
 ## Run Locally
 
@@ -9,20 +15,32 @@ npm install
 npm start
 ```
 
-The app listens on `http://localhost:3000/mulesoft-calculator` by default.
+The app listens on these paths by default:
+
+- `http://localhost:3000/mulesoft-calculator`
+- `http://localhost:3000/api-readiness-assessment`
+- `http://localhost:3000/file-validator`
 
 Environment variables:
 
 - `PORT`: server port, default `3000`
-- `BASE_PATH`: URL path where the tool is mounted, default `/mulesoft-calculator`
-- `LEADS_CSV_PATH`: CSV output path, default `data/leads.csv`
+- `BASE_PATH`: MuleSoft calculator URL path, default `/mulesoft-calculator`
+- `LEADS_CSV_PATH`: MuleSoft CSV output path, default `data/leads.csv`
+- `API_READINESS_BASE_PATH`: API readiness tool URL path, default `/api-readiness-assessment`
+- `API_READINESS_CSV_PATH`: API readiness CSV output path, default `data/api-readiness-leads.csv`
+- `FILE_VALIDATOR_BASE_PATH`: flat file validator URL path, default `/file-validator`
 
 ## Endpoints
 
 - `GET /mulesoft-calculator`: calculator frontend
 - `POST /mulesoft-calculator/api/calculate`: validates input, saves the lead, and returns the assessment JSON
+- `GET /api-readiness-assessment`: API readiness assessment frontend
+- `POST /api-readiness-assessment/api/assess`: validates input, saves the lead, and returns the readiness report JSON
+- `GET /file-validator`: client-side flat file validation frontend
 - `GET /health`: basic health check for deployment
 - `GET /mulesoft-calculator/health`: tool-level health check
+- `GET /api-readiness-assessment/health`: tool-level health check
+- `GET /file-validator/health`: tool-level health check
 
 ## Tests
 
@@ -31,4 +49,4 @@ npm test
 npm run test:e2e
 ```
 
-The app provides directional optimization signals only. It does not provide official MuleSoft or Salesforce pricing.
+The MuleSoft calculator provides directional optimization signals only. It does not provide official MuleSoft or Salesforce pricing.

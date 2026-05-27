@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>API Readiness Assessment Tool | VeriDataPro</title>
+    <meta
+      name="description"
+      content="A short API and integration readiness assessment from Veri Data."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="__BASE_PATH__/Veridata_Icon-no-bg%20green.png" type="image/png" />
+    <link rel="stylesheet" href="__BASE_PATH__/styles.css" />
+    <link rel="stylesheet" href="__BASE_PATH__/api-readiness/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="https://veridatapro.com/" target="_blank" rel="noreferrer" aria-label="VeriDataPro home">
+        <span class="brand-mark">
+          <img src="__BASE_PATH__/Veridata_Icon-no-bg%20green.png" alt="" />
+        </span>
+        <span>
+          <strong>VeriDataPro</strong>
+          <small data-i18n="brand.subtitle">Systems integration and automation</small>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-controls="header-menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <nav id="header-menu" class="header-actions" aria-label="Primary links" data-header-menu>
+        <div class="language-switcher" role="group" aria-label="Language">
+          <button type="button" data-language-button data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-language-button data-lang="pt" aria-pressed="false">PT</button>
+          <button type="button" data-language-button data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a href="https://veridatapro.com/" target="_blank" rel="noreferrer">veridatapro.com</a>
+        <span data-i18n="header.note">3-minute integration check</span>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-card api-hero">
+          <p class="eyebrow" data-i18n="hero.eyebrow">API readiness assessment</p>
+          <h1 id="page-title" data-i18n="hero.title">Find out if your systems are ready to integrate</h1>
+          <p class="lede" data-i18n="hero.lede">
+            Answer a short 3-minute assessment and see where APIs, data, ownership, and manual work may block automation.
+          </p>
+          <div class="summary-strip" aria-label="Assessment outputs">
+            <div>
+              <strong data-i18n="hero.scoreTitle">Integration score</strong>
+              <span data-i18n="hero.scoreText">0 to 100 readiness view</span>
+            </div>
+            <div>
+              <strong data-i18n="hero.painTitle">Main blockers</strong>
+              <span data-i18n="hero.painText">Manual work, data, APIs, ownership</span>
+            </div>
+            <div>
+              <strong data-i18n="hero.nextTitle">Next steps</strong>
+              <span data-i18n="hero.nextText">A practical integration review path</span>
+            </div>
+          </div>
+          <p class="disclaimer" data-i18n="hero.positioning">
+            Veri Data helps companies connect Odoo, CRMs, ecommerce, finance tools, spreadsheets, databases, and internal systems.
+          </p>
+          <a class="scroll-cue" href="#assessment">
+            <span data-i18n="hero.scrollCue">Start assessment</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section id="assessment" class="workspace assessment-workspace" aria-label="API readiness assessment workspace">
+        <form id="assessmentForm" class="calculator assessment-form" novalidate>
+          <div class="form-section">
+            <div class="section-heading">
+              <span class="step">01</span>
+              <div>
+                <h2 data-i18n="form.assessmentTitle">Integration readiness</h2>
+                <p data-i18n="form.assessmentText">Use the option that best describes today. Estimates are enough.</p>
+              </div>
+            </div>
+
+            <div class="question-list">
+              <fieldset class="question-block">
+                <legend><span>1.</span> <span data-i18n="q.systemsCount">How many business systems do you use regularly?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="systemsCount" value="1-3" required /> <span>1-3</span></label>
+                  <label><input type="radio" name="systemsCount" value="4-7" /> <span>4-7</span></label>
+                  <label><input type="radio" name="systemsCount" value="8-12" /> <span>8-12</span></label>
+                  <label><input type="radio" name="systemsCount" value="13+" /> <span>13+</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>2.</span> <span data-i18n="q.systemTypes">Which systems are part of your operation?</span></legend>
+                <div class="chips answer-chips">
+                  <label><input type="checkbox" name="systemTypes" value="odoo" /> <span data-i18n="systems.odoo">Odoo / ERP</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="crm" /> <span data-i18n="systems.crm">CRM</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="ecommerce" /> <span data-i18n="systems.ecommerce">Ecommerce</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="finance" /> <span data-i18n="systems.finance">Finance tools</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="spreadsheets" /> <span data-i18n="systems.spreadsheets">Spreadsheets</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="databases" /> <span data-i18n="systems.databases">Databases</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="internal" /> <span data-i18n="systems.internal">Internal systems</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="support" /> <span data-i18n="systems.support">Support tools</span></label>
+                  <label><input type="checkbox" name="systemTypes" value="other" /> <span data-i18n="common.other">Other</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>3.</span> <span data-i18n="q.manualCopyFrequency">How often does someone copy data manually between systems?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="manualCopyFrequency" value="rarely" required /> <span data-i18n="manual.rarely">Rarely</span></label>
+                  <label><input type="radio" name="manualCopyFrequency" value="weekly" /> <span data-i18n="manual.weekly">Weekly</span></label>
+                  <label><input type="radio" name="manualCopyFrequency" value="daily" /> <span data-i18n="manual.daily">Daily</span></label>
+                  <label><input type="radio" name="manualCopyFrequency" value="multipleDaily" /> <span data-i18n="manual.multipleDaily">Multiple times per day</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>4.</span> <span data-i18n="q.spreadsheetDependency">How much does the company depend on spreadsheets to keep work moving?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="spreadsheetDependency" value="low" required /> <span data-i18n="spreadsheet.low">Low</span></label>
+                  <label><input type="radio" name="spreadsheetDependency" value="medium" /> <span data-i18n="spreadsheet.medium">Some key processes</span></label>
+                  <label><input type="radio" name="spreadsheetDependency" value="heavy" /> <span data-i18n="spreadsheet.heavy">Many critical processes</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>5.</span> <span data-i18n="q.apiAvailability">Do your main systems have usable APIs?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="apiAvailability" value="most" required /> <span data-i18n="api.most">Most do</span></label>
+                  <label><input type="radio" name="apiAvailability" value="some" /> <span data-i18n="api.some">Some do</span></label>
+                  <label><input type="radio" name="apiAvailability" value="unknown" /> <span data-i18n="api.unknown">Not sure</span></label>
+                  <label><input type="radio" name="apiAvailability" value="none" /> <span data-i18n="api.none">No usable APIs</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>6.</span> <span data-i18n="q.sourceOfTruth">Is there a clear source of truth for customer, order, product, or financial data?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="sourceOfTruth" value="clear" required /> <span data-i18n="source.clear">Yes, clear</span></label>
+                  <label><input type="radio" name="sourceOfTruth" value="mostly" /> <span data-i18n="source.mostly">Mostly clear</span></label>
+                  <label><input type="radio" name="sourceOfTruth" value="unclear" /> <span data-i18n="source.unclear">Unclear</span></label>
+                  <label><input type="radio" name="sourceOfTruth" value="none" /> <span data-i18n="source.none">No</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>7.</span> <span data-i18n="q.dataQuality">What is the current data quality?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="dataQuality" value="clean" required /> <span data-i18n="data.clean">Clean enough to automate</span></label>
+                  <label><input type="radio" name="dataQuality" value="minor" /> <span data-i18n="data.minor">Minor cleanup needed</span></label>
+                  <label><input type="radio" name="dataQuality" value="inconsistent" /> <span data-i18n="data.inconsistent">Inconsistent</span></label>
+                  <label><input type="radio" name="dataQuality" value="poor" /> <span data-i18n="data.poor">Poor / duplicated</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>8.</span> <span data-i18n="q.reportingConsistency">Do teams report the same numbers?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="reportingConsistency" value="consistent" required /> <span data-i18n="reporting.consistent">Yes</span></label>
+                  <label><input type="radio" name="reportingConsistency" value="minorDifferences" /> <span data-i18n="reporting.minorDifferences">Small differences</span></label>
+                  <label><input type="radio" name="reportingConsistency" value="differentTeams" /> <span data-i18n="reporting.differentTeams">Different teams, different numbers</span></label>
+                  <label><input type="radio" name="reportingConsistency" value="manualReports" /> <span data-i18n="reporting.manualReports">Reports are built manually</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>9.</span> <span data-i18n="q.integrationReliability">How reliable are your current integrations or imports?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="integrationReliability" value="reliable" required /> <span data-i18n="reliability.reliable">Reliable</span></label>
+                  <label><input type="radio" name="integrationReliability" value="occasional" /> <span data-i18n="reliability.occasional">Occasional issues</span></label>
+                  <label><input type="radio" name="integrationReliability" value="oftenBreak" /> <span data-i18n="reliability.oftenBreak">Break often</span></label>
+                  <label><input type="radio" name="integrationReliability" value="manualFixes" /> <span data-i18n="reliability.manualFixes">Need manual fixes</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>10.</span> <span data-i18n="q.systemOwnership">Is there a clear owner for each important system?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="systemOwnership" value="clearOwners" required /> <span data-i18n="owners.clearOwners">Yes</span></label>
+                  <label><input type="radio" name="systemOwnership" value="someOwners" /> <span data-i18n="owners.someOwners">Some systems</span></label>
+                  <label><input type="radio" name="systemOwnership" value="unclear" /> <span data-i18n="owners.unclear">Unclear</span></label>
+                  <label><input type="radio" name="systemOwnership" value="noOwner" /> <span data-i18n="owners.noOwner">No clear owner</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="question-block">
+                <legend><span>11.</span> <span data-i18n="q.upcomingMigration">Do you have an ERP, CRM, or ecommerce migration coming?</span></legend>
+                <div class="option-grid">
+                  <label><input type="radio" name="upcomingMigration" value="none" required /> <span data-i18n="migration.none">No migration planned</span></label>
+                  <label><input type="radio" name="upcomingMigration" value="ready" /> <span data-i18n="migration.ready">Yes, data is ready</span></label>
+                  <label><input type="radio" name="upcomingMigration" value="plannedDataConcerns" /> <span data-i18n="migration.plannedDataConcerns">Planned, with data concerns</span></label>
+                  <label><input type="radio" name="upcomingMigration" value="activePoorReadiness" /> <span data-i18n="migration.activePoorReadiness">Active or soon, data not ready</span></label>
+                </div>
+              </fieldset>
+
+              <label class="question-block text-question">
+                <span><span>12.</span> <span data-i18n="q.biggestProblem">What is your biggest integration or automation problem?</span></span>
+                <textarea
+                  name="biggestProblem"
+                  rows="4"
+                  maxlength="600"
+                  required
+                  data-i18n-placeholder="problem.placeholder"
+                  placeholder="Example: orders are copied from ecommerce into ERP every morning."
+                ></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div id="preview" class="preview-panel" hidden>
+            <span class="preview-kicker" data-i18n="preview.kicker">Assessment ready</span>
+            <strong data-i18n="preview.title">The full report can be generated from these answers.</strong>
+            <p data-i18n="preview.text">Add your contact details to unlock the score and recommendations.</p>
+          </div>
+
+          <div class="form-section">
+            <div class="section-heading">
+              <span class="step">02</span>
+              <div>
+                <h2 data-i18n="form.contactTitle">Unlock full report</h2>
+                <p data-i18n="form.contactText">Lead details are saved with the assessment inputs for follow-up.</p>
+              </div>
+            </div>
+
+            <div class="grid three">
+              <label>
+                <span data-i18n="form.name">Name</span>
+                <input name="fullName" autocomplete="name" placeholder="Alex Rivera" required />
+              </label>
+              <label>
+                <span data-i18n="form.email">Business email</span>
+                <input name="email" type="email" autocomplete="email" placeholder="alex@company.com" required />
+              </label>
+              <label>
+                <span data-i18n="form.company">Company</span>
+                <input name="company" autocomplete="organization" placeholder="Company Inc." required />
+              </label>
+            </div>
+
+            <div class="grid three lead-extra">
+              <label>
+                <span data-i18n="form.website">Website</span>
+                <input name="website" autocomplete="url" placeholder="company.com" />
+              </label>
+              <label>
+                <span data-i18n="form.companySize">Company size</span>
+                <select name="companySize" required>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
+                  <option value="1-10">1-10</option>
+                  <option value="11-50">11-50</option>
+                  <option value="51-200">51-200</option>
+                  <option value="201-1000">201-1000</option>
+                  <option value="1000+">1000+</option>
+                </select>
+              </label>
+              <label>
+                <span data-i18n="form.timeline">Timeline</span>
+                <select name="timeline" required>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
+                  <option value="now" data-i18n="timeline.now">Now</option>
+                  <option value="1-3" data-i18n="timeline.1-3">1-3 months</option>
+                  <option value="3-6" data-i18n="timeline.3-6">3-6 months</option>
+                  <option value="exploring" data-i18n="timeline.exploring">Just exploring</option>
+                </select>
+              </label>
+            </div>
+
+            <p id="formError" class="form-error" role="alert" hidden></p>
+
+            <button class="submit-button" type="submit">
+              <span data-submit-label data-i18n="form.submit">Generate readiness report</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <aside id="resultPanel" class="result-panel idle" aria-live="polite"></aside>
+      </section>
+
+      <section class="references" aria-label="Veri Data links">
+        <a class="vdp-link" href="https://veridatapro.com/" rel="noreferrer" target="_blank" data-i18n="references.vdp">
+          Visit VeriDataPro
+        </a>
+        <span data-i18n="references.note">Systems integration, API automation, data cleanup, and operational workflow reviews.</span>
+      </section>
+    </main>
+
+    <script>
+      window.APP_BASE_PATH = "__BASE_PATH__";
+    </script>
+    <script src="__BASE_PATH__/api-readiness/app.js" defer></script>
+  </body>
+</html>

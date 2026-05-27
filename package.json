@@ -1,7 +1,7 @@
 {
-  "name": "mulesoft-cost-utilization-calculator",
+  "name": "veridatapro-integration-tools",
   "version": "1.0.0",
-  "description": "VeriDataPro MuleSoft cost and utilization risk calculator.",
+  "description": "VeriDataPro lead-generation tools for MuleSoft cost review, API readiness, and flat file validation.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -11,7 +11,9 @@
   },
   "keywords": [
     "mulesoft",
-    "calculator",
+    "api-readiness",
+    "file-validation",
+    "integration",
     "express",
     "lead-capture"
   ],

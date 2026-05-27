@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flat File Validation Tool | VeriDataPro</title>
+    <meta
+      name="description"
+      content="Client-side flat file structure analysis and validation for CSV, TXT, DAT, fixed-width, and delimited files."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="__BASE_PATH__/Veridata_Icon-no-bg%20green.png" type="image/png" />
+    <link rel="stylesheet" href="__BASE_PATH__/styles.css" />
+    <link rel="stylesheet" href="__BASE_PATH__/file-validator/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="https://veridatapro.com/" target="_blank" rel="noreferrer" aria-label="VeriDataPro home">
+        <span class="brand-mark">
+          <img src="__BASE_PATH__/Veridata_Icon-no-bg%20green.png" alt="" />
+        </span>
+        <span>
+          <strong>VeriDataPro</strong>
+          <small data-i18n="brand.subtitle">Data integration readiness</small>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-controls="header-menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <nav id="header-menu" class="header-actions" aria-label="Primary links" data-header-menu>
+        <div class="language-switcher" role="group" aria-label="Language">
+          <button type="button" data-language-button data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-language-button data-lang="pt" aria-pressed="false">PT</button>
+          <button type="button" data-language-button data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a href="https://veridatapro.com/" target="_blank" rel="noreferrer">veridatapro.com</a>
+        <span data-i18n="header.note">Browser-side file analysis</span>
+      </nav>
+    </header>
+
+    <main class="shell file-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-card file-hero">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Flat file validation</p>
+          <h1 id="page-title" data-i18n="hero.title">Inspect messy files before they break an integration</h1>
+          <p class="lede" data-i18n="hero.lede">
+            Drop a CSV, TXT, DAT, pipe-delimited, space-delimited, or fixed-width file and get a structure and quality report in seconds.
+          </p>
+          <div class="summary-strip" aria-label="Validation outputs">
+            <div>
+              <strong data-i18n="hero.detectTitle">Format detection</strong>
+              <span data-i18n="hero.detectText">Delimiter, encoding, headers</span>
+            </div>
+            <div>
+              <strong data-i18n="hero.qualityTitle">Data quality</strong>
+              <span data-i18n="hero.qualityText">Types, nulls, duplicates</span>
+            </div>
+            <div>
+              <strong data-i18n="hero.exportTitle">Exportable report</strong>
+              <span data-i18n="hero.exportText">Download JSON or PDF</span>
+            </div>
+          </div>
+          <p class="disclaimer" data-i18n="hero.privacy">
+            Files are analyzed in your browser. They are not uploaded to VeriDataPro or saved on this server.
+          </p>
+          <a class="scroll-cue" href="#validator">
+            <span data-i18n="hero.scrollCue">Analyze a file</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section id="validator" class="workspace validator-workspace" aria-label="Flat file validator workspace">
+        <div class="calculator validator-panel">
+          <div class="form-section">
+            <div class="section-heading">
+              <span class="step">01</span>
+              <div>
+                <h2 data-i18n="upload.title">Upload a flat file</h2>
+                <p data-i18n="upload.text">The tool reads the file locally and detects the structure automatically.</p>
+              </div>
+            </div>
+
+            <label id="dropZone" class="drop-zone" for="fileInput">
+              <input id="fileInput" type="file" accept=".csv,.txt,.dat,.tsv,.psv,text/*" />
+              <span class="drop-icon" aria-hidden="true">CSV</span>
+              <strong data-i18n="upload.dropTitle">Drag a file here or choose one</strong>
+              <span data-i18n="upload.dropText">CSV, TXT, DAT, tab, pipe, semicolon, space, or fixed-width</span>
+            </label>
+
+            <div id="fileMeta" class="file-meta" hidden></div>
+
+            <label class="override-control">
+              <span data-i18n="upload.override">Delimiter override</span>
+              <select id="delimiterOverride" disabled>
+                <option value="auto" data-i18n="delimiter.auto">Auto-detect</option>
+                <option value="comma" data-i18n="delimiter.comma">Comma</option>
+                <option value="pipe" data-i18n="delimiter.pipe">Pipe</option>
+                <option value="semicolon" data-i18n="delimiter.semicolon">Semicolon</option>
+                <option value="tab" data-i18n="delimiter.tab">Tab</option>
+                <option value="space" data-i18n="delimiter.space">Space</option>
+                <option value="fixed" data-i18n="delimiter.fixed">Fixed-width</option>
+              </select>
+            </label>
+
+            <p id="fileError" class="form-error" role="alert" hidden></p>
+          </div>
+
+          <div id="previewSection" class="form-section preview-section" hidden>
+            <div class="section-heading">
+              <span class="step">02</span>
+              <div>
+                <h2 data-i18n="preview.title">First 10 rows</h2>
+                <p data-i18n="preview.text">A quick preview helps confirm the detected structure.</p>
+              </div>
+            </div>
+            <div class="table-frame">
+              <table id="previewTable"></table>
+            </div>
+          </div>
+        </div>
+
+        <aside id="resultPanel" class="result-panel idle" aria-live="polite"></aside>
+      </section>
+
+      <section id="detailsSection" class="report-details" hidden>
+        <div class="detail-card">
+          <div class="section-heading">
+            <span class="step">03</span>
+            <div>
+              <h2 data-i18n="columns.title">Column breakdown</h2>
+              <p data-i18n="columns.text">Types, nulls, unique values, and samples per column.</p>
+            </div>
+          </div>
+          <div class="table-frame">
+            <table id="columnsTable"></table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      window.APP_BASE_PATH = "__BASE_PATH__";
+    </script>
+    <script src="__BASE_PATH__/file-validator/app.js" defer></script>
+  </body>
+</html>

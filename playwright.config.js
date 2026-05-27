@@ -11,7 +11,7 @@ module.exports = defineConfig({
   },
   webServer: {
     command: "PORT=3100 npm start",
-    url: "http://127.0.0.1:3100/mulesoft-calculator/health",
+    url: "http://127.0.0.1:3100/health",
     reuseExistingServer: !process.env.CI,
     timeout: 30_000
   },
