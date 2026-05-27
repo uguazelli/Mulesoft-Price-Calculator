@@ -5,6 +5,7 @@ const { mountStaticTool, mountToolHealth } = require("./shared/staticToolRoutes"
 const { normalizeBasePath } = require("./shared/basePath");
 const { API_READINESS_HTML_PATH, mountApiReadinessApi } = require("./tools/api-readiness/routes");
 const { FILE_VALIDATOR_HTML_PATH } = require("./tools/file-validator/routes");
+const { INTEGRATION_AUDIT_PACK_HTML_PATH, mountIntegrationAuditPackApi } = require("./tools/integration-audit-pack/routes");
 const { MULESOFT_CALCULATOR_HTML_PATH, mountMulesoftCalculatorApi } = require("./tools/mulesoft-calculator/routes");
 
 function buildConfig(options = {}) {
@@ -12,12 +13,19 @@ function buildConfig(options = {}) {
   const paths = {
     mulesoft: normalizeBasePath(options.basePath || process.env.BASE_PATH || "/mulesoft-calculator"),
     apiReadiness: normalizeBasePath(options.apiReadinessBasePath || process.env.API_READINESS_BASE_PATH || "/api-readiness-assessment"),
-    fileValidator: normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator")
+    fileValidator: normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator"),
+    integrationAuditPack: normalizeBasePath(
+      options.integrationAuditPackBasePath || process.env.INTEGRATION_AUDIT_PACK_BASE_PATH || "/integration-audit-pack"
+    )
   };
   const storage = {
     mulesoftLeads: options.leadsCsvPath || process.env.LEADS_CSV_PATH || path.join(__dirname, "..", "data", "leads.csv"),
     apiReadinessLeads:
-      options.apiReadinessCsvPath || process.env.API_READINESS_CSV_PATH || path.join(__dirname, "..", "data", "api-readiness-leads.csv")
+      options.apiReadinessCsvPath || process.env.API_READINESS_CSV_PATH || path.join(__dirname, "..", "data", "api-readiness-leads.csv"),
+    integrationAuditPackLeads:
+      options.integrationAuditPackCsvPath ||
+      process.env.INTEGRATION_AUDIT_PACK_CSV_PATH ||
+      path.join(__dirname, "..", "data", "integration-audit-pack-leads.csv")
   };
 
   return { publicDir, paths, storage };
@@ -45,6 +53,11 @@ function createApp(options = {}) {
     publicDir: config.publicDir,
     htmlPath: FILE_VALIDATOR_HTML_PATH
   });
+  mountStaticTool(app, {
+    basePath: config.paths.integrationAuditPack,
+    publicDir: config.publicDir,
+    htmlPath: INTEGRATION_AUDIT_PACK_HTML_PATH
+  });
 
   app.get("/health", (req, res) => {
     res.json({ status: "ok" });
@@ -59,6 +72,10 @@ function createApp(options = {}) {
   mountApiReadinessApi(app, {
     basePath: config.paths.apiReadiness,
     csvPath: config.storage.apiReadinessLeads
+  });
+  mountIntegrationAuditPackApi(app, {
+    basePath: config.paths.integrationAuditPack,
+    csvPath: config.storage.integrationAuditPackLeads
   });
 
   mountNotFoundHandler(app);

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integration Audit Template Pack | VeriDataPro</title>
+    <meta
+      name="description"
+      content="Download VeriDataPro's integration audit template pack for mapping systems, ownership, manual work, API readiness, risk, and next steps."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="__BASE_PATH__/shared/Veridata_Icon-no-bg%20green.png" type="image/png" />
+    <link rel="stylesheet" href="__BASE_PATH__/shared/styles.css" />
+    <link rel="stylesheet" href="__BASE_PATH__/tools/integration-audit-pack/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="https://veridatapro.com/" target="_blank" rel="noreferrer" aria-label="VeriDataPro home">
+        <span class="brand-mark">
+          <img src="__BASE_PATH__/shared/Veridata_Icon-no-bg%20green.png" alt="" />
+        </span>
+        <span>
+          <strong>VeriDataPro</strong>
+          <small data-i18n="brand.subtitle">Integration audit toolkit</small>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-controls="header-menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <nav id="header-menu" class="header-actions" aria-label="Primary links" data-header-menu>
+        <div class="language-switcher" role="group" aria-label="Language">
+          <button type="button" data-language-button data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-language-button data-lang="pt" aria-pressed="false">PT</button>
+          <button type="button" data-language-button data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a href="https://veridatapro.com/" target="_blank" rel="noreferrer">veridatapro.com</a>
+        <span data-i18n="header.note">Word document download</span>
+      </nav>
+    </header>
+
+    <main class="shell audit-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-card audit-hero">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Integration audit pack</p>
+          <h1 id="page-title" data-i18n="hero.title">Get the template pack to map systems, risk, and next steps</h1>
+          <p class="lede" data-i18n="hero.lede">
+            Use the audit pack to identify manual work, spreadsheet dependency, ownership gaps, API readiness, migration risk, and the first fixes worth prioritizing.
+          </p>
+          <div class="summary-strip" aria-label="Audit pack contents">
+            <div>
+              <strong data-i18n="hero.snapshotTitle">Executive snapshot</strong>
+              <span data-i18n="hero.snapshotText">Five questions to qualify risk quickly</span>
+            </div>
+            <div>
+              <strong data-i18n="hero.scorecardTitle">Risk scorecards</strong>
+              <span data-i18n="hero.scorecardText">Manual work, data, APIs, reporting, ownership</span>
+            </div>
+            <div>
+              <strong data-i18n="hero.planTitle">30-day action plan</strong>
+              <span data-i18n="hero.planText">Turn findings into practical next steps</span>
+            </div>
+          </div>
+          <p class="disclaimer" data-i18n="hero.note">
+            This is a practical Word document for internal workshops. The form unlocks the download and helps VeriDataPro understand who is using the pack.
+          </p>
+          <a class="scroll-cue" href="#audit-pack">
+            <span data-i18n="hero.scrollCue">Get the audit pack</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="audit-preview" aria-label="Audit pack preview">
+        <article>
+          <span class="mono">01</span>
+          <h2 data-i18n="preview.inventoryTitle">Map the systems involved</h2>
+          <p data-i18n="preview.inventoryText">
+            Capture system purpose, owner, users, criticality, API availability, and pain level before choosing a solution.
+          </p>
+        </article>
+        <article>
+          <span class="mono">02</span>
+          <h2 data-i18n="preview.manualTitle">Expose hidden manual work</h2>
+          <p data-i18n="preview.manualText">
+            Identify CSV exports, spreadsheet cleanup, duplicate entry, report reconciliation, and single-person process risk.
+          </p>
+        </article>
+        <article>
+          <span class="mono">03</span>
+          <h2 data-i18n="preview.roiTitle">Build the business case</h2>
+          <p data-i18n="preview.roiText">
+            Estimate cost of inaction, score API readiness, compare vendors, and define the first 30 days of integration work.
+          </p>
+        </article>
+      </section>
+
+      <section id="audit-pack" class="workspace audit-workspace" aria-label="Integration audit pack request">
+        <form id="auditForm" class="calculator audit-form" novalidate>
+          <div class="form-section">
+            <div class="section-heading">
+              <span class="step">01</span>
+              <div>
+                <h2 data-i18n="form.title">Unlock the audit document</h2>
+                <p data-i18n="form.text">Enter your details and receive the Word template pack immediately.</p>
+              </div>
+            </div>
+
+            <div class="grid three">
+              <label>
+                <span data-i18n="form.name">Name</span>
+                <input name="fullName" autocomplete="name" placeholder="Alex Rivera" required />
+              </label>
+              <label>
+                <span data-i18n="form.email">Business email</span>
+                <input name="email" type="email" autocomplete="email" placeholder="alex@company.com" required />
+              </label>
+              <label>
+                <span data-i18n="form.company">Company</span>
+                <input name="company" autocomplete="organization" placeholder="Company Inc." required />
+              </label>
+            </div>
+
+            <div class="grid three audit-extra">
+              <label>
+                <span data-i18n="form.role">Role</span>
+                <input name="role" autocomplete="organization-title" placeholder="Operations, IT, Finance..." />
+              </label>
+              <label>
+                <span data-i18n="form.website">Website</span>
+                <input name="website" autocomplete="url" placeholder="company.com" />
+              </label>
+              <label>
+                <span data-i18n="form.companySize">Company size</span>
+                <select name="companySize" required>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
+                  <option value="1-10">1-10</option>
+                  <option value="11-50">11-50</option>
+                  <option value="51-200">51-200</option>
+                  <option value="201-1000">201-1000</option>
+                  <option value="1000+">1000+</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="grid two audit-extra">
+              <label>
+                <span data-i18n="form.challenge">Main reason for the audit</span>
+                <select name="primaryChallenge" required>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
+                  <option value="manual-work" data-i18n="challenge.manualWork">Manual work or CSV processes</option>
+                  <option value="data-quality" data-i18n="challenge.dataQuality">Data quality or duplicate records</option>
+                  <option value="reporting" data-i18n="challenge.reporting">Reports do not match</option>
+                  <option value="migration" data-i18n="challenge.migration">ERP / CRM / ecommerce migration</option>
+                  <option value="architecture" data-i18n="challenge.architecture">Need an integration architecture map</option>
+                </select>
+              </label>
+              <label>
+                <span data-i18n="form.timeline">Timeline</span>
+                <select name="timeline" required>
+                  <option value="" data-i18n="form.chooseOne">Choose one</option>
+                  <option value="now" data-i18n="timeline.now">Now</option>
+                  <option value="1-3" data-i18n="timeline.1-3">1-3 months</option>
+                  <option value="3-6" data-i18n="timeline.3-6">3-6 months</option>
+                  <option value="exploring" data-i18n="timeline.exploring">Just exploring</option>
+                </select>
+              </label>
+            </div>
+
+            <p id="formError" class="form-error" role="alert" hidden></p>
+
+            <button class="submit-button" type="submit">
+              <span data-submit-label data-i18n="form.submit">Unlock audit pack</span>
+              <svg aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
+          </div>
+        </form>
+
+        <aside id="resultPanel" class="result-panel idle" aria-live="polite"></aside>
+      </section>
+    </main>
+
+    <script>
+      window.APP_BASE_PATH = "__BASE_PATH__";
+    </script>
+    <script src="__BASE_PATH__/tools/integration-audit-pack/app.js" defer></script>
+  </body>
+</html>

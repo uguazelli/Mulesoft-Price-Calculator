@@ -1,0 +1,128 @@
+.audit-shell {
+  max-width: 1400px;
+}
+
+.audit-hero .disclaimer {
+  border-left-color: var(--blue);
+}
+
+.audit-preview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 24px;
+}
+
+.audit-preview article {
+  min-height: 188px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+  box-shadow: 0 14px 34px rgba(24, 32, 29, 0.08);
+}
+
+.audit-preview h2 {
+  margin: 12px 0 8px;
+  font-size: 1.16rem;
+  line-height: 1.25;
+}
+
+.audit-preview p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.audit-workspace {
+  grid-template-columns: minmax(0, 0.98fr) minmax(390px, 1.02fr);
+}
+
+.audit-extra {
+  margin-top: 14px;
+}
+
+.document-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.document-list li {
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-soft);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.document-summary {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.document-summary strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.document-summary p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.download-card {
+  padding: 18px;
+  border: 1px solid rgba(0, 122, 109, 0.22);
+  border-radius: 8px;
+  background: var(--teal-soft);
+}
+
+.download-card strong,
+.download-card span {
+  display: block;
+}
+
+.download-card span {
+  margin-top: 5px;
+  color: var(--muted);
+}
+
+.download-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  margin-top: 14px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: var(--teal-dark);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 1080px) {
+  .audit-preview,
+  .audit-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .audit-preview {
+    gap: 10px;
+  }
+
+  .audit-preview article {
+    min-height: auto;
+    padding: 16px;
+  }
+}
