@@ -18,7 +18,7 @@ npm start
 
 The app listens on these paths by default:
 
-- `http://localhost:3000/tools`
+- `http://localhost:3000/docs`
 - `http://localhost:3000/mulesoft-calculator`
 - `http://localhost:3000/api-readiness-assessment`
 - `http://localhost:3000/file-validator`
@@ -27,7 +27,8 @@ The app listens on these paths by default:
 Environment variables:
 
 - `PORT`: server port, default `3000`
-- `TOOLS_BASE_PATH`: tools directory URL path, default `/tools`
+- `DOCS_BASE_PATH`: docs directory URL path, default `/docs`
+- `TOOLS_BASE_PATH`: legacy alias for the docs directory URL path
 - `BASE_PATH`: MuleSoft calculator URL path, default `/mulesoft-calculator`
 - `LEADS_CSV_PATH`: MuleSoft CSV output path, default `data/leads.csv`
 - `API_READINESS_BASE_PATH`: API readiness tool URL path, default `/api-readiness-assessment`
@@ -36,9 +37,23 @@ Environment variables:
 - `INTEGRATION_AUDIT_PACK_BASE_PATH`: audit pack URL path, default `/integration-audit-pack`
 - `INTEGRATION_AUDIT_PACK_CSV_PATH`: audit pack CSV output path, default `data/integration-audit-pack-leads.csv`
 
+## Docker Compose
+
+```bash
+docker compose up --build
+```
+
+For local container development with autoreload on source changes:
+
+```bash
+docker compose watch
+```
+
+Compose syncs `src/` and `public/` into the running container and restarts the service. Changes to `package*.json`, `Dockerfile`, or `docker-compose.yml` trigger a rebuild.
+
 ## Endpoints
 
-- `GET /tools`: tools directory page
+- `GET /docs`: docs directory page
 - `GET /mulesoft-calculator`: calculator frontend
 - `POST /mulesoft-calculator/api/calculate`: validates input, saves the lead, and returns the assessment JSON
 - `GET /api-readiness-assessment`: API readiness assessment frontend
@@ -47,7 +62,7 @@ Environment variables:
 - `GET /integration-audit-pack`: audit pack lead form frontend
 - `POST /integration-audit-pack/api/request`: validates input, saves the lead, and returns the document download URL
 - `GET /health`: basic health check for deployment
-- `GET /tools/health`: tools directory health check
+- `GET /docs/health`: docs directory health check
 - `GET /mulesoft-calculator/health`: tool-level health check
 - `GET /api-readiness-assessment/health`: tool-level health check
 - `GET /file-validator/health`: tool-level health check

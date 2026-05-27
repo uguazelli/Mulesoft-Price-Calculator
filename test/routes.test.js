@@ -21,8 +21,8 @@ test("all tool frontends and health checks are mounted", async () => {
 
   try {
     const health = await fetch(`${baseUrl}/health`);
-    const tools = await fetch(`${baseUrl}/tools`);
-    const toolsHealth = await fetch(`${baseUrl}/tools/health`);
+    const docs = await fetch(`${baseUrl}/docs`);
+    const docsHealth = await fetch(`${baseUrl}/docs/health`);
     const mulesoft = await fetch(`${baseUrl}/mulesoft-calculator/`);
     const apiReadiness = await fetch(`${baseUrl}/api-readiness-assessment/`);
     const fileValidator = await fetch(`${baseUrl}/file-validator/`);
@@ -31,8 +31,8 @@ test("all tool frontends and health checks are mounted", async () => {
     const integrationAuditPackHealth = await fetch(`${baseUrl}/integration-audit-pack/health`);
 
     assert.equal(health.status, 200);
-    assert.equal(tools.status, 200);
-    assert.equal(toolsHealth.status, 200);
+    assert.equal(docs.status, 200);
+    assert.equal(docsHealth.status, 200);
     assert.equal(mulesoft.status, 200);
     assert.equal(apiReadiness.status, 200);
     assert.equal(fileValidator.status, 200);
@@ -40,9 +40,9 @@ test("all tool frontends and health checks are mounted", async () => {
     assert.equal(fileValidatorHealth.status, 200);
     assert.equal(integrationAuditPackHealth.status, 200);
 
-    const toolsHtml = await tools.text();
-    assert.match(toolsHtml, /Practical checks before integration work starts/);
-    assert.match(toolsHtml, /MuleSoft Cost &amp; Utilization Risk Calculator/);
+    const docsHtml = await docs.text();
+    assert.match(docsHtml, /Tool URLs/);
+    assert.match(docsHtml, /MuleSoft Cost &amp; Utilization Risk Calculator/);
     assert.match(await fileValidator.text(), /Flat File Validation Tool/);
     assert.match(await integrationAuditPack.text(), /Integration Audit Template Pack/);
   } finally {

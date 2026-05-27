@@ -24,11 +24,9 @@
   gap: 8px;
   min-height: 220px;
   padding: 26px;
-  border: 2px dashed #b8c7c1;
+  border: 2px dashed var(--rule-strong);
   border-radius: 10px;
-  background:
-    linear-gradient(135deg, rgba(0, 122, 109, 0.08), rgba(40, 95, 159, 0.08)),
-    #fff;
+  background: var(--surface);
   color: var(--muted);
   cursor: pointer;
   text-align: center;
@@ -53,20 +51,20 @@
   place-items: center;
   width: 58px;
   height: 58px;
-  border: 1px solid rgba(0, 122, 109, 0.24);
+  border: 1px solid var(--accent-line);
   border-radius: 50%;
   background: var(--teal-soft);
   color: var(--teal-dark);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.9rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
 .drop-zone.drag-over,
 .drop-zone:hover {
   border-color: var(--teal);
-  box-shadow: 0 14px 36px rgba(0, 122, 109, 0.12);
+  box-shadow: var(--shadow-elevated);
   transform: translateY(-1px);
 }
 
@@ -97,8 +95,8 @@
   display: block;
   margin-top: 4px;
   color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.98rem;
+  font-variant-numeric: tabular-nums;
   line-height: 1.2;
   overflow-wrap: anywhere;
 }
@@ -112,7 +110,7 @@
   overflow: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .table-frame table {
@@ -139,8 +137,9 @@
   z-index: 1;
   background: var(--panel-soft);
   color: var(--teal-dark);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -183,16 +182,16 @@
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   text-align: center;
 }
 
 .health-item strong {
   display: block;
   color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 1.5rem;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .health-item span {
@@ -215,7 +214,7 @@
   border: 1px solid var(--line);
   border-left: 5px solid var(--blue);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .issue.error {
@@ -259,14 +258,14 @@
   padding: 0 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   cursor: pointer;
   font-weight: 700;
 }
 
 .export-actions button:hover {
-  border-color: rgba(0, 122, 109, 0.42);
+  border-color: var(--accent-line);
   color: var(--teal-dark);
 }
 
@@ -278,9 +277,9 @@
   border-radius: 999px;
   background: var(--blue-soft);
   color: var(--blue);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.72rem;
   font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 

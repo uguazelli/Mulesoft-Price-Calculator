@@ -12,7 +12,9 @@ const { MULESOFT_CALCULATOR_HTML_PATH, mountMulesoftCalculatorApi } = require(".
 function buildConfig(options = {}) {
   const publicDir = options.publicDir || path.join(__dirname, "..", "public");
   const paths = {
-    tools: normalizeBasePath(options.toolsBasePath || process.env.TOOLS_BASE_PATH || "/tools"),
+    docs: normalizeBasePath(
+      options.docsBasePath || options.toolsBasePath || process.env.DOCS_BASE_PATH || process.env.TOOLS_BASE_PATH || "/docs"
+    ),
     mulesoft: normalizeBasePath(options.basePath || process.env.BASE_PATH || "/mulesoft-calculator"),
     apiReadiness: normalizeBasePath(options.apiReadinessBasePath || process.env.API_READINESS_BASE_PATH || "/api-readiness-assessment"),
     fileValidator: normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator"),
@@ -41,7 +43,7 @@ function createApp(options = {}) {
   app.use(express.json({ limit: "50kb" }));
 
   mountStaticTool(app, {
-    basePath: config.paths.tools,
+    basePath: config.paths.docs,
     publicDir: config.publicDir,
     htmlPath: TOOLS_INDEX_HTML_PATH
   });

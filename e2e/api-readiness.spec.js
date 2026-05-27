@@ -53,7 +53,7 @@ test("API readiness assessment captures a lead and renders the report", async ({
 
   await expect(page.getByText("VDP / REPORT CAPTURED")).toBeVisible();
   await expect(page.locator("#resultPanel").getByRole("heading", { name: /readiness/i })).toBeVisible();
-  await expect(page.getByText("Book an integration review with Veri Data")).toBeVisible();
+  await expect(page.getByText("Book an integration review with VeriDataPro")).toBeVisible();
   await expect(page.getByText("Category scores")).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);

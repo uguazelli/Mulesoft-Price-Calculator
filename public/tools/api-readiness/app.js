@@ -40,7 +40,7 @@ const ANSWER_FIELDS = [
 const TRANSLATIONS = {
   en: {
     "meta.title": "API Readiness Assessment Tool | VeriDataPro",
-    "meta.description": "A short API and integration readiness assessment from Veri Data.",
+    "meta.description": "A short API and integration readiness assessment from VeriDataPro.",
     "brand.subtitle": "Systems integration and automation",
     "header.note": "3-minute integration check",
     "menu.open": "Open menu",
@@ -56,7 +56,7 @@ const TRANSLATIONS = {
     "hero.nextTitle": "Next steps",
     "hero.nextText": "A practical integration review path",
     "hero.positioning":
-      "Veri Data helps companies connect Odoo, CRMs, ecommerce, finance tools, spreadsheets, databases, and internal systems.",
+      "VeriDataPro helps companies connect Odoo, CRMs, ecommerce, finance tools, spreadsheets, databases, and internal systems.",
     "hero.scrollCue": "Start assessment",
     "form.assessmentTitle": "Integration readiness",
     "form.assessmentText": "Use the option that best describes today. Estimates are enough.",
@@ -148,7 +148,7 @@ const TRANSLATIONS = {
     "result.noPain": "No major blockers detected from these answers.",
     "result.categoryHeading": "Category scores",
     "result.recommendationHeading": "Recommended next step",
-    "result.ctaTitle": "Book an integration review with Veri Data",
+    "result.ctaTitle": "Book an integration review with VeriDataPro",
     "result.ctaText": "Use this report as a starting point for a focused review of systems, data, APIs, and automation opportunities.",
     "result.ctaMailLabel": "Request integration review",
     "result.visitSite": "Visit veridatapro.com",
@@ -165,7 +165,7 @@ const TRANSLATIONS = {
   },
   pt: {
     "meta.title": "Avaliação de prontidão para APIs | VeriDataPro",
-    "meta.description": "Uma avaliação curta de prontidão para APIs e integração da Veri Data.",
+    "meta.description": "Uma avaliação curta de prontidão para APIs e integração da VeriDataPro.",
     "brand.subtitle": "Integração de sistemas e automação",
     "header.note": "Diagnóstico de 3 minutos",
     "menu.open": "Abrir menu",
@@ -181,7 +181,7 @@ const TRANSLATIONS = {
     "hero.nextTitle": "Próximos passos",
     "hero.nextText": "Caminho prático para revisão",
     "hero.positioning":
-      "A Veri Data ajuda empresas a conectar Odoo, CRMs, ecommerce, ferramentas financeiras, planilhas, bancos de dados e sistemas internos.",
+      "A VeriDataPro ajuda empresas a conectar Odoo, CRMs, ecommerce, ferramentas financeiras, planilhas, bancos de dados e sistemas internos.",
     "hero.scrollCue": "Começar avaliação",
     "form.assessmentTitle": "Prontidão para integração",
     "form.assessmentText": "Use a opção que melhor descreve o cenário atual. Estimativas são suficientes.",
@@ -273,7 +273,7 @@ const TRANSLATIONS = {
     "result.noPain": "Nenhum bloqueio importante foi detectado com essas respostas.",
     "result.categoryHeading": "Notas por categoria",
     "result.recommendationHeading": "Próximo passo recomendado",
-    "result.ctaTitle": "Agendar uma revisão de integração com a Veri Data",
+    "result.ctaTitle": "Agendar uma revisão de integração com a VeriDataPro",
     "result.ctaText": "Use este relatório como ponto de partida para revisar sistemas, dados, APIs e oportunidades de automação.",
     "result.ctaMailLabel": "Solicitar revisão",
     "result.visitSite": "Visitar veridatapro.com",
@@ -290,7 +290,7 @@ const TRANSLATIONS = {
   },
   es: {
     "meta.title": "Evaluación de preparación para APIs | VeriDataPro",
-    "meta.description": "Una evaluación corta de preparación para APIs e integración de Veri Data.",
+    "meta.description": "Una evaluación corta de preparación para APIs e integración de VeriDataPro.",
     "brand.subtitle": "Integración de sistemas y automatización",
     "header.note": "Diagnóstico de 3 minutos",
     "menu.open": "Abrir menú",
@@ -306,7 +306,7 @@ const TRANSLATIONS = {
     "hero.nextTitle": "Próximos pasos",
     "hero.nextText": "Ruta práctica de revisión",
     "hero.positioning":
-      "Veri Data ayuda a empresas a conectar Odoo, CRMs, ecommerce, herramientas financieras, hojas de cálculo, bases de datos y sistemas internos.",
+      "VeriDataPro ayuda a empresas a conectar Odoo, CRMs, ecommerce, herramientas financieras, hojas de cálculo, bases de datos y sistemas internos.",
     "hero.scrollCue": "Comenzar evaluación",
     "form.assessmentTitle": "Preparación para integración",
     "form.assessmentText": "Usa la opción que mejor describe el escenario actual. Las estimaciones son suficientes.",
@@ -398,7 +398,7 @@ const TRANSLATIONS = {
     "result.noPain": "No se detectaron bloqueos importantes con estas respuestas.",
     "result.categoryHeading": "Puntajes por categoría",
     "result.recommendationHeading": "Siguiente paso recomendado",
-    "result.ctaTitle": "Agendar una revisión de integración con Veri Data",
+    "result.ctaTitle": "Agendar una revisión de integración con VeriDataPro",
     "result.ctaText": "Usa este reporte como punto de partida para revisar sistemas, datos, APIs y oportunidades de automatización.",
     "result.ctaMailLabel": "Solicitar revisión",
     "result.visitSite": "Visitar veridatapro.com",

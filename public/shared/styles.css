@@ -1,21 +1,43 @@
 :root {
-  --ink: #18201d;
-  --muted: #6b6560;
-  --line: #ddd8d2;
-  --paper: #f4f1ed;
-  --panel: #ffffff;
-  --panel-soft: #f7f4f0;
-  --teal: #007a6d;
-  --teal-dark: #005c52;
-  --teal-soft: #e4f3f0;
-  --blue: #285f9f;
-  --blue-soft: #e8f0fa;
-  --amber: #b46a12;
-  --amber-soft: #fff1d9;
-  --danger: #b04736;
-  --danger-soft: #f9e2de;
-  --ok: #3e7a45;
-  --shadow: 0 18px 44px rgba(24, 32, 29, 0.1);
+  --paper: #f8fafa;
+  --surface: #ffffff;
+  --surface-2: #f0f3f4;
+  --surface-3: #e6eaec;
+  --ink: #0a1f2c;
+  --ink-2: #143042;
+  --text: #1a2730;
+  --text-muted: #4a5560;
+  --text-dim: #7a8590;
+  --rule: #e0e4e8;
+  --rule-strong: #c5ccd2;
+  --accent: #0e5c5c;
+  --accent-live: #2a8c8c;
+  --accent-soft: rgba(14, 92, 92, 0.08);
+  --accent-line: rgba(14, 92, 92, 0.25);
+  --blue: #1a56b5;
+  --blue-soft: rgba(26, 86, 181, 0.08);
+  --cta: #c45a35;
+  --cta-strong: #a04826;
+  --success: #2a8c8c;
+  --warn: #c45a35;
+  --shadow-ambient: 0 4px 14px rgba(10, 31, 44, 0.06);
+  --shadow-card: 0 1px 3px rgba(10, 31, 44, 0.04), 0 1px 2px rgba(10, 31, 44, 0.06);
+  --shadow-elevated: 0 8px 24px rgba(10, 31, 44, 0.08);
+
+  /* Backward-compatible aliases for the existing tool markup. */
+  --muted: var(--text-muted);
+  --line: var(--rule);
+  --panel: var(--surface);
+  --panel-soft: var(--surface-2);
+  --teal: var(--accent-live);
+  --teal-dark: var(--accent);
+  --teal-soft: var(--accent-soft);
+  --amber: var(--cta);
+  --amber-soft: rgba(196, 90, 53, 0.1);
+  --danger: var(--cta-strong);
+  --danger-soft: rgba(196, 90, 53, 0.12);
+  --ok: var(--success);
+  --shadow: var(--shadow-card);
 }
 
 * {
@@ -26,8 +48,8 @@ body {
   margin: 0;
   min-height: 100vh;
   background: var(--paper);
-  color: var(--ink);
-  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--text);
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 html {
@@ -54,7 +76,7 @@ a {
   gap: 20px;
   padding: 14px clamp(18px, 4vw, 48px);
   border-bottom: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.94);
+  background: var(--surface);
   backdrop-filter: blur(14px);
 }
 
@@ -74,7 +96,7 @@ a {
   flex: 0 0 auto;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .brand-mark img {
@@ -135,14 +157,14 @@ a {
   background: transparent;
   color: var(--muted);
   cursor: pointer;
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.78rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .language-switcher button[aria-pressed="true"] {
   background: var(--teal-dark);
-  color: #fff;
+  color: var(--surface);
 }
 
 .shell {
@@ -171,24 +193,25 @@ a {
 .mono,
 .preview-kicker,
 .step {
-  font-family: "IBM Plex Mono", monospace;
-  letter-spacing: 0;
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .eyebrow {
   margin: 0 0 12px;
   color: var(--teal-dark);
-  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 h1 {
   max-width: 760px;
   margin: 0;
-  font-size: clamp(2rem, 4.5vw, 4.25rem);
+  font-size: 4rem;
   line-height: 1.02;
   letter-spacing: 0;
 }
@@ -252,8 +275,8 @@ h1 {
   padding: 0 24px;
   border: 0;
   border-radius: 8px;
-  background: var(--ink);
-  color: #fff;
+  background: var(--cta);
+  color: var(--surface);
   font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
@@ -261,7 +284,7 @@ h1 {
 }
 
 .scroll-cue:hover {
-  background: var(--teal-dark);
+  background: var(--cta-strong);
   transform: translateY(-1px);
 }
 
@@ -360,22 +383,22 @@ input,
 select {
   width: 100%;
   min-height: 48px;
-  border: 1px solid #cfd8d4;
+  border: 1px solid var(--rule-strong);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   padding: 0 12px;
   outline: none;
 }
 
 input::placeholder {
-  color: #8c9690;
+  color: var(--text-dim);
 }
 
 input:focus,
 select:focus {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 4px rgba(0, 122, 109, 0.14);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
 }
 
 .range-label {
@@ -386,7 +409,7 @@ select:focus {
 
 .range-label strong {
   color: var(--teal-dark);
-  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 .range-label input {
@@ -435,7 +458,7 @@ legend {
 .preview-panel {
   margin: 24px 0;
   padding: 16px 18px;
-  border: 1px solid #b9d8d1;
+  border: 1px solid var(--accent-line);
   border-left: 5px solid var(--teal);
   border-radius: 8px;
   background: var(--teal-soft);
@@ -471,14 +494,14 @@ legend {
   padding: 0 18px;
   border: 0;
   border-radius: 8px;
-  background: var(--teal-dark);
-  color: #fff;
+  background: var(--cta);
+  color: var(--surface);
   cursor: pointer;
   font-weight: 700;
 }
 
 .submit-button:hover {
-  background: #004c44;
+  background: var(--cta-strong);
 }
 
 .submit-button:disabled {
@@ -545,7 +568,7 @@ legend {
   height: 72px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: conic-gradient(var(--teal) 55%, #dfe7e3 0);
+  background: conic-gradient(var(--teal) 55%, var(--surface-3) 0);
 }
 
 .teaser-meter-inner {
@@ -554,11 +577,11 @@ legend {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   color: var(--muted);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 1.3rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .teaser-lines {
@@ -601,7 +624,7 @@ legend {
 .teaser-bar-fill {
   height: 8px;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--teal-dark), var(--blue));
+  background: var(--accent-live);
 }
 
 .mono {
@@ -613,7 +636,7 @@ legend {
 .result-empty h2,
 .score-card h2 {
   margin: 0;
-  font-size: clamp(1.65rem, 3vw, 2.45rem);
+  font-size: 2.35rem;
   line-height: 1.08;
 }
 
@@ -636,15 +659,16 @@ legend {
 }
 
 .empty-list li::before {
-  content: "·· ·";
+  content: "";
   position: absolute;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--teal);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
-  letter-spacing: -1px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
 }
 
 .score-card {
@@ -673,7 +697,7 @@ legend {
   width: 106px;
   height: 106px;
   border-radius: 50%;
-  background: conic-gradient(var(--teal) calc(var(--score) * 1%), #dfe7e3 0);
+  background: conic-gradient(var(--teal) calc(var(--score) * 1%), var(--surface-3) 0);
 }
 
 .risk-meter span {
@@ -682,10 +706,10 @@ legend {
   width: 78px;
   height: 78px;
   border-radius: 50%;
-  background: #fff;
-  font-family: "IBM Plex Mono", monospace;
+  background: var(--surface);
   font-size: 1.6rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .risk-pill {
@@ -713,7 +737,7 @@ legend {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .waste-box strong {
@@ -744,7 +768,7 @@ legend {
   border: 1px solid var(--line);
   border-left: 5px solid var(--ok);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .signal.high,
@@ -786,7 +810,7 @@ legend {
   padding: 18px;
   border-radius: 8px;
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 
 .cta h3,
@@ -796,7 +820,7 @@ legend {
 
 .cta p {
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--surface-3);
 }
 
 .cta-actions {
@@ -812,15 +836,15 @@ legend {
   align-items: center;
   justify-content: center;
   padding: 0 12px;
-  border: 1px solid rgba(255, 255, 255, 0.34);
+  border: 1px solid var(--rule-strong);
   border-radius: 8px;
-  color: #fff;
+  color: var(--paper);
   font-weight: 700;
   text-decoration: none;
 }
 
 .cta-actions a:first-child {
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
 }
 
@@ -841,7 +865,7 @@ legend {
 }
 
 .references a {
-  text-decoration-color: rgba(0, 122, 109, 0.35);
+  text-decoration-color: var(--accent-line);
   text-underline-offset: 4px;
 }
 
@@ -877,7 +901,7 @@ legend {
   }
 
   .intro h1 {
-    font-size: clamp(1.35rem, 1.8vw, 1.85rem);
+    font-size: 1.75rem;
     max-width: none;
     line-height: 1.15;
   }
@@ -1004,7 +1028,7 @@ legend {
     border: 1px solid var(--line);
     border-radius: 10px;
     background: var(--panel);
-    box-shadow: 0 14px 32px rgba(24, 32, 29, 0.12);
+    box-shadow: var(--shadow-elevated);
   }
 
   .site-header.menu-open .header-actions {

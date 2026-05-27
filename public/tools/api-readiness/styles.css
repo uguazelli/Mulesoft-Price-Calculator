@@ -24,7 +24,7 @@
   inset: 0;
   width: var(--progress, 0%);
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--teal-dark), var(--blue));
+  background: var(--accent-live);
   transition: width 220ms ease;
 }
 
@@ -67,8 +67,8 @@
 .question-block legend span:first-child,
 .text-question > span span:first-child {
   color: var(--teal-dark);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .option-grid {
@@ -80,8 +80,8 @@
 .option-grid label,
 .answer-chips label {
   min-height: 46px;
-  border-color: #cfd8d4;
-  background: #fff;
+  border-color: var(--rule-strong);
+  background: var(--surface);
   color: var(--ink);
   cursor: pointer;
   font-weight: 600;
@@ -92,7 +92,7 @@
   align-items: center;
   gap: 9px;
   padding: 10px 12px;
-  border: 1px solid #cfd8d4;
+  border: 1px solid var(--rule-strong);
   border-radius: 8px;
 }
 
@@ -106,7 +106,7 @@
 
 .option-grid label:has(input:checked),
 .answer-chips label:has(input:checked) {
-  border-color: rgba(0, 122, 109, 0.42);
+  border-color: var(--accent-line);
   background: var(--teal-soft);
   color: var(--teal-dark);
 }
@@ -115,9 +115,9 @@
   width: 100%;
   min-height: 116px;
   padding: 12px;
-  border: 1px solid #cfd8d4;
+  border: 1px solid var(--rule-strong);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font: inherit;
   line-height: 1.45;
@@ -126,8 +126,8 @@
 }
 
 .text-question textarea:focus {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 4px rgba(0, 122, 109, 0.14);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
 }
 
 .lead-extra {
@@ -151,7 +151,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: conic-gradient(var(--teal) calc(var(--score) * 1%), #dfe7e3 0);
+  background: conic-gradient(var(--teal) calc(var(--score) * 1%), var(--surface-3) 0);
 }
 
 .readiness-meter span {
@@ -160,11 +160,11 @@
   width: 86px;
   height: 86px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
   font-size: 1.9rem;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .status-pill {
@@ -211,7 +211,7 @@
 
 .category-row strong {
   color: var(--muted);
-  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 .category-track {
@@ -219,7 +219,7 @@
   height: 9px;
   overflow: hidden;
   border-radius: 999px;
-  background: #dfe7e3;
+  background: var(--surface-3);
 }
 
 .category-track i {
@@ -227,7 +227,7 @@
   width: calc(var(--value) * 1%);
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--teal-dark), var(--blue));
+  background: var(--accent-live);
 }
 
 .pain-list {
@@ -243,7 +243,7 @@
   border: 1px solid var(--line);
   border-left: 5px solid var(--amber);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   font-weight: 700;
   line-height: 1.35;
@@ -253,7 +253,7 @@
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   color: var(--muted);
   line-height: 1.5;
 }

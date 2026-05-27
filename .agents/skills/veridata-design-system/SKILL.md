@@ -1,268 +1,372 @@
 ---
 name: veridata-design-system
-description: Use when creating, editing, or reviewing any visual or written content for the Veridata Pro website, landing pages, pricing pages, Odoo pages, integrations pages, marketing materials, blog posts, proposals, pitch decks, or client-facing documents. Enforces the current Veridata Pro positioning, information architecture, typography, color palette, light technical UI patterns, section structures, copy voice, and anti-patterns so everything feels consistent, editorial, and trustworthy rather than like a generic automation shop. Trigger whenever the user mentions the Veridata Pro website, landing page, hero section, pricing section, Odoo page, integrations page, marketing copy, visual design, HTML/CSS work on the site, or copy that prospective clients will read.
+description: Use when creating, editing, or reviewing any visual or written content for the Veridata Pro website, landing pages, pricing pages, Odoo pages, integrations pages, marketing materials, blog posts, proposals, pitch decks, or client-facing documents. Apply when the user mentions Veridata Pro, veridatapro.com, the website, landing page, hero section, pricing section, Odoo page, integrations page, marketing copy, visual design, HTML/CSS work on the site, or copy that prospective clients will read.
 ---
 
 # Veridata Pro Design System
 
-## Active Visual Direction: Sturdy & Kind
+Use this skill to keep Veridata Pro website pages, marketing copy, diagrams, proposals, pricing blocks, slide decks, client-facing documents, and visual assets consistent.
 
-The current Veridata Pro website direction is **Sturdy & Kind**. This supersedes older references in this file that describe a Fraunces/Inter editorial identity.
+## Active direction: Sturdy & Clear
 
-Use this direction for all current website UI, marketing pages, cards, diagrams, pricing blocks, lists, and forms:
+The current Veridata Pro direction is **Sturdy & Clear**. This supersedes the older "Sturdy & Kind" editorial cream/forest/terracotta direction.
 
-- **Principle:** institutional stability with human approachability. The site should feel reliable, plainspoken, and built to last.
-- **Typography:** Public Sans only. Headlines use `700`, body uses `400`, labels use `600` with modest uppercase tracking. Do not use serif display typography for new website work.
-- **Palette:** warm stone/parchment surfaces, forest green structure, terracotta CTAs, grounded blue focus states. Avoid neon, purple, cyan, decorative blobs, heavy glow, and cold SaaS white/blue treatments.
-- **Layout:** 8px rhythm, 24px gutters, 1280px max-width, generous but contained spacing. Desktop should feel fixed-grid and secure; mobile should be single-column with 16px margins.
-- **Service pages:** Integrations, Odoo, Pricing, and Leadership should use the full `.container` width for sections. Reserve `.container-narrow` for legal/privacy or deliberately long-form reading pages.
-- **Cards:** white or soft-stone surfaces, 1px neutral border, square 2px radius, no box shadow for standard cards or nested elements inside cards. Avoid outer wrapper boxes around card grids.
-- **Pricing cards:** flat white bordered cards. The recommended card uses terracotta border, subtle elevation, and a top-right terracotta ribbon. No offset forest shadows.
-- **Buttons:** terracotta primary buttons and outlined forest secondary buttons use square 2px geometry, no shadow, and strong Public Sans weight.
-- **Lists:** individual white cards with labels such as `L01`; keep the grid plain, without background frames, dashed rails, or decorative container boxes.
-- **Diagrams:** use approved image assets and simple line-art diagrams. Keep diagrams visible and uncropped; prefer `object-fit: contain` for diagram hero assets.
-- **Forms:** white fields with 1px neutral border. Focus uses grounded blue border and very light blue background.
+Use this direction for all current website UI, marketing pages, cards, diagrams, pricing blocks, lists, and forms.
 
-Core CSS tokens currently map to:
+### Principle
 
-```css
-:root {
-  --ink: #061B0E;
-  --paper: #FCF9F4;
-  --surface: #FFFFFF;
-  --surface-2: #F6F3EE;
-  --surface-3: #F0EDE9;
-  --rule: #DCDAD5;
-  --rule-strong: #C3C8C1;
-  --grid-line: rgba(67, 72, 67, 0);
-  --text: #1C1C19;
-  --text-muted: #434843;
-  --text-dim: #737973;
-  --accent: #061B0E;
-  --accent-live: #4D6453;
-  --terracotta: #9F4125;
-  --terracotta-strong: #732107;
-  --blue: #00182F;
-  --button-radius: 2px;
-}
-```
+Veridata Pro should feel like a trustworthy technical practice optimized for selling. Clean, modern, confident, and quick to read.
 
-This skill encodes the visual and editorial identity of Veridata Pro. Apply it to any client-facing artifact — website pages, emails, proposals, social posts, slide decks.
+The brand is a serious integration and automation practice for SMBs and implementation partners. Buyers are founders, operators, CTOs, and business decision makers. The site has to convert them, not impress them with editorial taste.
 
-## Core aesthetic direction
+We step out of generic SaaS blue without overcorrecting into boutique-editorial styling. The result should read as: clean white surfaces, a distinctive deep teal accent, terracotta for action, and zero decorative noise.
 
-Veridata Pro is a **serious, editorial, technical professional-services** brand — closer to a private advisory firm with real engineering depth than a startup SaaS. Buyers are founders, operators, CTOs, and business decision makers who need to trust the person touching their systems. They want competence, clarity, and enough technical texture to believe the work is real.
+## Brand position
 
-The design is:
+Veridata Pro helps companies connect Odoo and other business systems so teams stop copying data manually.
 
-- **Light-forward** — body sections and heroes stay warm paper/cream unless a contained dark band is specifically justified
-- **Technically structured** — small green status accents, active dots, thin rules, row labels, and structured panels
-- **Restrained** — generous whitespace, minimal ornamentation, no spectacle
-- **Corporate-humanist** — Public Sans clarity, calm hierarchy, and businesslike structure
-- **Operational** — diagrams, layer tables, and cards should feel like integration architecture, not generic marketing blocks
-- **Honest** — no stock photos of people in headsets, no abstract cyber imagery, no fake badges
+Main buyer-facing service paths:
 
-## Current positioning and IA
+- **Odoo:** customization, Odoo API integrations, data migration, ecommerce, CRM, finance workflows, WhatsApp/email/forms, AI document extraction, reporting, and Odoo partner support.
+- **Integrations:** CRMs, ERPs, databases, forms, ecommerce, finance tools, AI services, APIs, AWS, MuleSoft, Python/Java services, n8n, Zapier/Make audit or migration.
 
-Veridata Pro helps companies connect Odoo and other business systems so teams stop copying data manually. The main buyer-facing service paths are:
+The homepage is a routing page, not a full service catalog. Keep it short: Hero, Credibility band, Main Problems, Services Summary, How We Work, Free Tools, Case Studies, Pricing teaser, Final CTA.
 
-- **Odoo** — customization, Odoo API integrations, data migration, ecommerce, CRM, finance workflows, WhatsApp/email/forms, AI document extraction, reporting, and Odoo partner support.
-- **Integrations** — systems that do not talk to each other: CRMs, ERPs, databases, forms, ecommerce, finance tools, AI services, APIs, AWS, MuleSoft, Python/Java services, n8n, Zapier/Make audit or migration.
+## Navigation
 
-Navigation should stay focused:
+Use this focused IA.
 
-- EN: Home, Odoo, Integrations, Pricing, Leadership, Book a Call
-- PT-BR: Início, Odoo, Integrações, Preços, Liderança, Agendar Chamada
-- ES-LATAM: Inicio, Odoo, Integraciones, Precios, Liderazgo, Agendar Llamada
+EN: Home, Odoo, Integrations, Pricing, Leadership, Book a Call
+PT-BR: Início, Odoo, Integrações, Preços, Liderança, Agendar Chamada
+ES-LATAM: Inicio, Odoo, Integraciones, Precios, Liderazgo, Agendar Llamada
 
-Do not create top-level menu items for n8n, AWS, AI, MuleSoft, Python, Java, APIs, databases, Zapier, or Make. They are capabilities inside Odoo or Integrations, not separate service categories.
+Do not create top-level menu items for n8n, AWS, AI, MuleSoft, Python, Java, APIs, databases, Zapier, or Make. These are capabilities inside Odoo or Integrations, not separate service categories.
 
-The homepage is a routing page, not a full service catalog. Keep it short: Hero, Start Here / Choose Your Problem, Main Problems, Services Summary, n8n vs AWS architecture choice, Pricing teaser, short credibility block, Final CTA.
+Free Tools may live in the footer or as a homepage section, not in top navigation.
 
 ## Typography
 
+Use Public Sans only.
+
+```css
 --sans: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+```
 
-**Rules:**
+Rules:
 
-- Use Public Sans across headings, body, labels, and UI.
-- Headlines use 700 for clear hierarchy.
-- Body text uses 400 with generous line-height.
-- Labels, eyebrows, metadata, layer IDs, and chips use 600 with limited uppercase and modest tracking.
-- Do not use serif display typography for new website work.
-- Font weights: 400, 600, 700.
-- Hero type can be substantially larger than previous versions. Use responsive breakpoints, not viewport-scaled font formulas.
+- Headlines: Public Sans 700.
+- Body: Public Sans 400 with generous line-height (1.6 for body, 1.3 for headings).
+- Labels, eyebrows, metadata, layer IDs, and chips: Public Sans 600 with restrained uppercase tracking (0.08em).
+- Use only 400, 600, and 700 weights.
+- Do not introduce serif display typography. The brand is technical and commercial, not editorial.
+- Hero type can be large, but use responsive breakpoints rather than viewport-scaled font formulas.
 
 ## Color palette
 
+Use only these tokens unless the design system is intentionally updated.
+
 ```css
 :root {
-	--ink: #061b0e; /* Forest green — primary structure */
-	--ink-2: #1b3022; /* Deep green surface */
-	--ink-3: #364c3c; /* Green hover / supporting state */
-	--cream: #fcf9f4; /* Warm parchment */
-	--cream-2: #f6f3ee; /* Muted stone */
-	--paper: #fcf9f4; /* Body section background */
-	--surface: #ffffff; /* Flat cards and panels */
-	--surface-2: #f6f3ee; /* Soft card wash */
-	--surface-3: #f0ede9; /* Neutral inset/control fill */
-	--rule: #dcdad5; /* Border / divider in light sections */
-	--rule-strong: #c3c8c1; /* Stronger dividers for technical UI */
-	--rule-dark: rgba(252, 249, 244, 0.16); /* Borders in dark sections */
-	--grid-line: rgba(67, 72, 67, 0); /* Grid backgrounds intentionally disabled */
-	--text: #1c1c19; /* Primary body text on light */
-	--text-muted: #434843; /* Secondary text on light */
-	--text-dim: #737973; /* Tertiary labels */
-	--accent: #061b0e; /* Primary accent — forest green */
-	--accent-live: #4d6453; /* Status dots, meters, and active states */
-	--accent-2: #819986; /* Supporting green */
-	--accent-soft: rgba(77, 100, 83, 0.10); /* Soft green background */
-	--accent-line: rgba(77, 100, 83, 0.30); /* Green borders/rules */
-	--warn: #9f4125; /* Warning / problem numbering */
-	--terracotta: #9f4125; /* High-priority CTA */
-	--terracotta-strong: #732107; /* CTA hover */
-	--blue: #00182f; /* Focus states and secondary interaction */
-	--button-radius: 2px; /* Current button and control geometry */
-	--shadow-ambient: 0 4px 20px rgba(27, 48, 34, 0.08); /* Use sparingly */
+  /* Surfaces — clean, modern, fast-feeling */
+  --paper: #F8FAFA;
+  --surface: #FFFFFF;
+  --surface-2: #F0F3F4;
+  --surface-3: #E6EAEC;
+
+  /* Ink and text */
+  --ink: #0A1F2C;
+  --ink-2: #143042;
+  --text: #1A2730;
+  --text-muted: #4A5560;
+  --text-dim: #7A8590;
+
+  /* Rules and borders */
+  --rule: #E0E4E8;
+  --rule-strong: #C5CCD2;
+
+  /* Accent — deep teal, distinctive, technical */
+  --accent: #0E5C5C;
+  --accent-live: #2A8C8C;
+  --accent-soft: rgba(14, 92, 92, 0.08);
+  --accent-line: rgba(14, 92, 92, 0.25);
+
+  /* Functional blue — for links and focus only, not as a brand color */
+  --blue: #1A56B5;
+  --blue-soft: rgba(26, 86, 181, 0.08);
+
+  /* CTA — warm, action-oriented, distinctive */
+  --cta: #C45A35;
+  --cta-strong: #A04826;
+
+  /* Status */
+  --success: #2A8C8C;
+  --warn: #C45A35;
+
+  /* Shadows */
+  --shadow-ambient: 0 4px 14px rgba(10, 31, 44, 0.06);
+  --shadow-card: 0 1px 3px rgba(10, 31, 44, 0.04), 0 1px 2px rgba(10, 31, 44, 0.06);
+  --shadow-elevated: 0 8px 24px rgba(10, 31, 44, 0.08);
 }
 ```
 
-**Usage rules:**
+Usage rules:
 
-- Never introduce a new color without updating this file first
-- The accent stays green. Do not adopt yellow/ember from references.
-- Use green as a stability signal: small dots, meter fills, top rules, active card borders, and structural navigation.
-- Use terracotta for high-priority CTAs.
-- Use grounded blue for focus states and secondary interaction, not broad page color.
-- No purple, no cyan, no bright SaaS blues — this is the opposite of generic SaaS palette.
-- Most sections use `--paper` or `--cream` as background, `--text` as text.
-- Gradients are allowed only as subtle surface washes or thin light rules. Do not add page-wide cross-line/grid backgrounds.
-- Shadows are rare. Standard cards, buttons, and nested panels should be flat.
-- Avoid glow except where a tiny status light genuinely helps the interface.
+- White (`--surface`) is the default card and content background.
+- Off-white (`--paper`) is the default section background.
+- Light gray (`--surface-2`) is used for alternating sections to create rhythm.
+- Deep teal (`--accent`) is the primary brand color. Use it for headlines accents, active states, dividers under section titles, and small structural details.
+- Lighter teal (`--accent-live`) signals "live" or "active" — meter fills, status dots, active card borders.
+- Terracotta (`--cta`) is reserved for primary CTAs and the single most important action on a page.
+- Functional blue (`--blue`) is for hyperlinks, focus rings, and secondary interaction states only. It is not a brand color and should never carry large surface areas.
+- Avoid purple, pink, cyan, yellow, neon, generic SaaS blue, lime green, decorative blobs, glow, particles, bokeh, or gradient text.
+- Avoid cream, sand, beige, or warm editorial backgrounds.
+- Do not introduce new colors unless the design system is intentionally updated.
 
 ## Layout
 
 ```css
 .container {
-	max-width: 1280px;
-	padding: 0 32px;
-} /* Main content width */
+  max-width: 1240px;
+  padding: 0 32px;
+}
+
 .container-narrow {
-	max-width: 860px;
-	padding: 0 32px;
-} /* Long-form copy */
+  max-width: 820px;
+  padding: 0 32px;
+}
+
 section {
-	padding: 96px 0;
-} /* Default vertical rhythm */
+  padding: 80px 0;
+}
 ```
 
-- Heroes use `.hero-section.bg-ink` visually as a light paper hero. Current home/service heroes are balanced image heroes, not dark panels.
-- Body sections use `.container` with 96px vertical padding (72px on mobile)
-- Mobile breakpoint: 768px
+Rules:
 
-## Current UI Patterns
+- Use 8px rhythm.
+- Use 24px gutters where appropriate.
+- Desktop should feel grid-aligned and confident.
+- Mobile should be single-column with 20px margins.
+- Mobile breakpoint: 768px.
+- Body sections use `.container` with 80px vertical padding; mobile reduces to 56px.
+- Service pages such as Integrations, Odoo, Pricing, and Leadership should use full `.container` width.
+- Reserve `.container-narrow` for legal/privacy or deliberately long-form reading pages.
+- Hero sections may use 96px top padding for visual weight.
 
-These are the current live-site patterns and should override older references:
+## Cards
 
-- **Home hero:** `.home-hero` is a balanced 50/50 grid. Left side is eyebrow, compact h1, lede, and CTAs; right side is `assets/images/team_collaboration.png` in `.home-hero-media`.
-- **Service image heroes:** `.service-image-hero` is a balanced 50/50 grid for Integrations and Odoo. Use `assets/images/integrations.png` for integrations pages and `assets/images/odoo_integrations.jpg` for Odoo pages. Use `object-fit: contain` so square diagrams are never cropped.
-- **Buttons:** use the shared 2px square button geometry. Home/service hero buttons can be tighter than global CTA buttons to keep layout balanced.
-- **Tags and chips:** `.pill`, `.pill-tag`, `.architecture-tag`, `.gap-status`, `.assistant-channel-icon`, and `.assistant-feature-icon` are square forest-green blocks with cream text. Do not use rounded pills.
-- **Signal card grids:** `.signal-list` should be transparent with no border/background wrapper. Only the individual `.problem-card` elements get white surfaces and borders.
-- **Final CTAs:** end-of-page CTA sections use `.final-cta`: a contained dark forest-green panel on paper, cream text, and terracotta primary button.
-- **Leadership terminal:** the architect terminal is a dark colorized terminal with green/blue/terracotta accents.
+- Use `--surface` (white) background.
+- Use 1px `--rule` border.
+- Use 10px radius.
+- Subtle `--shadow-card` is allowed by default and signals "modern web app." Use sparingly — not every card needs a shadow.
+- `--shadow-elevated` is reserved for pricing cards, featured tool cards, and hero technical panels.
+- Use clear card headers, thin dividers, and status rows.
+- A small `--accent-live` dot in the top-right of a card is the preferred "active" indicator.
+
+## Buttons
+
+- Primary buttons: `--cta` terracotta, 8px radius, Public Sans 600, no shadow, hover shifts to `--cta-strong`.
+- Secondary buttons: outlined with `--rule-strong`, white surface, Public Sans 600.
+- Tertiary buttons: text-only with `--accent` color and an underline on hover.
+- Avoid glossy, floating, oversized, gradient, or SaaS-bouncy buttons.
+- Button height: 44px standard, 52px for primary hero CTAs.
+
+## Lists
+
+Use structured rows with labels such as `L01`, left rails, dividers, and calm status markers.
+
+Do not use loud badges, bare `01`, `02`, or decorative numbering.
+
+For commercial bullet lists (benefits, features), use a small `--accent` checkmark or dot, never emoji.
+
+## Diagrams
+
+Use simple line-art and architectural workflow panels.
+
+Preferred diagram style:
+
+- Clear data-flow from A to B.
+- 1px to 2px rules in `--ink-2` or `--rule-strong`.
+- Subdued grid texture using `--rule`.
+- Deep teal `--accent` for emphasis nodes and connectors.
+- Terracotta `--cta` only for the single priority action in the flow.
+- No generic SaaS icon piles.
+- No abstract cyber imagery.
+- No 3D rendered objects.
+
+## Forms
+
+- White fields with 1px `--rule` border.
+- Focus uses `--blue` border and `--blue-soft` background.
+- 8px radius.
+- Avoid heavy shadows, neon focus rings, or playful UI decoration.
+- Required-field markers use `--cta` color.
 
 ## Section patterns
 
-The site uses a small set of section types. Reuse them; don't invent new ones without reason.
+Reuse these patterns rather than inventing new ones.
 
-1. **Hero** (light stone) — eyebrow + strong Public Sans h1 + lede + CTA(s) on the left, approved image/diagram on the right. Use `.home-hero` for homepage and `.service-image-hero` for Odoo/Integrations.
-2. **Signal problem list** (paper) — section-label + title + plain `.signal-list` grid with individual `.problem-card` cards using `L01`, `L02`, etc.; no outer wrapper background, box, or dashed rails.
-3. **Timeline** (cream) — label + title + sub + two-column timeline (WHEN | WHAT) with tag metadata
-4. **Services grid** (paper/cream) — label + title + sub + equal `.tool-card` cards with title + description + outcome tag; keep cards flat and square with restrained borders.
-5. **Operating layers / technical rows** (paper) — row cards with `L01` style labels, short Public Sans titles, one concrete operational outcome, and optional small green meter bars
-6. **Fit section** (dark or paper depending on surrounding rhythm) — label + title + sub + two-column Right-fit / Wrong-fit list
-7. **Credentials split** (paper) — label + two-column: copy with pull-quote or dark terminal | `.stat-card` facts table.
-8. **Pricing featured + entry + footnote** (cream/paper) — flat white price cards; featured card uses terracotta border/ribbon and filled terracotta button, while standard cards use outlined buttons.
-9. **FAQ** (paper) — narrow container, simple Q/A rhythm, clear Public Sans questions
-10. **Final CTA** (paper section with contained dark panel) — big cream headline + muted cream sub + terracotta button inside `.final-cta`.
-11. **Footer** (paper or ink depending on page) — brand + meta, no fake trust links
-12. **Legal list** (paper) — privacy/legal sections use `.legal-list` and `.legal-card` with `L01` style labels; avoid visible `1.`, `2.`, `3.` legal headings
+### Hero
 
-## Technical UI Components
+White or `--paper` hero with eyebrow, strong Public Sans h1, lede (max 2 lines), two CTAs (primary terracotta, secondary outlined), and optional technical workflow panel on the right or below.
 
-Use these to make the site feel more technical without becoming hostile to non-technical buyers:
+### Credibility band
 
-- **Standard cards**: 2px radius, thin border, white/surface background, no box shadow, no nested card containers
-- **Hero media panels**: approved image assets in square/rectangular bordered frames; use photo `cover`, diagram `contain`
-- **Signal cards**: individual `L01` cards with short Public Sans title and concise description; no outer `.signal-list` frame
-- **Accent dots**: small green dots with restrained glow; never large blobs
-- **Technical grid backgrounds**: do not add visible cross-line page backgrounds. `--grid-line` is currently transparent.
-- **Square tags**: use forest-green square tags for pills, architecture tags, assistant channel icons, and feature icons
-- **Meters**: visual explanation only; avoid implying false measured results unless the metric is real
+A horizontal band placed immediately below the hero. Eyebrow label, single line of copy, and a row of wordmarks (text, not logo images) representing Ugo's prior professional experience. Light `--surface-2` background, 56px vertical padding.
+
+### Signal problem list
+
+`--paper` section with section-label, title, and row-based light panels using `L01`, `L02`, etc. Include a left rail, thin divider, and small `--accent-live` "system on" dot at the right.
+
+Use `.signal-list` with `.problem-card`.
+
+### Timeline
+
+White section with label, title, subcopy, and two-column timeline: WHEN | WHAT. Include restrained tag metadata.
+
+### Services grid
+
+`--paper` or white section with label, title, subcopy, and equal `.tool-card` cards. Each card has title, description, outcome tag, and small `--accent-live` status dot.
+
+### Operating layers / technical rows
+
+White section with row cards, `L01` labels, short Public Sans titles, one concrete operational outcome, and optional small `--accent-live` meter bars.
+
+### Fit section
+
+`--surface-2` or `--paper` background. Include label, title, subcopy, and two-column Right-fit / Wrong-fit list with `--accent` checkmarks and `--rule-strong` strikethroughs.
+
+### Credentials split
+
+`--paper` section with two columns: copy with pull quote, and `.stat-card` facts table. Stat cards use `--shadow-card` and `--accent-live` status dot.
+
+### Pricing
+
+White or `--paper` section. Cards stay light with subtle grid background. Featured card uses `--accent` border and `--shadow-elevated`. Primary CTA on the featured card uses `--cta` terracotta.
+
+### Free Tools section
+
+`--paper` or white section with `.tool-card` grid (2x2 on desktop, single column on mobile). Each card includes a small `--accent-live` dot, a concise title, a one-line description, a small outcome tag, and a clear "Open tool →" link in `--accent` color.
+
+### FAQ
+
+Narrow container, simple Q/A rhythm, clear Public Sans questions. Q in 600, A in 400, separated by 1px `--rule`.
+
+### Final CTA
+
+`--paper` or `--ink` background. Big restrained headline, subcopy (1 line), and one prominent `--cta` button.
+
+### Footer
+
+`--ink` background with `--paper` text. Brand plus metadata, navigation links, and a Tools link. No fake trust links. No social icon clutter — list only platforms where Veridata is actually active.
+
+### Legal list
+
+`--paper` section using `.legal-list` and `.legal-card` with `L01` style labels. Avoid visible `1.`, `2.`, `3.` legal headings.
+
+## Technical UI components
+
+Use these to make the site feel technical but still friendly to non-technical buyers.
+
+- Raised cards: 10px radius, 1px `--rule` border, white background, `--shadow-card` by default.
+- Hero system panel: light architectural panel with dashed dividers, nodes, small meter bars, and `--accent-live` active states.
+- Signal rows: row-based cards with `L01` labels, a left label rail, short title, concise description, and one small `--accent-live` status dot.
+- Accent dots: small `--accent-live` dots, 8px diameter, no glow.
+- Technical grid backgrounds: subtle `--rule` overlays, usually 36px or 44px grid spacing. Use sparingly.
+- Meters: use for visual explanation only. Do not imply measured results unless the metric is real.
 
 ## Copy voice
 
-This is as important as the visual design. The voice is what differentiates Veridata Pro from generic automation shops, cheap no-code freelancers, Odoo-only developers, AWS-only consultancies, and AI chatbot agencies.
+Write like a senior operator talking to another senior operator who needs to make a buying decision today.
 
-**DO:**
+The voice should differentiate Veridata Pro from generic automation shops, cheap no-code freelancers, Odoo-only developers, AWS-only consultancies, and AI chatbot agencies — while still being clear and sales-friendly.
 
-- Write like a senior operator talking to another senior operator
-- Use italic emphasis for voice moments ("_deliberately_", "_Real timelines, honestly stated._")
-- Use specific numbers when real: "$300 audit", "$600 sprint", "$200/month", "15+ years", "66% cost reduction"
-- Name the buyer's real pain in their words ("Your team is copying data between Odoo, spreadsheets, and the CRM")
-- Acknowledge tradeoffs and constraints openly ("n8n is right for fast operational automation; AWS is better when reliability and retries matter")
-- Use short, declarative sentences. Periods over commas.
+### Do
 
-**DO NOT:**
+- Use short, declarative sentences.
+- Name the buyer's real pain in their words.
+- Lead with the outcome, then explain how.
+- Acknowledge tradeoffs and constraints openly.
+- Use specific numbers only when real.
+- Make CTAs concrete: "Book a 30-minute review" not "Get in touch."
+- Make the reader believe the work is real.
 
-- Promise outcomes that depend on messy client systems ("fully automated in 48 hours", "zero manual work guaranteed")
-- Offer fake guarantees or no-risk theatrics ("free work until it works", "automation guaranteed")
-- Use invented proprietary framework names (VeriGate, VeriFlow, etc.) without substance behind them
-- Claim capabilities the solo practice doesn't have (24/7 monitoring, single-tenant infrastructure)
-- Use testimonials unless they're real, attributed, and signed off by the client
-- Use generic consulting filler: "architecting the future", "innovative solutions", "synergies"
-- Write anything that would make the reader roll their eyes at a conference
+Good examples:
 
-**Tone benchmarks:**
+> If your team is moving data between Odoo, spreadsheets, and a CRM every week, the integration layer is missing.
 
-- Right: "If your team is moving data between Odoo, spreadsheets, and a CRM every week, the integration layer is missing."
-- Wrong: "Leverage our innovative workflow platform to transform business productivity."
+> Start with one workflow. If it becomes critical, move it into AWS-native architecture.
 
-- Right: "Start with one workflow. If it becomes critical, move it into AWS-native architecture."
-- Wrong: "We automate everything with AI agents and no-code workflows."
+> n8n is right for fast operational automation. AWS is better when reliability and retries matter.
 
-## Anti-patterns — reject these if requested
+### Do not
 
-Several visual/copy patterns are **off-limits** for Veridata Pro and should be refused or redirected if a user asks for them:
+- Promise outcomes that depend on messy client systems.
+- Use fake guarantees or no-risk theatrics.
+- Invent proprietary framework names without substance.
+- Claim capabilities the solo practice does not have, such as 24/7 monitoring or single-tenant infrastructure.
+- Use testimonials unless real, attributed, and approved.
+- Use generic consulting filler such as "architecting the future," "innovative solutions," or "synergies."
+- Use editorial flourishes that slow the sale.
+- Use italic emphasis for "voice moments" — this is a commercial site, not an essay.
+- Make Veridata Pro sound like only an n8n freelancer, only an Odoo developer, only an AWS consultancy, or only an AI chatbot agency.
 
-- Hero images of stock operators, headsets, abstract AI brains, generic cloud diagrams, or disconnected SaaS icon piles. Use only approved assets in `assets/images/` or brand-specific generated assets.
-- Big "Trusted by" logo bars with fake or unlicensed client logos
-- Fake testimonials with "Senior Manager at SaaS Company" generic attribution
-- "Free trial" language — this is not a SaaS product, it's an advisory engagement
-- Urgency tactics: countdown timers, "only 2 spots left!", "price goes up Friday"
-- Chatbot widgets on pages where a solo operator can't actually respond in real time
-- Emoji as UI decoration
-- Gradient text effects, neon glowing borders, particle backgrounds, decorative blobs/orbs
-- Rounded pill chips for technical tags; current tags are square green blocks
-- Outer background boxes around card grids; current card grids should stay plain
-- Purple/pink/cyan/yellow accents anywhere
-- Full dark-theme pages aimed at non-technical buyers; keep the current site light-forward unless a specific page has a strong reason for a contained dark band
-- Bold claims with no evidence ("Industry-leading", "#1 in LatAm", "Award-winning")
-- Top-level service sprawl: separate menu items for n8n, AWS, AI, MuleSoft, APIs, Python, Java, databases, Zapier, or Make
-- Copy that makes Veridata Pro sound like only an n8n freelancer, only an Odoo developer, only an AWS consultancy, or an AI chatbot agency
+Bad examples:
 
-If the user explicitly requests any of these, push back with a brief explanation of why it hurts their positioning, and offer the honest alternative.
+> Leverage our innovative workflow platform to transform business productivity.
 
-## When generating new content
+> We automate everything with AI agents and no-code workflows.
 
-1. Start with which section type applies (from the list above)
-2. Use the defined CSS variables only — no new colors
-3. Match the Public Sans hierarchy (700 headings, 400 body, 600 labels)
-4. Write copy that passes the "would a senior CTO roll their eyes?" test
-5. If creating something new that doesn't fit an existing pattern, first ask whether the pattern should be generalized and added to this skill
+> Fully automated in 48 hours.
 
-## Reference files
+## Anti-patterns
+
+Reject or redirect these when requested.
+
+### Critical: Logos and trust signals
+
+- **Never use logos of Deloitte, Accenture, Ubisoft, MuleSoft, AWS, or any other company as if they were Veridata Pro clients.** These are Ugo's prior employers or technologies he uses, not Veridata Pro customers. Using their logos in a "Trusted by" / "Our Clients" band is misleading and creates legal risk.
+- The honest framing is "Prior engagement experience" or "Where this experience comes from," rendered as Public Sans 600 text wordmarks, not as official logos.
+- Never use unlicensed third-party logos in any capacity on the site.
+- Fake testimonials with generic attribution are forbidden. Use only real, named, approved testimonials.
+
+### Visual anti-patterns
+
+- Stock operators, headsets, abstract AI brains, generic cloud diagrams, or disconnected SaaS icon piles.
+- Generic SaaS blue as a brand color.
+- Cream, sand, or beige backgrounds (deprecated from the previous direction).
+- Serif display typography.
+- Emoji as UI decoration.
+- Gradient text effects, neon glowing borders, particle backgrounds, decorative blobs, or orbs.
+- Purple, pink, cyan, yellow, or generic SaaS blue accents.
+- Full dark-theme pages for non-technical buyers (dark sections within a light page are fine).
+- 3D rendered illustrations.
+
+### Copy and positioning anti-patterns
+
+- "Free trial" language. Veridata Pro is a services practice, not a product.
+- Countdown timers, scarcity tactics, or "only 2 spots left" language.
+- Chatbot widgets where a solo operator cannot actually respond in real time.
+- Bold claims without evidence, such as "industry-leading," "#1 in LatAm," or "award-winning."
+- Top-level service sprawl for n8n, AWS, AI, MuleSoft, APIs, Python, Java, databases, Zapier, or Make.
+- Copy that turns Veridata Pro into a generic automation agency.
+- Editorial flourishes that slow conversion.
+
+When the user asks for an anti-pattern, briefly explain why it hurts positioning and offer the honest alternative.
+
+## When creating new content
+
+Before producing new Veridata Pro content:
+
+1. Identify the relevant section pattern.
+2. Use only the defined CSS variables.
+3. Match Public Sans hierarchy: 700 headings, 400 body, 600 labels.
+4. Write copy that would not make a senior CTO roll their eyes and would not lose a non-technical CFO.
+5. Make sure the page has one clear primary CTA.
+6. Avoid adding a new pattern unless it clearly improves the system.
+
+If creating a genuinely new recurring pattern, ask whether it should be generalized and added to this skill.
+
+## Live site reference files
 
 When working on the live site, treat these files as source of truth for decisions not captured here:
 
@@ -270,6 +374,22 @@ When working on the live site, treat these files as source of truth for decision
 - Odoo page pattern: `en/odoo.html`, mirrored in `pt/odoo.html` and `es/odoo.html`
 - Integrations depth page: `en/integrations.html`, mirrored in `pt/integrations.html` and `es/integrations.html`
 - Pricing page/cards: `en/pricing.html`, mirrored in `pt/pricing.html` and `es/pricing.html`
+- Tools listing page: `en/tools.html`, mirrored in `pt/tools.html` and `es/tools.html`
 - Shared visual rules: `assets/css/styles.css`
 - Shared navigation/footer: `components/header.html`, `components/footer.html`, plus translations in `assets/js/main.js`
-- Approved hero assets: `assets/images/team_collaboration.png`, `assets/images/integrations.png`, `assets/images/odoo_integrations.jpg`
+
+## Review checklist
+
+When reviewing Veridata Pro work, check:
+
+- Does it use Public Sans only?
+- Does it use the approved color tokens only?
+- Does it feel clean, modern, and sales-ready?
+- Does it avoid generic SaaS blue without overcorrecting into editorial styling?
+- Does it avoid cream, beige, or serif type from the old direction?
+- Does it avoid unlicensed third-party logos and fake trust bars?
+- Does it avoid unsupported claims?
+- Does it keep Odoo and Integrations as the main service paths?
+- Does the copy sound like a senior operator who also knows how to sell?
+- Does the page have one clear primary CTA?
+- Does it make the buyer trust the person touching their systems?

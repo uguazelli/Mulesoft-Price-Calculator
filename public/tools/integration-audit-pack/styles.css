@@ -19,7 +19,7 @@
   border: 1px solid var(--line);
   border-radius: 10px;
   background: var(--panel);
-  box-shadow: 0 14px 34px rgba(24, 32, 29, 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 .audit-preview h2 {
@@ -63,7 +63,7 @@
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .document-summary strong {
@@ -80,7 +80,7 @@
 
 .download-card {
   padding: 18px;
-  border: 1px solid rgba(0, 122, 109, 0.22);
+  border: 1px solid var(--accent-line);
   border-radius: 8px;
   background: var(--teal-soft);
 }
@@ -103,8 +103,8 @@
   margin-top: 14px;
   padding: 0 14px;
   border-radius: 8px;
-  background: var(--teal-dark);
-  color: #fff;
+  background: var(--cta);
+  color: var(--surface);
   font-weight: 700;
   text-decoration: none;
 }

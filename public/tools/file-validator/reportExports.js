@@ -33,7 +33,7 @@ export function buildSummaryText(report) {
     "Issues:",
     issueLines.join("\n") || "- No major issues",
     "",
-    "Need to integrate this data into your systems? Veridata can help."
+    "Need to integrate this data into your systems? VeriDataPro can help."
   ].join("\n");
 }
 

@@ -80,7 +80,7 @@ const TRANSLATIONS = {
     "result.summaryTitle": "Inside the document",
     "result.summaryText":
       "The pack includes 14 sections covering executive snapshot, systems inventory, ownership, manual work, ROI, API readiness, data flows, architecture, risk, vendor comparison, migration planning, and next steps.",
-    "result.downloadTitle": "Veridata Integration Audit Pack",
+    "result.downloadTitle": "VeriDataPro Integration Audit Pack",
     "result.downloadText": "Word document (.docx)",
     "result.downloadButton": "Download audit pack",
     "result.ctaTitle": "Want VeriDataPro to run the audit with your team?",
@@ -152,7 +152,7 @@ const TRANSLATIONS = {
     "result.summaryTitle": "Dentro do documento",
     "result.summaryText":
       "O pacote tem 14 seções: resumo executivo, inventário, responsáveis, trabalho manual, ROI, APIs, fluxos de dados, arquitetura, riscos, fornecedores, migração e próximos passos.",
-    "result.downloadTitle": "Veridata Integration Audit Pack",
+    "result.downloadTitle": "VeriDataPro Integration Audit Pack",
     "result.downloadText": "Documento Word (.docx)",
     "result.downloadButton": "Baixar pacote",
     "result.ctaTitle": "Quer que a VeriDataPro conduza a auditoria com sua equipe?",
@@ -224,7 +224,7 @@ const TRANSLATIONS = {
     "result.summaryTitle": "Dentro del documento",
     "result.summaryText":
       "El pack tiene 14 secciones: resumen ejecutivo, inventario, responsables, trabajo manual, ROI, APIs, flujos de datos, arquitectura, riesgos, proveedores, migración y próximos pasos.",
-    "result.downloadTitle": "Veridata Integration Audit Pack",
+    "result.downloadTitle": "VeriDataPro Integration Audit Pack",
     "result.downloadText": "Documento Word (.docx)",
     "result.downloadButton": "Descargar pack",
     "result.ctaTitle": "¿Quieres que VeriDataPro conduzca la auditoría con tu equipo?",
