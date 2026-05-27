@@ -1,3 +1,4 @@
+name: Veridata-Client-Tools
 services:
   client-tools:
     build:
