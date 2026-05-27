@@ -5,10 +5,13 @@ services:
       context: .
     container_name: veridata-client-tools
     restart: unless-stopped
+    command: npm run dev
     environment:
-      NODE_ENV: production
+      NODE_ENV: development
       PORT: 3000
     volumes:
+      - ./public:/app/public
+      - ./src:/app/src
       - ./data:/app/data
     develop:
       watch:

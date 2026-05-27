@@ -59,6 +59,7 @@
           <p class="lede" data-i18n="hero.lede">
             Answer a short 3-minute assessment and see where APIs, data, ownership, and manual work may block automation.
           </p>
+          <a class="scroll-cue" href="#assessment" data-i18n="hero.scrollCue">Start assessment</a>
         </div>
       </section>
 
@@ -66,7 +67,6 @@
         <form id="assessmentForm" class="calculator assessment-form" novalidate>
           <div class="form-section">
             <div class="section-heading">
-              <span class="step">L01</span>
               <div>
                 <h2 data-i18n="form.assessmentTitle">Integration readiness</h2>
                 <p data-i18n="form.assessmentText">Use the option that best describes today. Estimates are enough.</p>
@@ -79,7 +79,7 @@
 
             <div class="question-list">
               <fieldset class="question-block">
-                <legend><span>1.</span> <span data-i18n="q.systemsCount">How many business systems do you use regularly?</span></legend>
+                <legend><span data-i18n="q.systemsCount">How many business systems do you use regularly?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="systemsCount" value="1-3" required /> <span>1-3</span></label>
                   <label><input type="radio" name="systemsCount" value="4-7" /> <span>4-7</span></label>
@@ -88,8 +88,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>2.</span> <span data-i18n="q.systemTypes">Which systems are part of your operation?</span></legend>
+                <legend><span data-i18n="q.systemTypes">Which systems are part of your operation?</span></legend>
                 <div class="chips answer-chips">
                   <label><input type="checkbox" name="systemTypes" value="odoo" /> <span data-i18n="systems.odoo">Odoo / ERP</span></label>
                   <label><input type="checkbox" name="systemTypes" value="crm" /> <span data-i18n="systems.crm">CRM</span></label>
@@ -103,8 +104,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>3.</span> <span data-i18n="q.manualCopyFrequency">How often does someone copy data manually between systems?</span></legend>
+                <legend><span data-i18n="q.manualCopyFrequency">How often does someone copy data manually between systems?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="manualCopyFrequency" value="rarely" required /> <span data-i18n="manual.rarely">Rarely</span></label>
                   <label><input type="radio" name="manualCopyFrequency" value="weekly" /> <span data-i18n="manual.weekly">Weekly</span></label>
@@ -113,8 +115,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>4.</span> <span data-i18n="q.spreadsheetDependency">How much does the company depend on spreadsheets to keep work moving?</span></legend>
+                <legend><span data-i18n="q.spreadsheetDependency">How much does the company depend on spreadsheets to keep work moving?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="spreadsheetDependency" value="low" required /> <span data-i18n="spreadsheet.low">Low</span></label>
                   <label><input type="radio" name="spreadsheetDependency" value="medium" /> <span data-i18n="spreadsheet.medium">Some key processes</span></label>
@@ -122,8 +125,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>5.</span> <span data-i18n="q.apiAvailability">Do your main systems have usable APIs?</span></legend>
+                <legend><span data-i18n="q.apiAvailability">Do your main systems have usable APIs?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="apiAvailability" value="most" required /> <span data-i18n="api.most">Most do</span></label>
                   <label><input type="radio" name="apiAvailability" value="some" /> <span data-i18n="api.some">Some do</span></label>
@@ -132,8 +136,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>6.</span> <span data-i18n="q.sourceOfTruth">Is there a clear source of truth for customer, order, product, or financial data?</span></legend>
+                <legend><span data-i18n="q.sourceOfTruth">Is there a clear source of truth for customer, order, product, or financial data?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="sourceOfTruth" value="clear" required /> <span data-i18n="source.clear">Yes, clear</span></label>
                   <label><input type="radio" name="sourceOfTruth" value="mostly" /> <span data-i18n="source.mostly">Mostly clear</span></label>
@@ -142,8 +147,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>7.</span> <span data-i18n="q.dataQuality">What is the current data quality?</span></legend>
+                <legend><span data-i18n="q.dataQuality">What is the current data quality?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="dataQuality" value="clean" required /> <span data-i18n="data.clean">Clean enough to automate</span></label>
                   <label><input type="radio" name="dataQuality" value="minor" /> <span data-i18n="data.minor">Minor cleanup needed</span></label>
@@ -152,8 +158,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>8.</span> <span data-i18n="q.reportingConsistency">Do teams report the same numbers?</span></legend>
+                <legend><span data-i18n="q.reportingConsistency">Do teams report the same numbers?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="reportingConsistency" value="consistent" required /> <span data-i18n="reporting.consistent">Yes</span></label>
                   <label><input type="radio" name="reportingConsistency" value="minorDifferences" /> <span data-i18n="reporting.minorDifferences">Small differences</span></label>
@@ -162,8 +169,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>9.</span> <span data-i18n="q.integrationReliability">How reliable are your current integrations or imports?</span></legend>
+                <legend><span data-i18n="q.integrationReliability">How reliable are your current integrations or imports?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="integrationReliability" value="reliable" required /> <span data-i18n="reliability.reliable">Reliable</span></label>
                   <label><input type="radio" name="integrationReliability" value="occasional" /> <span data-i18n="reliability.occasional">Occasional issues</span></label>
@@ -172,8 +180,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>10.</span> <span data-i18n="q.systemOwnership">Is there a clear owner for each important system?</span></legend>
+                <legend><span data-i18n="q.systemOwnership">Is there a clear owner for each important system?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="systemOwnership" value="clearOwners" required /> <span data-i18n="owners.clearOwners">Yes</span></label>
                   <label><input type="radio" name="systemOwnership" value="someOwners" /> <span data-i18n="owners.someOwners">Some systems</span></label>
@@ -182,8 +191,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <fieldset class="question-block">
-                <legend><span>11.</span> <span data-i18n="q.upcomingMigration">Do you have an ERP, CRM, or ecommerce migration coming?</span></legend>
+                <legend><span data-i18n="q.upcomingMigration">Do you have an ERP, CRM, or ecommerce migration coming?</span></legend>
                 <div class="option-grid">
                   <label><input type="radio" name="upcomingMigration" value="none" required /> <span data-i18n="migration.none">No migration planned</span></label>
                   <label><input type="radio" name="upcomingMigration" value="ready" /> <span data-i18n="migration.ready">Yes, data is ready</span></label>
@@ -192,8 +202,9 @@
                 </div>
               </fieldset>
 
+              <div class="question-separator" aria-hidden="true"></div>
               <label class="question-block text-question">
-                <span><span>12.</span> <span data-i18n="q.biggestProblem">What is your biggest integration or automation problem?</span></span>
+                <span data-i18n="q.biggestProblem">What is your biggest integration or automation problem?</span>
                 <textarea
                   name="biggestProblem"
                   rows="4"
@@ -214,7 +225,6 @@
 
           <div class="form-section">
             <div class="section-heading">
-              <span class="step">L02</span>
               <div>
                 <h2 data-i18n="form.contactTitle">Unlock full report</h2>
                 <p data-i18n="form.contactText">Lead details are saved with the assessment inputs for follow-up.</p>

@@ -72,7 +72,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 0;
 }
 
 .meta-chip {
@@ -102,7 +102,7 @@
 }
 
 .override-control {
-  margin-top: 18px;
+  margin-top: 0;
 }
 
 .table-frame {
@@ -148,7 +148,7 @@
 }
 
 .report-details {
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 .detail-card {

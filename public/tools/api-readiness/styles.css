@@ -44,70 +44,80 @@
 .question-list {
   display: grid;
   gap: 0;
+  margin-top: 4px;
+  counter-reset: readiness-question;
 }
 
 .question-block {
+  counter-increment: readiness-question;
   display: grid;
-  gap: 14px;
+  gap: 18px;
   margin: 0;
-  padding: 22px 0;
+  padding: 0;
   border: 0;
-  border-bottom: 1px solid var(--rule);
   border-radius: 0;
   background: transparent;
 }
 
-.question-list > :last-child {
-  border-bottom: 0;
-  padding-bottom: 4px;
+.question-separator {
+  height: 1px;
+  margin: 34px 0;
+  background: var(--rule);
 }
 
 .question-block legend,
 .text-question > span {
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.08rem;
   font-weight: 700;
   line-height: 1.35;
 }
 
-.question-block legend span:first-child,
-.text-question > span span:first-child {
-  color: var(--teal-dark);
-  font-size: 0.86rem;
+.question-block legend::before,
+.text-question > span::before {
+  content: counter(readiness-question) ". ";
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
+}
+
+.question-block legend span,
+.text-question > span span {
+  color: inherit;
+  font-size: inherit;
+  font-variant-numeric: inherit;
 }
 
 .option-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px 16px;
 }
 
 .option-grid label,
 .answer-chips label {
-  min-height: 44px;
+  min-height: 58px;
   border-color: var(--rule);
   background: var(--surface);
   color: var(--ink);
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .option-grid label {
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 10px 12px;
+  gap: 12px;
+  padding: 14px 16px;
   border: 1px solid var(--rule-strong);
   border-radius: 8px;
 }
 
 .option-grid input,
 .answer-chips input {
-  width: 17px;
-  height: 17px;
-  min-height: auto;
-  accent-color: var(--teal);
+  width: 18px;
+  height: 18px;
+  min-height: 18px;
+  background: var(--surface);
 }
 
 .option-grid label:has(input:checked),
@@ -137,7 +147,7 @@
 }
 
 .lead-extra {
-  margin-top: 14px;
+  margin-top: 0;
 }
 
 .readiness-row {
@@ -271,8 +281,8 @@
 }
 
 @media (max-width: 760px) {
-  .question-block {
-    padding: 18px 0;
+  .question-separator {
+    margin: 28px 0;
   }
 
   .option-grid {

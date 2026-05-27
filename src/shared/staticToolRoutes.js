@@ -8,7 +8,9 @@ function readToolHtml(publicDir, htmlPath, basePath) {
 }
 
 function mountStaticTool(app, { basePath, publicDir, htmlPath }) {
-  const html = readToolHtml(publicDir, htmlPath, basePath);
+  const cacheHtml = process.env.NODE_ENV === "production";
+  const cachedHtml = cacheHtml ? readToolHtml(publicDir, htmlPath, basePath) : null;
+  const getHtml = () => cachedHtml || readToolHtml(publicDir, htmlPath, basePath);
 
   if (basePath) {
     app.get(basePath, (req, res, next) => {
@@ -20,7 +22,7 @@ function mountStaticTool(app, { basePath, publicDir, htmlPath }) {
   }
 
   app.get(`${basePath || ""}/`, (req, res) => {
-    res.type("html").send(html);
+    res.type("html").send(getHtml());
   });
 
   app.use(basePath || "/", express.static(publicDir, { index: false }));
