@@ -1,6 +1,5 @@
 const fs = require("node:fs/promises");
-const path = require("node:path");
-const { escapeCsv } = require("../csvStore");
+const { ensureCsv, escapeCsv } = require("../../shared/csv");
 
 const API_READINESS_HEADERS = [
   "timestamp",
@@ -20,18 +19,8 @@ const API_READINESS_HEADERS = [
   "userAgent"
 ];
 
-async function ensureCsv(filePath) {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-
-  try {
-    await fs.access(filePath);
-  } catch {
-    await fs.writeFile(filePath, `${API_READINESS_HEADERS.join(",")}\n`, "utf8");
-  }
-}
-
 async function appendApiReadinessLead(filePath, submission, result, userAgent) {
-  await ensureCsv(filePath);
+  await ensureCsv(filePath, API_READINESS_HEADERS);
 
   const row = [
     new Date().toISOString(),

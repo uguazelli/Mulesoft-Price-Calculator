@@ -42,6 +42,26 @@ Environment variables:
 - `GET /api-readiness-assessment/health`: tool-level health check
 - `GET /file-validator/health`: tool-level health check
 
+## Project Structure
+
+```text
+public/
+  shared/                         # logo and shared CSS
+  tools/
+    mulesoft-calculator/          # MuleSoft frontend
+    api-readiness/                # API readiness frontend
+    file-validator/               # flat file validator frontend
+
+src/
+  app.js                          # Express app composition
+  server.js                       # local/server entrypoint
+  shared/                         # shared routing, CSV, and path helpers
+  tools/
+    mulesoft-calculator/          # MuleSoft API, validation, scoring, CSV store
+    api-readiness/                # readiness API, validation, scoring, CSV store
+    file-validator/               # static tool registration only; analysis runs in browser
+```
+
 ## Tests
 
 ```bash

@@ -1,5 +1,5 @@
 const fs = require("node:fs/promises");
-const path = require("node:path");
+const { ensureCsv, escapeCsv } = require("../../shared/csv");
 
 const HEADERS = [
   "timestamp",
@@ -23,24 +23,8 @@ const HEADERS = [
   "userAgent"
 ];
 
-function escapeCsv(value) {
-  const text = value === undefined || value === null ? "" : String(value);
-  const escaped = text.replace(/"/g, '""');
-  return /[",\n\r]/.test(escaped) ? `"${escaped}"` : escaped;
-}
-
-async function ensureCsv(filePath) {
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-
-  try {
-    await fs.access(filePath);
-  } catch {
-    await fs.writeFile(filePath, `${HEADERS.join(",")}\n`, "utf8");
-  }
-}
-
 async function appendLead(filePath, lead, result, userAgent) {
-  await ensureCsv(filePath);
+  await ensureCsv(filePath, HEADERS);
 
   const row = [
     new Date().toISOString(),
@@ -71,6 +55,5 @@ async function appendLead(filePath, lead, result, userAgent) {
 
 module.exports = {
   HEADERS,
-  appendLead,
-  escapeCsv
+  appendLead
 };

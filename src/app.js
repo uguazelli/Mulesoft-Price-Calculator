@@ -1,149 +1,74 @@
 const path = require("node:path");
-const fs = require("node:fs");
 const express = require("express");
-const { calculateAssessment } = require("./calculator");
-const { appendLead } = require("./csvStore");
-const { validateSubmission } = require("./validation");
-const { calculateAssessmentResult } = require("./services/scoringService");
-const { validateApiReadinessSubmission } = require("./services/apiReadinessValidation");
-const { appendApiReadinessLead } = require("./services/apiReadinessStore");
+const { mountErrorHandler, mountNotFoundHandler } = require("./shared/errorRoutes");
+const { mountStaticTool, mountToolHealth } = require("./shared/staticToolRoutes");
+const { normalizeBasePath } = require("./shared/basePath");
+const { API_READINESS_HTML_PATH, mountApiReadinessApi } = require("./tools/api-readiness/routes");
+const { FILE_VALIDATOR_HTML_PATH } = require("./tools/file-validator/routes");
+const { MULESOFT_CALCULATOR_HTML_PATH, mountMulesoftCalculatorApi } = require("./tools/mulesoft-calculator/routes");
 
-function normalizeBasePath(value = "/mulesoft-calculator") {
-  const trimmed = String(value || "").trim();
-  if (!trimmed || trimmed === "/") return "";
-  return `/${trimmed.replace(/^\/+|\/+$/g, "")}`;
+function buildConfig(options = {}) {
+  const publicDir = options.publicDir || path.join(__dirname, "..", "public");
+  const paths = {
+    mulesoft: normalizeBasePath(options.basePath || process.env.BASE_PATH || "/mulesoft-calculator"),
+    apiReadiness: normalizeBasePath(options.apiReadinessBasePath || process.env.API_READINESS_BASE_PATH || "/api-readiness-assessment"),
+    fileValidator: normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator")
+  };
+  const storage = {
+    mulesoftLeads: options.leadsCsvPath || process.env.LEADS_CSV_PATH || path.join(__dirname, "..", "data", "leads.csv"),
+    apiReadinessLeads:
+      options.apiReadinessCsvPath || process.env.API_READINESS_CSV_PATH || path.join(__dirname, "..", "data", "api-readiness-leads.csv")
+  };
+
+  return { publicDir, paths, storage };
 }
 
 function createApp(options = {}) {
   const app = express();
-  const publicDir = options.publicDir || path.join(__dirname, "..", "public");
-  const leadsCsvPath = options.leadsCsvPath || process.env.LEADS_CSV_PATH || path.join(__dirname, "..", "data", "leads.csv");
-  const basePath = normalizeBasePath(options.basePath || process.env.BASE_PATH || "/mulesoft-calculator");
-  const apiReadinessBasePath = normalizeBasePath(
-    options.apiReadinessBasePath || process.env.API_READINESS_BASE_PATH || "/api-readiness-assessment"
-  );
-  const fileValidatorBasePath = normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator");
-  const apiReadinessCsvPath =
-    options.apiReadinessCsvPath || process.env.API_READINESS_CSV_PATH || path.join(__dirname, "..", "data", "api-readiness-leads.csv");
-  const indexTemplate = fs.readFileSync(path.join(publicDir, "index.html"), "utf8");
-  const indexHtml = indexTemplate.replaceAll("__BASE_PATH__", basePath || "");
-  const apiReadinessTemplate = fs.readFileSync(path.join(publicDir, "api-readiness", "index.html"), "utf8");
-  const apiReadinessHtml = apiReadinessTemplate.replaceAll("__BASE_PATH__", apiReadinessBasePath || "");
-  const fileValidatorTemplate = fs.readFileSync(path.join(publicDir, "file-validator", "index.html"), "utf8");
-  const fileValidatorHtml = fileValidatorTemplate.replaceAll("__BASE_PATH__", fileValidatorBasePath || "");
+  const config = buildConfig(options);
 
   app.disable("x-powered-by");
   app.use(express.json({ limit: "50kb" }));
 
-  if (basePath) {
-    app.get(basePath, (req, res, next) => {
-      if (req.path === basePath) {
-        return res.redirect(308, `${basePath}/`);
-      }
-      return next();
-    });
-  }
-
-  app.get(`${basePath || ""}/`, (req, res) => {
-    res.type("html").send(indexHtml);
+  mountStaticTool(app, {
+    basePath: config.paths.mulesoft,
+    publicDir: config.publicDir,
+    htmlPath: MULESOFT_CALCULATOR_HTML_PATH
   });
-
-  app.use(basePath || "/", express.static(publicDir, { index: false }));
-
-  if (apiReadinessBasePath) {
-    app.get(apiReadinessBasePath, (req, res, next) => {
-      if (req.path === apiReadinessBasePath) {
-        return res.redirect(308, `${apiReadinessBasePath}/`);
-      }
-      return next();
-    });
-  }
-
-  app.get(`${apiReadinessBasePath || ""}/`, (req, res) => {
-    res.type("html").send(apiReadinessHtml);
+  mountStaticTool(app, {
+    basePath: config.paths.apiReadiness,
+    publicDir: config.publicDir,
+    htmlPath: API_READINESS_HTML_PATH
   });
-
-  app.use(apiReadinessBasePath || "/", express.static(publicDir, { index: false }));
-
-  if (fileValidatorBasePath) {
-    app.get(fileValidatorBasePath, (req, res, next) => {
-      if (req.path === fileValidatorBasePath) {
-        return res.redirect(308, `${fileValidatorBasePath}/`);
-      }
-      return next();
-    });
-  }
-
-  app.get(`${fileValidatorBasePath || ""}/`, (req, res) => {
-    res.type("html").send(fileValidatorHtml);
+  mountStaticTool(app, {
+    basePath: config.paths.fileValidator,
+    publicDir: config.publicDir,
+    htmlPath: FILE_VALIDATOR_HTML_PATH
   });
-
-  app.use(fileValidatorBasePath || "/", express.static(publicDir, { index: false }));
 
   app.get("/health", (req, res) => {
     res.json({ status: "ok" });
   });
 
-  app.get(`${basePath || ""}/health`, (req, res) => {
-    res.json({ status: "ok", basePath: basePath || "/" });
+  Object.values(config.paths).forEach((basePath) => mountToolHealth(app, basePath));
+
+  mountMulesoftCalculatorApi(app, {
+    basePath: config.paths.mulesoft,
+    leadsCsvPath: config.storage.mulesoftLeads
+  });
+  mountApiReadinessApi(app, {
+    basePath: config.paths.apiReadiness,
+    csvPath: config.storage.apiReadinessLeads
   });
 
-  app.get(`${apiReadinessBasePath || ""}/health`, (req, res) => {
-    res.json({ status: "ok", basePath: apiReadinessBasePath || "/" });
-  });
-
-  app.get(`${fileValidatorBasePath || ""}/health`, (req, res) => {
-    res.json({ status: "ok", basePath: fileValidatorBasePath || "/" });
-  });
-
-  app.post(`${basePath || ""}/api/calculate`, async (req, res, next) => {
-    try {
-      const validation = validateSubmission(req.body || {});
-      if (!validation.valid) {
-        return res.status(400).json({ error: "Validation failed.", fields: validation.errors });
-      }
-
-      const result = calculateAssessment(validation.data);
-      await appendLead(leadsCsvPath, validation.data, result, req.get("user-agent"));
-
-      return res.json({ result });
-    } catch (error) {
-      return next(error);
-    }
-  });
-
-  app.post(`${apiReadinessBasePath || ""}/api/assess`, async (req, res, next) => {
-    try {
-      const validation = validateApiReadinessSubmission(req.body || {});
-      if (!validation.valid) {
-        return res.status(400).json({ error: "Validation failed.", fields: validation.errors });
-      }
-
-      const result = calculateAssessmentResult({
-        language: validation.data.language,
-        ...validation.data.answers
-      });
-      await appendApiReadinessLead(apiReadinessCsvPath, validation.data, result, req.get("user-agent"));
-
-      return res.json({ result });
-    } catch (error) {
-      return next(error);
-    }
-  });
-
-  app.use((req, res) => {
-    res.status(404).json({ error: "Not found." });
-  });
-
-  app.use((error, req, res, next) => {
-    console.error(error);
-    res.status(500).json({ error: "Unexpected server error." });
-  });
+  mountNotFoundHandler(app);
+  mountErrorHandler(app);
 
   return app;
 }
 
 module.exports = {
+  buildConfig,
   createApp,
   normalizeBasePath
 };
