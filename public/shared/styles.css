@@ -50,6 +50,8 @@ body {
   background: var(--paper);
   color: var(--text);
   font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 html {
@@ -305,9 +307,9 @@ h1 {
 }
 
 .form-section + .form-section {
-  margin-top: 30px;
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
+  margin-top: 52px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule-strong);
 }
 
 .section-heading {
@@ -331,9 +333,9 @@ h1 {
 }
 
 .section-heading h2 {
-  margin: 0 0 4px;
-  font-size: 1.18rem;
-  line-height: 1.2;
+  margin: 0 0 5px;
+  font-size: 1.28rem;
+  line-height: 1.25;
 }
 
 .section-heading p,
@@ -343,7 +345,9 @@ h1 {
 .recommendations li,
 .cta p {
   color: var(--muted);
-  line-height: 1.5;
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.55;
 }
 
 .section-heading p,
@@ -367,7 +371,7 @@ h1 {
 }
 
 .grid.four {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 14px;
 }
 
@@ -376,7 +380,7 @@ fieldset {
   display: grid;
   gap: 8px;
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 input,
@@ -389,6 +393,8 @@ select {
   color: var(--ink);
   padding: 0 12px;
   outline: none;
+  font-weight: 400;
+  font-size: 0.97rem;
 }
 
 input::placeholder {
@@ -427,25 +433,27 @@ fieldset {
 legend {
   padding: 0 0 10px;
   font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .chips {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 10px;
 }
 
 .chips label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 40px;
+  min-height: 42px;
   padding: 8px 11px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel-soft);
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .chips input {
@@ -482,6 +490,17 @@ legend {
   background: var(--danger-soft);
   color: var(--danger);
   font-weight: 700;
+}
+
+.optional-sep {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--rule);
+  color: var(--text-dim);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .submit-button {
@@ -1110,5 +1129,135 @@ legend {
 
   .scroll-cue {
     transition: none;
+  }
+}
+
+/* ─── Site footer ─── */
+.site-footer {
+  margin-top: 56px;
+  padding: 44px clamp(18px, 4vw, 48px) 36px;
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 190px 140px 210px 1fr;
+  gap: 40px;
+  max-width: 1320px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.footer-brand-col .brand {
+  text-decoration: none;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.social-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--surface);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.social-linkedin {
+  background: #0077b5;
+}
+
+.social-whatsapp {
+  background: #25d366;
+}
+
+.footer-nav-col {
+  display: grid;
+  gap: 13px;
+}
+
+.footer-col-title {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.footer-nav-col a {
+  color: var(--text);
+  font-size: 0.93rem;
+  font-weight: 400;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.footer-nav-col a:hover {
+  color: var(--accent);
+}
+
+.footer-legal-col {
+  text-align: right;
+}
+
+.footer-legal-col p {
+  margin: 0 0 6px;
+  color: var(--text-dim);
+  font-size: 0.83rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.footer-legal-col p:last-child {
+  margin: 0;
+}
+
+.footer-legal-col a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.footer-legal-col a:hover {
+  color: var(--accent);
+}
+
+.footer-note {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-legal-col {
+    text-align: left;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .site-footer {
+    padding-top: 32px;
+    padding-bottom: 28px;
   }
 }

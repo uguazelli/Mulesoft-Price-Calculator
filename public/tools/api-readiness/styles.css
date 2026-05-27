@@ -43,17 +43,23 @@
 
 .question-list {
   display: grid;
-  gap: 14px;
+  gap: 0;
 }
 
 .question-block {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   margin: 0;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel-soft);
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  background: transparent;
+}
+
+.question-list > :last-child {
+  border-bottom: 0;
+  padding-bottom: 4px;
 }
 
 .question-block legend,
@@ -79,12 +85,12 @@
 
 .option-grid label,
 .answer-chips label {
-  min-height: 46px;
-  border-color: var(--rule-strong);
+  min-height: 44px;
+  border-color: var(--rule);
   background: var(--surface);
   color: var(--ink);
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .option-grid label {
@@ -266,7 +272,7 @@
 
 @media (max-width: 760px) {
   .question-block {
-    padding: 13px;
+    padding: 18px 0;
   }
 
   .option-grid {
