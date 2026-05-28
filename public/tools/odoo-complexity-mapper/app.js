@@ -133,6 +133,7 @@ const TRANSLATIONS = {
     "errors.noVolume": "Choose how much data moves through your operations per day.",
     "errors.customSystem": "Enter a system name before adding it.",
     "errors.exportFirst": "Generate a complexity map before exporting a PDF.",
+    "note.requiresAssessment": "Requires assessment.",
     "pdf.title": "Odoo Integration Complexity Map"
   },
   pt: {
@@ -210,13 +211,13 @@ const TRANSLATIONS = {
     "selected.none": "Nada selecionado",
     "selected.more": "{items} +{count} mais",
     "summary.systems": "Sistemas selecionados",
-    "summary.footprint": "Footprint Odoo",
+    "summary.footprint": "Escopo Odoo",
     "summary.modules": "{count} módulos",
     "summary.risk": "Perfil de risco",
     "summary.context": "Contexto operacional",
-    "summary.riskText": "{high} alto/custom, {unknown} desconhecido, {medium} médio, {low} baixo",
+    "summary.riskText": "{high} alta/sob medida, {unknown} desconhecida, {medium} média, {low} baixa",
     "posture.audit": "Auditoria necessária",
-    "posture.custom": "Escopo com muito custom",
+    "posture.custom": "Escopo com muito desenvolvimento sob medida",
     "posture.highRisk": "Escopo de alto risco",
     "posture.config": "Escopo com muita configuração",
     "posture.low": "Baixa fricção",
@@ -225,17 +226,17 @@ const TRANSLATIONS = {
     "complexity.high": "Alta",
     "complexity.unknownShort": "Desconhecida",
     "complexity.unknown": "Desconhecida / precisa de avaliação",
-    "rating.customBuild": "Build custom necessário",
+    "rating.customBuild": "Desenvolvimento sob medida",
     "table.anyModule": "Qualquer módulo selecionado",
     "table.outsideScope": " Fora dos módulos Odoo selecionados.",
-    "priority.customLabel": "Conversa de build custom",
+    "priority.customLabel": "Revisar escopo técnico",
     "priority.firstLabel": "Tratar primeiro",
     "priority.laterLabel": "Tratar depois",
-    "priority.liveReason": "Audite fluxo de dados em produção, APIs, responsáveis e rollback antes de alterar esta integração.",
-    "priority.customReason": "Confirme APIs, fonte da verdade, middleware e testes antes de comprometer datas.",
+    "priority.liveReason": "Antes de mudar algo em produção, revise o fluxo de dados, as APIs, os responsáveis e o plano de rollback.",
+    "priority.customReason": "Antes de assumir prazo, confirme se existe API, quem será a fonte da verdade, se haverá middleware e como os fluxos serão testados.",
     "priority.highVolumeReason":
       "Toca módulos Odoo selecionados e alto volume diário torna reconciliação e tratamento de falhas importantes desde o início.",
-    "priority.firstReason": "Toca módulos Odoo selecionados e ajuda a definir regras de fonte da verdade para o restante do escopo.",
+    "priority.firstReason": "Toca módulos Odoo selecionados e ajuda a definir as regras de fonte da verdade para o restante do escopo.",
     "priority.laterReason": "É útil conectar, mas depende menos dos módulos Odoo selecionados para este primeiro escopo.",
     "tooltip.complexity": "complexidade",
     "errors.noSystems": "Selecione pelo menos um sistema atual antes de avançar para módulos Odoo.",
@@ -244,6 +245,7 @@ const TRANSLATIONS = {
     "errors.noVolume": "Escolha quanto dado passa pela operação por dia.",
     "errors.customSystem": "Digite o nome de um sistema antes de adicionar.",
     "errors.exportFirst": "Gere um mapa de complexidade antes de exportar o PDF.",
+    "note.requiresAssessment": "Precisa de avaliação.",
     "pdf.title": "Mapa de Complexidade de Integração Odoo"
   },
   es: {
@@ -321,13 +323,13 @@ const TRANSLATIONS = {
     "selected.none": "Nada seleccionado",
     "selected.more": "{items} +{count} más",
     "summary.systems": "Sistemas seleccionados",
-    "summary.footprint": "Footprint Odoo",
+    "summary.footprint": "Alcance Odoo",
     "summary.modules": "{count} módulos",
     "summary.risk": "Perfil de riesgo",
     "summary.context": "Contexto operativo",
-    "summary.riskText": "{high} alto/custom, {unknown} desconocido, {medium} medio, {low} bajo",
+    "summary.riskText": "{high} alta/a medida, {unknown} desconocida, {medium} media, {low} baja",
     "posture.audit": "Auditoría requerida",
-    "posture.custom": "Alcance con mucho custom",
+    "posture.custom": "Alcance con mucho desarrollo a medida",
     "posture.highRisk": "Alcance de alto riesgo",
     "posture.config": "Alcance con mucha configuración",
     "posture.low": "Baja fricción",
@@ -336,14 +338,14 @@ const TRANSLATIONS = {
     "complexity.high": "Alta",
     "complexity.unknownShort": "Desconocida",
     "complexity.unknown": "Desconocida / requiere evaluación",
-    "rating.customBuild": "Build custom requerido",
+    "rating.customBuild": "Desarrollo a medida",
     "table.anyModule": "Cualquier módulo seleccionado",
     "table.outsideScope": " Fuera de los módulos Odoo seleccionados.",
-    "priority.customLabel": "Conversación de build custom",
+    "priority.customLabel": "Revisar alcance técnico",
     "priority.firstLabel": "Tratar primero",
     "priority.laterLabel": "Tratar después",
-    "priority.liveReason": "Audita flujo de datos en producción, APIs, responsables y rollback antes de cambiar esta integración.",
-    "priority.customReason": "Confirma APIs, fuente de verdad, middleware y pruebas antes de comprometer fechas.",
+    "priority.liveReason": "Antes de cambiar algo en producción, revisa el flujo de datos, las APIs, los responsables y el plan de rollback.",
+    "priority.customReason": "Antes de comprometer fechas, confirma si hay API, cuál será la fuente de verdad, si hará falta middleware y cómo se probarán los flujos.",
     "priority.highVolumeReason":
       "Toca módulos Odoo seleccionados y el alto volumen diario hace importante definir reconciliación y manejo de fallas desde temprano.",
     "priority.firstReason": "Toca módulos Odoo seleccionados y ayuda a definir reglas de fuente de verdad para el resto del alcance.",
@@ -355,6 +357,7 @@ const TRANSLATIONS = {
     "errors.noVolume": "Elige cuántos datos pasan por la operación por día.",
     "errors.customSystem": "Escribe el nombre de un sistema antes de agregarlo.",
     "errors.exportFirst": "Genera un mapa de complejidad antes de exportar el PDF.",
+    "note.requiresAssessment": "Requiere evaluación.",
     "pdf.title": "Mapa de Complejidad de Integración Odoo"
   }
 };
@@ -409,6 +412,251 @@ const SYSTEM_ALIASES = {
   "Spreadsheets": "Spreadsheets (finance)",
   "Spreadsheet-based inventory": "Spreadsheet inventory",
   "Legacy flat files / CSV exports": "Legacy flat files / CSV"
+};
+
+const SYSTEM_COPY = {
+  "Salesforce": {
+    label: { pt: "Salesforce", es: "Salesforce" },
+    note: {
+      pt: "Não há sincronização nativa confiável; normalmente exige middleware como n8n, MuleSoft ou integração sob medida.",
+      es: "No hay una sincronización nativa confiable; normalmente requiere middleware como n8n, MuleSoft o una integración a medida."
+    }
+  },
+  "HubSpot": {
+    label: { pt: "HubSpot", es: "HubSpot" },
+    note: {
+      pt: "Há conector nativo, mas campos, direção da sincronização e regras de duplicidade precisam ser configurados e testados.",
+      es: "Existe conector nativo, pero campos, dirección de sincronización y reglas de duplicados deben configurarse y probarse."
+    }
+  },
+  "Pipedrive": {
+    label: { pt: "Pipedrive", es: "Pipedrive" },
+    note: {
+      pt: "A API está disponível, mas não há um conector nativo forte para Odoo; normalmente entra via n8n, Zapier ou integração configurada.",
+      es: "La API está disponible, pero no hay un conector nativo fuerte para Odoo; normalmente se conecta con n8n, Zapier o una integración configurada."
+    }
+  },
+  "Zoho CRM": {
+    label: { pt: "Zoho CRM", es: "Zoho CRM" },
+    note: {
+      pt: "A API está disponível, mas o suporte nativo com Odoo é limitado; exige mapeamento e testes.",
+      es: "La API está disponible, pero el soporte nativo con Odoo es limitado; requiere mapeo y pruebas."
+    }
+  },
+  "Custom CRM": {
+    label: { pt: "CRM personalizado", es: "CRM personalizado" },
+    note: {
+      pt: "Integração sob medida; o escopo depende da qualidade e disponibilidade da API.",
+      es: "Integración a medida; el alcance depende de la calidad y disponibilidad de la API."
+    }
+  },
+  "Spreadsheet-based CRM": {
+    label: { pt: "CRM em planilhas", es: "CRM en hojas de cálculo" },
+    note: {
+      pt: "Não há API; exige estratégia de migração, limpeza ou ETL antes de automatizar.",
+      es: "No hay API; requiere estrategia de migración, limpieza o ETL antes de automatizar."
+    }
+  },
+  "Shopify": {
+    label: { pt: "Shopify", es: "Shopify" },
+    note: {
+      pt: "Existe conector oficial, mas produtos, pedidos e reconciliação de estoque precisam ser validados.",
+      es: "Existe conector oficial, pero productos, pedidos y conciliación de inventario deben validarse."
+    }
+  },
+  "WooCommerce": {
+    label: { pt: "WooCommerce", es: "WooCommerce" },
+    note: {
+      pt: "Há conectores disponíveis; webhooks e variações de produto costumam exigir atenção.",
+      es: "Hay conectores disponibles; webhooks y variantes de producto suelen requerir atención."
+    }
+  },
+  "Magento": {
+    label: { pt: "Magento", es: "Magento" },
+    note: {
+      pt: "Catálogo e pedidos têm um modelo mais complexo; normalmente exigem middleware ou integração sob medida.",
+      es: "Catálogo y pedidos tienen un modelo más complejo; normalmente requieren middleware o integración a medida."
+    }
+  },
+  "Custom eCommerce": {
+    label: { pt: "eCommerce personalizado", es: "eCommerce personalizado" },
+    note: {
+      pt: "Integração sob medida; é preciso revisar a API antes de estimar.",
+      es: "Integración a medida; hay que revisar la API antes de estimar."
+    }
+  },
+  "QuickBooks": {
+    label: { pt: "QuickBooks", es: "QuickBooks" },
+    note: {
+      pt: "Não há conector oficial do Odoo; plano de contas e regras contábeis precisam de mapeamento sob medida.",
+      es: "No hay conector oficial de Odoo; plan de cuentas y reglas contables requieren mapeo a medida."
+    }
+  },
+  "Xero": {
+    label: { pt: "Xero", es: "Xero" },
+    note: {
+      pt: "A API está disponível, mas a reconciliação contábil exige mapeamento cuidadoso.",
+      es: "La API está disponible, pero la conciliación contable requiere mapeo cuidadoso."
+    }
+  },
+  "SAP": {
+    label: { pt: "SAP", es: "SAP" },
+    note: {
+      pt: "Integração corporativa; exige escopo técnico detalhado e normalmente é sob medida.",
+      es: "Integración empresarial; requiere alcance técnico detallado y normalmente es a medida."
+    }
+  },
+  "Oracle NetSuite": {
+    label: { pt: "Oracle NetSuite", es: "Oracle NetSuite" },
+    note: {
+      pt: "Modelo de dados complexo; normalmente exige middleware dedicado.",
+      es: "Modelo de datos complejo; normalmente requiere middleware dedicado."
+    }
+  },
+  "Custom ERP": {
+    label: { pt: "ERP personalizado", es: "ERP personalizado" },
+    note: {
+      pt: "Exige revisão da API; provavelmente será uma integração sob medida.",
+      es: "Requiere revisión de API; probablemente sea una integración a medida."
+    }
+  },
+  "Spreadsheets": {
+    label: { pt: "Planilhas", es: "Hojas de cálculo" }
+  },
+  "Spreadsheets (finance)": {
+    label: { pt: "Planilhas financeiras", es: "Hojas de cálculo financieras" },
+    note: {
+      pt: "Não há API; exige ETL estruturado ou migração controlada.",
+      es: "No hay API; requiere ETL estructurado o migración controlada."
+    }
+  },
+  "Custom WMS": {
+    label: { pt: "WMS personalizado", es: "WMS personalizado" },
+    note: {
+      pt: "Depende totalmente da API do WMS; precisa de avaliação antes de estimar.",
+      es: "Depende totalmente de la API del WMS; necesita evaluación antes de estimar."
+    }
+  },
+  "Spreadsheet-based inventory": {
+    label: { pt: "Estoque em planilhas", es: "Inventario en hojas de cálculo" }
+  },
+  "Spreadsheet inventory": {
+    label: { pt: "Estoque em planilhas", es: "Inventario en hojas de cálculo" },
+    note: {
+      pt: "Não há API; serve para importação ou migração, mas não para sincronização contínua sem middleware.",
+      es: "No hay API; sirve para importación o migración, pero no para sincronización continua sin middleware."
+    }
+  },
+  "3PL provider": {
+    label: { pt: "Operador 3PL", es: "Operador 3PL" },
+    note: {
+      pt: "Depende da qualidade da API do operador 3PL; existem padrões comuns, mas variam por fornecedor.",
+      es: "Depende de la calidad de la API del operador 3PL; hay patrones comunes, pero varían por proveedor."
+    }
+  },
+  "WhatsApp (manual)": {
+    label: { pt: "WhatsApp (manual)", es: "WhatsApp (manual)" },
+    note: {
+      pt: "Pode ser automatizado com WhatsApp Business API e n8n; exige conta BSP e definição do fluxo.",
+      es: "Puede automatizarse con WhatsApp Business API y n8n; requiere cuenta BSP y definición del flujo."
+    }
+  },
+  "WhatsApp Business API": {
+    label: { pt: "WhatsApp Business API", es: "WhatsApp Business API" },
+    note: {
+      pt: "Configurável; roteamento de leads e passagem para o CRM precisam ser definidos.",
+      es: "Configurable; deben definirse enrutamiento de leads y traspaso al CRM."
+    }
+  },
+  "Zendesk": {
+    label: { pt: "Zendesk", es: "Zendesk" },
+    note: {
+      pt: "A API está disponível; sincronizar chamados com Odoo é um padrão comum.",
+      es: "La API está disponible; sincronizar tickets con Odoo es un patrón común."
+    }
+  },
+  "Intercom": {
+    label: { pt: "Intercom", es: "Intercom" },
+    note: {
+      pt: "A API está disponível; contatos e conversas exigem mapeamento de campos.",
+      es: "La API está disponible; contactos y conversaciones requieren mapeo de campos."
+    }
+  },
+  "Google Sheets / Excel exports": {
+    label: { pt: "Exportações Google Sheets / Excel", es: "Exportaciones Google Sheets / Excel" },
+    note: {
+      pt: "Não é uma integração real; indica falta de uma camada confiável de dados.",
+      es: "No es una integración real; indica falta de una capa confiable de datos."
+    }
+  },
+  "Power BI / Tableau": {
+    label: { pt: "Power BI / Tableau", es: "Power BI / Tableau" },
+    note: {
+      pt: "Odoo oferece API de relatórios e acesso a views de banco; o conector costuma ser direto.",
+      es: "Odoo ofrece API de reportes y acceso a vistas de base de datos; el conector suele ser directo."
+    }
+  },
+  "Custom data warehouse": {
+    label: { pt: "Data warehouse personalizado", es: "Data warehouse personalizado" },
+    note: {
+      pt: "Depende do warehouse; ETL do Odoo para o warehouse é um padrão comum.",
+      es: "Depende del warehouse; ETL de Odoo hacia el warehouse es un patrón común."
+    }
+  },
+  "Legacy flat files / CSV exports": {
+    label: { pt: "Arquivos legados / exportações CSV", es: "Archivos planos heredados / exportaciones CSV" }
+  },
+  "Legacy flat files / CSV": {
+    label: { pt: "Arquivos legados / CSV", es: "Archivos planos heredados / CSV" },
+    note: {
+      pt: "Exige processamento em lote; uma camada de validação é crítica antes de importar.",
+      es: "Requiere procesamiento por lotes; una capa de validación es crítica antes de importar."
+    }
+  },
+  "Custom internal tools": {
+    label: { pt: "Ferramentas internas sob medida", es: "Herramientas internas a medida" },
+    note: {
+      pt: "Precisa de auditoria de API antes de qualquer estimativa.",
+      es: "Necesita auditoría de API antes de cualquier estimación."
+    }
+  },
+  "I'm not sure what I have": {
+    label: { pt: "Não sei quais sistemas usamos", es: "No sé qué sistemas usamos" },
+    note: {
+      pt: "Antes de estimar, é preciso inventariar os sistemas, os dados e quem é dono de cada fluxo.",
+      es: "Antes de estimar, hay que inventariar los sistemas, los datos y quién es dueño de cada flujo."
+    }
+  }
+};
+
+const MODULE_LABELS = {
+  "Sales": { pt: "Vendas", es: "Ventas" },
+  "CRM (Odoo CRM)": { pt: "CRM (Odoo CRM)", es: "CRM (Odoo CRM)" },
+  "Inventory": { pt: "Estoque", es: "Inventario" },
+  "Purchase": { pt: "Compras", es: "Compras" },
+  "Accounting / Invoicing": { pt: "Contabilidade / Faturamento", es: "Contabilidad / Facturación" },
+  "Manufacturing (MRP)": { pt: "Manufatura (MRP)", es: "Manufactura (MRP)" },
+  "eCommerce": { pt: "eCommerce", es: "eCommerce" },
+  "Point of Sale (POS)": { pt: "Ponto de Venda (POS)", es: "Punto de Venta (POS)" },
+  "Project": { pt: "Projetos", es: "Proyectos" },
+  "Helpdesk": { pt: "Helpdesk", es: "Mesa de ayuda" },
+  "Email Marketing": { pt: "Email Marketing", es: "Email Marketing" },
+  "Website": { pt: "Website", es: "Sitio web" },
+  "HR / Payroll": { pt: "RH / Folha", es: "RR. HH. / Nómina" },
+  "Expenses": { pt: "Despesas", es: "Gastos" }
+};
+
+const MODULE_TOKEN_LABELS = {
+  "Any": { pt: "Qualquer módulo selecionado", es: "Cualquier módulo seleccionado" },
+  "Sales": { pt: "Vendas", es: "Ventas" },
+  "CRM": { pt: "CRM", es: "CRM" },
+  "Inventory": { pt: "Estoque", es: "Inventario" },
+  "Purchase": { pt: "Compras", es: "Compras" },
+  "Accounting": { pt: "Contabilidade", es: "Contabilidad" },
+  "ERP": { pt: "ERP", es: "ERP" },
+  "eCommerce": { pt: "eCommerce", es: "eCommerce" },
+  "Helpdesk": { pt: "Helpdesk", es: "Mesa de ayuda" },
+  "Reporting": { pt: "Relatórios", es: "Reportes" }
 };
 
 const CATEGORY_LABEL_KEYS = {
@@ -652,8 +900,35 @@ function normalizeText(value) {
   return String(value).trim().replace(/\s+/g, " ");
 }
 
+function getLanguageCopy(copy = {}) {
+  if (currentLanguage === "en") return copy.en;
+  return copy[currentLanguage] || copy.en;
+}
+
 function getLookupName(systemName) {
   return SYSTEM_ALIASES[systemName] || systemName;
+}
+
+function getSystemCopy(systemName) {
+  return SYSTEM_COPY[systemName] || SYSTEM_COPY[getLookupName(systemName)] || null;
+}
+
+function getSystemLabel(systemName) {
+  const copy = getSystemCopy(systemName);
+  return getLanguageCopy(copy?.label) || systemName;
+}
+
+function getSystemNote(systemName, entry) {
+  const copy = getSystemCopy(systemName);
+  return getLanguageCopy(copy?.note) || entry.note || t("note.requiresAssessment");
+}
+
+function getModuleLabel(moduleName) {
+  return getLanguageCopy(MODULE_LABELS[moduleName]) || moduleName;
+}
+
+function getModuleTokenLabel(moduleName) {
+  return getLanguageCopy(MODULE_TOKEN_LABELS[moduleName]) || moduleName;
 }
 
 function getMatrixEntry(systemName) {
@@ -662,7 +937,7 @@ function getMatrixEntry(systemName) {
     COMPLEXITY_MATRIX[getLookupName(systemName)] || {
       modules: "Any",
       complexity: "Unknown",
-      note: "Requires assessment."
+      note: t("note.requiresAssessment")
     }
   );
 }
@@ -756,13 +1031,15 @@ function renderModuleGroups() {
 
 function renderSelectorCard(label, selected, meta, type, complexityClass) {
   const dataAttr = type === "system" ? "data-system" : "data-module";
+  const displayLabel = type === "system" ? getSystemLabel(label) : getModuleLabel(label);
   const badge = complexityClass
     ? `<span class="card-badge ${escapeHtml(complexityClass)}">${escapeHtml(meta)}</span>`
     : "";
 
   return `
     <button class="selector-card" type="button" ${dataAttr}="${escapeHtml(label)}" aria-pressed="${selected}">
-      <span class="card-title">${escapeHtml(label)}</span>
+      <span class="card-check" aria-hidden="true"></span>
+      <span class="card-title">${escapeHtml(displayLabel)}</span>
       ${badge}
     </button>
   `;
@@ -851,12 +1128,13 @@ function buildRows() {
 
     return {
       systemName,
+      displayName: getSystemLabel(systemName),
       entry,
       modules: entry.modules,
       complexity,
       complexityClass: getComplexityClass(complexity),
       rating: getDisplayRating(systemName, entry),
-      note: entry.note,
+      note: getSystemNote(systemName, entry),
       affectsSelectedModules: selectedModuleIntersects(entry.modules)
     };
   });
@@ -894,12 +1172,12 @@ function renderScopeSummary(rows) {
     <div class="scope-card">
       <span>${escapeHtml(t("summary.systems"))}</span>
       <strong>${rows.length}</strong>
-      <p>${escapeHtml(formatPreviewList(rows.map((row) => row.systemName)))}</p>
+      <p>${escapeHtml(formatPreviewList(rows.map((row) => row.displayName)))}</p>
     </div>
     <div class="scope-card">
       <span>${escapeHtml(t("summary.footprint"))}</span>
       <strong>${escapeHtml(t("summary.modules", { count: selectedModules.size }))}</strong>
-      <p>${escapeHtml(formatPreviewList(Array.from(selectedModules)))}</p>
+      <p>${escapeHtml(formatPreviewList(Array.from(selectedModules).map(getModuleLabel)))}</p>
     </div>
     <div class="scope-card">
       <span>${escapeHtml(t("summary.risk"))}</span>
@@ -949,7 +1227,7 @@ function renderStackMap(rows) {
     const y = center.y + Math.sin(angle) * radiusY;
     const lineEndX = center.x + Math.cos(angle) * (radiusX - nodeWidth * 0.35);
     const lineEndY = center.y + Math.sin(angle) * (radiusY - nodeHeight * 0.35);
-    const labelLines = wrapSvgLabel(row.systemName);
+    const labelLines = wrapSvgLabel(row.displayName);
     const labelStartY = y - labelLines.length * 8 - 2;
 
     lines.push(`
@@ -968,7 +1246,7 @@ function renderStackMap(rows) {
         data-system="${escapeHtml(row.systemName)}"
         role="button"
         tabindex="0"
-        aria-label="${escapeHtml(`${row.systemName} ${t("tooltip.complexity")}`)}"
+        aria-label="${escapeHtml(`${row.displayName} ${t("tooltip.complexity")}`)}"
       >
         <rect x="${(x - nodeWidth / 2).toFixed(1)}" y="${(y - nodeHeight / 2).toFixed(1)}" width="${nodeWidth}" height="${nodeHeight}" rx="8"></rect>
         <text x="${x.toFixed(1)}" y="${labelStartY.toFixed(1)}">
@@ -1034,7 +1312,7 @@ function renderComplexityTable(rows) {
 
       return `
         <tr>
-          <td data-label="${escapeHtml(t("table.system"))}">${escapeHtml(row.systemName)}</td>
+          <td data-label="${escapeHtml(t("table.system"))}">${escapeHtml(row.displayName)}</td>
           <td data-label="${escapeHtml(t("table.modules"))}">${escapeHtml(formatAffectedModules(row.modules))}</td>
           <td data-label="${escapeHtml(t("table.rating"))}"><span class="rating-pill ${escapeHtml(ratingClass)}">${escapeHtml(formatRating(row))}</span></td>
           <td data-label="${escapeHtml(t("table.note"))}">${escapeHtml(row.note + scopeSuffix)}</td>
@@ -1046,7 +1324,10 @@ function renderComplexityTable(rows) {
 
 function formatAffectedModules(modules) {
   if (modules === "Any") return t("table.anyModule");
-  return modules;
+  return modules
+    .split("/")
+    .map((moduleName) => getModuleTokenLabel(moduleName.trim()))
+    .join(" / ");
 }
 
 function formatRating(row) {
@@ -1078,7 +1359,7 @@ function renderPriorityList(rows) {
         <li>
           <div class="priority-body">
             <div class="priority-topline">
-              <strong>${escapeHtml(item.row.systemName)}</strong>
+              <strong>${escapeHtml(item.row.displayName)}</strong>
               <span class="priority-chip ${escapeHtml(item.className)}">${escapeHtml(t(item.labelKey))}</span>
             </div>
             <p>${escapeHtml(t(item.reasonKey))}</p>
@@ -1134,7 +1415,7 @@ function showTooltip(systemName, eventTarget) {
 
   mapTooltip.className = `map-tooltip ${row.complexityClass}`;
   mapTooltip.innerHTML = `
-    <strong>${escapeHtml(row.systemName)}: ${escapeHtml(getComplexityShortLabel(row.complexity))} ${escapeHtml(t("tooltip.complexity"))}</strong>
+    <strong>${escapeHtml(row.displayName)}: ${escapeHtml(getComplexityShortLabel(row.complexity))} ${escapeHtml(t("tooltip.complexity"))}</strong>
     <span>${escapeHtml(row.note)}</span>
   `;
   mapTooltip.hidden = false;

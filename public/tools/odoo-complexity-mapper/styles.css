@@ -108,12 +108,12 @@
 
 .choice-groups {
   display: grid;
-  gap: 26px;
+  gap: 54px;
 }
 
 .choice-category {
   display: grid;
-  gap: 12px;
+  gap: 18px;
 }
 
 .category-title {
@@ -141,10 +141,10 @@
 
 .selector-card {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   min-height: 46px;
   padding: 10px 12px;
   border: 1px solid var(--rule-strong);
@@ -165,6 +165,38 @@
   border-color: var(--accent-line);
   background: var(--accent-soft);
   color: var(--accent);
+}
+
+.card-check {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border: 2px solid var(--text-dim);
+  border-radius: 5px;
+  background: var(--surface);
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.card-check::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  margin-top: -2px;
+  border-bottom: 2px solid var(--surface);
+  border-left: 2px solid var(--surface);
+  transform: rotate(-45deg) scale(0);
+  transition: transform 120ms ease;
+}
+
+.selector-card[aria-pressed="true"] .card-check {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.selector-card[aria-pressed="true"] .card-check::after {
+  transform: rotate(-45deg) scale(1);
 }
 
 .card-title {
@@ -775,6 +807,14 @@
 
   .selection-meter {
     width: fit-content;
+  }
+
+  .choice-groups {
+    gap: 42px;
+  }
+
+  .choice-category {
+    gap: 14px;
   }
 
   .choice-grid,
