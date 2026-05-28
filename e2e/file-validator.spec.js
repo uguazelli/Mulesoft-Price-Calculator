@@ -22,7 +22,8 @@ test("flat file validator analyzes a CSV and renders report exports", async ({ p
 
   await openMobileMenuIfNeeded();
   await page.getByRole("button", { name: "EN", exact: true }).click();
-  await page.getByRole("link", { name: /Analyze a file/i }).click();
+  await expect(page.locator(".scroll-cue")).toHaveCount(0);
+  await page.locator("#validator").scrollIntoViewIfNeeded();
 
   const csv = [
     "order_id,amount,order_date,active",

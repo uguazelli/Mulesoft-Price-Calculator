@@ -23,7 +23,8 @@ test("API readiness assessment captures a lead and renders the report", async ({
   await openMobileMenuIfNeeded();
   await page.getByRole("button", { name: "EN", exact: true }).click();
   await expect(page.getByRole("heading", { name: /systems are ready to integrate/i })).toBeVisible();
-  await page.getByRole("link", { name: /Start assessment/i }).click();
+  await expect(page.locator(".scroll-cue")).toHaveCount(0);
+  await page.locator("#assessment").scrollIntoViewIfNeeded();
   await expect(page.getByRole("heading", { name: "Integration readiness" })).toBeVisible();
 
   await page.check('input[name="systemsCount"][value="4-7"]');

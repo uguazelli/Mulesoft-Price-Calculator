@@ -39,7 +39,6 @@ const TRANSLATIONS = {
     "hero.actionsText": "Practical audit steps",
     "hero.disclaimer":
       "This tool provides directional optimization signals, not official MuleSoft pricing. MuleSoft commercial terms may vary by legacy core/vCore contracts, Flows/Messages packages, deployment model, Salesforce bundle, and negotiated terms.",
-    "hero.scrollCue": "Start calculator",
     "form.usageTitle": "MuleSoft usage",
     "form.usageText": "Use best estimates. You do not need contract prices or invoices.",
     "form.deploymentModel": "Deployment model",
@@ -107,7 +106,6 @@ const TRANSLATIONS = {
     "hero.actionsText": "Passos práticos de auditoria",
     "hero.disclaimer":
       "Esta ferramenta mostra sinais direcionais de otimização, não preços oficiais do MuleSoft. Os termos comerciais podem variar por contratos legados core/vCore, pacotes por Flows/Messages, modelo de implantação, pacote Salesforce e negociação.",
-    "hero.scrollCue": "Ir para a calculadora",
     "form.usageTitle": "Uso do MuleSoft",
     "form.usageText": "Use estimativas. Não é preciso informar preços de contrato nem faturas.",
     "form.deploymentModel": "Modelo de implantação",
@@ -175,7 +173,6 @@ const TRANSLATIONS = {
     "hero.actionsText": "Pasos prácticos de auditoría",
     "hero.disclaimer":
       "Esta herramienta muestra señales direccionales de optimización, no precios oficiales de MuleSoft. Los términos comerciales pueden variar por contratos heredados core/vCore, paquetes por Flows/Messages, modelo de despliegue, paquete Salesforce y negociación.",
-    "hero.scrollCue": "Ir a la calculadora",
     "form.usageTitle": "Uso de MuleSoft",
     "form.usageText": "Usa estimaciones. No necesitas ingresar precios de contrato ni facturas.",
     "form.deploymentModel": "Modelo de despliegue",

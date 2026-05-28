@@ -22,7 +22,8 @@ test("integration audit pack captures a lead and reveals the document download",
 
   await openMobileMenuIfNeeded();
   await page.getByRole("button", { name: "EN", exact: true }).click();
-  await page.getByRole("link", { name: /Get the audit pack/i }).click();
+  await expect(page.locator(".scroll-cue")).toHaveCount(0);
+  await page.locator("#audit-pack").scrollIntoViewIfNeeded();
   await expect(page.getByRole("heading", { name: "Unlock the audit document" })).toBeVisible();
 
   await page.fill('input[name="fullName"]', "Audit Browser Test");

@@ -13,6 +13,351 @@ const priorityList = document.querySelector("#priorityList");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const headerMenu = document.querySelector("[data-header-menu]");
+const languageButtons = document.querySelectorAll("[data-language-button]");
+const exportPdfButton = document.querySelector("[data-export-pdf]");
+
+const LANGUAGES = new Set(["en", "pt", "es"]);
+const HTML_LANG = {
+  en: "en",
+  pt: "pt-BR",
+  es: "es-419"
+};
+
+const TRANSLATIONS = {
+  en: {
+    "meta.title": "Odoo Integration Complexity Mapper | VeriDataPro",
+    "meta.description":
+      "A browser-based Odoo integration scoping tool that maps system complexity, affected modules, risks, and implementation priorities.",
+    "brand.subtitle": "Systems integration and automation",
+    "menu.open": "Open menu",
+    "menu.close": "Close menu",
+    "hero.eyebrow": "Odoo scoping tool",
+    "hero.title": "Odoo Integration Complexity Mapper",
+    "hero.lede":
+      "Select the systems around Odoo, the Odoo modules in scope, and get a first-pass architecture map with complexity, risk notes, and implementation priority.",
+    "hero.note": "Directional scoping only. Final estimates still require API access, data samples, and source-of-truth decisions.",
+    "stepper.stack": "1. Your stack",
+    "stepper.modules": "2. Odoo modules",
+    "stepper.results": "3. Results",
+    "step.one": "Step 1",
+    "step.two": "Step 2",
+    "step.three": "Step 3",
+    "stack.title": "Which systems does your business currently run?",
+    "stack.text": "Select every system that creates, receives, or reports on operational data.",
+    "stack.continue": "Continue to Odoo modules",
+    "custom.label": "System not listed",
+    "custom.placeholder": "Example: in-house quoting app",
+    "custom.add": "Add system",
+    "modules.title": "Which Odoo modules are you using or planning to use?",
+    "modules.text": "Choose the Odoo footprint these integrations need to support.",
+    "modules.generate": "Generate complexity map",
+    "stage.title": "Are you already live on Odoo or still evaluating?",
+    "stage.alreadyLive": "Already live",
+    "stage.evaluating": "Currently evaluating",
+    "stage.research": "Just starting research",
+    "volume.title": "How much data moves through your operations per day?",
+    "volume.low": "Low (under 100 transactions)",
+    "volume.medium": "Medium (100-1000)",
+    "volume.high": "High (1000+)",
+    "volume.unknown": "I don't know",
+    "common.back": "Back",
+    "results.title": "Odoo integration complexity results",
+    "results.text": "Use this as a scoping conversation starter before committing budget or delivery dates.",
+    "results.back": "Back to modules",
+    "results.reset": "Start over",
+    "map.kicker": "A / Visual stack map",
+    "map.title": "Systems around Odoo",
+    "map.center": "ERP center",
+    "table.kicker": "B / Complexity breakdown",
+    "table.title": "Integration table",
+    "table.system": "System name",
+    "table.modules": "Odoo module(s) affected",
+    "table.rating": "Complexity rating",
+    "table.note": "Primary risk or note",
+    "priority.kicker": "C / Priority order",
+    "priority.title": "Recommended sequencing",
+    "cta.title": "Ready to scope this properly?",
+    "cta.text": "Share this map with your team, then book a 30-minute call to turn these signals into a phased, budgetable delivery plan.",
+    "cta.export": "Export result as PDF",
+    "cta.book": "Book a scoping call",
+    "cta.odoo": "Odoo services",
+    "category.crm": "CRM",
+    "category.ecommerce": "eCommerce",
+    "category.finance": "Finance / Accounting",
+    "category.logistics": "Logistics / Inventory",
+    "category.communication": "Communication / Support",
+    "category.reporting": "Data / Reporting",
+    "category.other": "Other",
+    "category.added": "Added systems",
+    "moduleGroup.core": "Core operations",
+    "moduleGroup.channels": "Commerce and channels",
+    "moduleGroup.backOffice": "Service and back office",
+    "meta.needsAssessment": "Needs assessment",
+    "meta.odooModule": "Odoo module",
+    "meta.complexity": "{complexity} complexity",
+    "selected.count": "{count} selected",
+    "selected.none": "None selected",
+    "selected.more": "{items} +{count} more",
+    "summary.systems": "Systems selected",
+    "summary.footprint": "Odoo footprint",
+    "summary.modules": "{count} modules",
+    "summary.risk": "Risk profile",
+    "summary.context": "Operating context",
+    "summary.riskText": "{high} high/custom, {unknown} unknown, {medium} medium, {low} low",
+    "posture.audit": "Audit required",
+    "posture.custom": "Custom-heavy scope",
+    "posture.highRisk": "High-risk scope",
+    "posture.config": "Config-heavy scope",
+    "posture.low": "Low-friction scope",
+    "complexity.low": "Low",
+    "complexity.medium": "Medium",
+    "complexity.high": "High",
+    "complexity.unknownShort": "Unknown",
+    "complexity.unknown": "Unknown / needs assessment",
+    "rating.customBuild": "Custom build required",
+    "table.anyModule": "Any selected module",
+    "table.outsideScope": " Outside selected Odoo modules.",
+    "priority.customLabel": "Custom build conversation",
+    "priority.firstLabel": "Tackle first",
+    "priority.laterLabel": "Tackle later",
+    "priority.liveReason": "Audit production data flow, API access, ownership, and rollback options before changing this integration.",
+    "priority.customReason": "Confirm APIs, source of truth, middleware, and testing scope before committing implementation dates.",
+    "priority.highVolumeReason":
+      "It touches selected Odoo modules and high daily volume makes reconciliation and failure handling important early.",
+    "priority.firstReason": "It touches selected Odoo modules and helps set source-of-truth rules for the rest of the scope.",
+    "priority.laterReason": "Useful to connect, but it is less dependent on the Odoo modules selected for this first scope.",
+    "tooltip.complexity": "complexity",
+    "errors.noSystems": "Select at least one current system before moving to Odoo modules.",
+    "errors.noModules": "Select at least one Odoo module.",
+    "errors.noStage": "Choose whether you are already live on Odoo or still evaluating.",
+    "errors.noVolume": "Choose how much data moves through your operations per day.",
+    "errors.customSystem": "Enter a system name before adding it.",
+    "errors.exportFirst": "Generate a complexity map before exporting a PDF.",
+    "pdf.title": "Odoo Integration Complexity Map"
+  },
+  pt: {
+    "meta.title": "Mapeador de Complexidade de Integração Odoo | VeriDataPro",
+    "meta.description":
+      "Uma ferramenta no navegador para escopo de integração Odoo, com complexidade por sistema, módulos afetados, riscos e prioridades.",
+    "brand.subtitle": "Integração de sistemas e automação",
+    "menu.open": "Abrir menu",
+    "menu.close": "Fechar menu",
+    "hero.eyebrow": "Ferramenta de escopo Odoo",
+    "hero.title": "Mapeador de Complexidade de Integração Odoo",
+    "hero.lede":
+      "Selecione os sistemas ao redor do Odoo, os módulos em escopo e gere um mapa inicial de arquitetura com complexidade, riscos e prioridade de implementação.",
+    "hero.note": "Escopo direcional. Estimativas finais ainda exigem acesso às APIs, amostras de dados e decisões de fonte da verdade.",
+    "stepper.stack": "1. Sua stack",
+    "stepper.modules": "2. Módulos Odoo",
+    "stepper.results": "3. Resultados",
+    "step.one": "Etapa 1",
+    "step.two": "Etapa 2",
+    "step.three": "Etapa 3",
+    "stack.title": "Quais sistemas sua empresa usa hoje?",
+    "stack.text": "Selecione todos os sistemas que criam, recebem ou reportam dados operacionais.",
+    "stack.continue": "Continuar para módulos Odoo",
+    "custom.label": "Sistema não listado",
+    "custom.placeholder": "Exemplo: app interno de cotações",
+    "custom.add": "Adicionar sistema",
+    "modules.title": "Quais módulos Odoo você usa ou pretende usar?",
+    "modules.text": "Escolha o footprint Odoo que estas integrações precisam suportar.",
+    "modules.generate": "Gerar mapa de complexidade",
+    "stage.title": "Você já está em produção no Odoo ou ainda está avaliando?",
+    "stage.alreadyLive": "Já em produção",
+    "stage.evaluating": "Em avaliação",
+    "stage.research": "Pesquisa inicial",
+    "volume.title": "Quanto dado passa pela operação por dia?",
+    "volume.low": "Baixo (menos de 100 transações)",
+    "volume.medium": "Médio (100-1000)",
+    "volume.high": "Alto (1000+)",
+    "volume.unknown": "Não sei",
+    "common.back": "Voltar",
+    "results.title": "Resultado de complexidade de integração Odoo",
+    "results.text": "Use isto como ponto de partida para escopo antes de comprometer orçamento ou datas.",
+    "results.back": "Voltar aos módulos",
+    "results.reset": "Começar de novo",
+    "map.kicker": "A / Mapa visual da stack",
+    "map.title": "Sistemas ao redor do Odoo",
+    "map.center": "Centro ERP",
+    "table.kicker": "B / Quebra de complexidade",
+    "table.title": "Tabela de integrações",
+    "table.system": "Sistema",
+    "table.modules": "Módulo(s) Odoo afetados",
+    "table.rating": "Complexidade",
+    "table.note": "Risco ou observação principal",
+    "priority.kicker": "C / Ordem de prioridade",
+    "priority.title": "Sequenciamento recomendado",
+    "cta.title": "Pronto para escopar isso corretamente?",
+    "cta.text": "Compartilhe este mapa com sua equipe e agende uma chamada de 30 minutos para transformar os sinais em um plano faseado e orçável.",
+    "cta.export": "Exportar resultado em PDF",
+    "cta.book": "Agendar chamada de escopo",
+    "cta.odoo": "Serviços Odoo",
+    "category.crm": "CRM",
+    "category.ecommerce": "eCommerce",
+    "category.finance": "Financeiro / Contabilidade",
+    "category.logistics": "Logística / Estoque",
+    "category.communication": "Comunicação / Suporte",
+    "category.reporting": "Dados / Relatórios",
+    "category.other": "Outros",
+    "category.added": "Sistemas adicionados",
+    "moduleGroup.core": "Operação principal",
+    "moduleGroup.channels": "Comércio e canais",
+    "moduleGroup.backOffice": "Serviço e back office",
+    "meta.needsAssessment": "Precisa de avaliação",
+    "meta.odooModule": "Módulo Odoo",
+    "meta.complexity": "Complexidade {complexity}",
+    "selected.count": "{count} selecionados",
+    "selected.none": "Nada selecionado",
+    "selected.more": "{items} +{count} mais",
+    "summary.systems": "Sistemas selecionados",
+    "summary.footprint": "Footprint Odoo",
+    "summary.modules": "{count} módulos",
+    "summary.risk": "Perfil de risco",
+    "summary.context": "Contexto operacional",
+    "summary.riskText": "{high} alto/custom, {unknown} desconhecido, {medium} médio, {low} baixo",
+    "posture.audit": "Auditoria necessária",
+    "posture.custom": "Escopo com muito custom",
+    "posture.highRisk": "Escopo de alto risco",
+    "posture.config": "Escopo com muita configuração",
+    "posture.low": "Baixa fricção",
+    "complexity.low": "Baixa",
+    "complexity.medium": "Média",
+    "complexity.high": "Alta",
+    "complexity.unknownShort": "Desconhecida",
+    "complexity.unknown": "Desconhecida / precisa de avaliação",
+    "rating.customBuild": "Build custom necessário",
+    "table.anyModule": "Qualquer módulo selecionado",
+    "table.outsideScope": " Fora dos módulos Odoo selecionados.",
+    "priority.customLabel": "Conversa de build custom",
+    "priority.firstLabel": "Tratar primeiro",
+    "priority.laterLabel": "Tratar depois",
+    "priority.liveReason": "Audite fluxo de dados em produção, APIs, responsáveis e rollback antes de alterar esta integração.",
+    "priority.customReason": "Confirme APIs, fonte da verdade, middleware e testes antes de comprometer datas.",
+    "priority.highVolumeReason":
+      "Toca módulos Odoo selecionados e alto volume diário torna reconciliação e tratamento de falhas importantes desde o início.",
+    "priority.firstReason": "Toca módulos Odoo selecionados e ajuda a definir regras de fonte da verdade para o restante do escopo.",
+    "priority.laterReason": "É útil conectar, mas depende menos dos módulos Odoo selecionados para este primeiro escopo.",
+    "tooltip.complexity": "complexidade",
+    "errors.noSystems": "Selecione pelo menos um sistema atual antes de avançar para módulos Odoo.",
+    "errors.noModules": "Selecione pelo menos um módulo Odoo.",
+    "errors.noStage": "Escolha se você já está em produção no Odoo ou ainda avaliando.",
+    "errors.noVolume": "Escolha quanto dado passa pela operação por dia.",
+    "errors.customSystem": "Digite o nome de um sistema antes de adicionar.",
+    "errors.exportFirst": "Gere um mapa de complexidade antes de exportar o PDF.",
+    "pdf.title": "Mapa de Complexidade de Integração Odoo"
+  },
+  es: {
+    "meta.title": "Mapeador de Complejidad de Integración Odoo | VeriDataPro",
+    "meta.description":
+      "Una herramienta en el navegador para dimensionar integraciones Odoo, con complejidad por sistema, módulos afectados, riesgos y prioridades.",
+    "brand.subtitle": "Integración de sistemas y automatización",
+    "menu.open": "Abrir menú",
+    "menu.close": "Cerrar menú",
+    "hero.eyebrow": "Herramienta de alcance Odoo",
+    "hero.title": "Mapeador de Complejidad de Integración Odoo",
+    "hero.lede":
+      "Selecciona los sistemas alrededor de Odoo, los módulos en alcance y genera un primer mapa de arquitectura con complejidad, riesgos y prioridad de implementación.",
+    "hero.note": "Alcance direccional. Las estimaciones finales aún requieren acceso a APIs, muestras de datos y decisiones de fuente de verdad.",
+    "stepper.stack": "1. Tu stack",
+    "stepper.modules": "2. Módulos Odoo",
+    "stepper.results": "3. Resultados",
+    "step.one": "Paso 1",
+    "step.two": "Paso 2",
+    "step.three": "Paso 3",
+    "stack.title": "¿Qué sistemas usa actualmente tu empresa?",
+    "stack.text": "Selecciona todos los sistemas que crean, reciben o reportan datos operativos.",
+    "stack.continue": "Continuar a módulos Odoo",
+    "custom.label": "Sistema no listado",
+    "custom.placeholder": "Ejemplo: app interna de cotizaciones",
+    "custom.add": "Agregar sistema",
+    "modules.title": "¿Qué módulos Odoo usas o planeas usar?",
+    "modules.text": "Elige el footprint Odoo que estas integraciones deben soportar.",
+    "modules.generate": "Generar mapa de complejidad",
+    "stage.title": "¿Ya estás en vivo en Odoo o todavía estás evaluando?",
+    "stage.alreadyLive": "Ya en vivo",
+    "stage.evaluating": "En evaluación",
+    "stage.research": "Investigación inicial",
+    "volume.title": "¿Cuántos datos pasan por la operación por día?",
+    "volume.low": "Bajo (menos de 100 transacciones)",
+    "volume.medium": "Medio (100-1000)",
+    "volume.high": "Alto (1000+)",
+    "volume.unknown": "No sé",
+    "common.back": "Volver",
+    "results.title": "Resultado de complejidad de integración Odoo",
+    "results.text": "Úsalo como punto de partida antes de comprometer presupuesto o fechas.",
+    "results.back": "Volver a módulos",
+    "results.reset": "Empezar de nuevo",
+    "map.kicker": "A / Mapa visual del stack",
+    "map.title": "Sistemas alrededor de Odoo",
+    "map.center": "Centro ERP",
+    "table.kicker": "B / Desglose de complejidad",
+    "table.title": "Tabla de integraciones",
+    "table.system": "Sistema",
+    "table.modules": "Módulo(s) Odoo afectados",
+    "table.rating": "Complejidad",
+    "table.note": "Riesgo o nota principal",
+    "priority.kicker": "C / Orden de prioridad",
+    "priority.title": "Secuencia recomendada",
+    "cta.title": "¿Listo para dimensionar esto correctamente?",
+    "cta.text": "Comparte este mapa con tu equipo y agenda una llamada de 30 minutos para convertir estas señales en un plan por fases y presupuestable.",
+    "cta.export": "Exportar resultado como PDF",
+    "cta.book": "Agendar llamada de alcance",
+    "cta.odoo": "Servicios Odoo",
+    "category.crm": "CRM",
+    "category.ecommerce": "eCommerce",
+    "category.finance": "Finanzas / Contabilidad",
+    "category.logistics": "Logística / Inventario",
+    "category.communication": "Comunicación / Soporte",
+    "category.reporting": "Datos / Reportes",
+    "category.other": "Otros",
+    "category.added": "Sistemas agregados",
+    "moduleGroup.core": "Operación principal",
+    "moduleGroup.channels": "Comercio y canales",
+    "moduleGroup.backOffice": "Servicio y back office",
+    "meta.needsAssessment": "Requiere evaluación",
+    "meta.odooModule": "Módulo Odoo",
+    "meta.complexity": "Complejidad {complexity}",
+    "selected.count": "{count} seleccionados",
+    "selected.none": "Nada seleccionado",
+    "selected.more": "{items} +{count} más",
+    "summary.systems": "Sistemas seleccionados",
+    "summary.footprint": "Footprint Odoo",
+    "summary.modules": "{count} módulos",
+    "summary.risk": "Perfil de riesgo",
+    "summary.context": "Contexto operativo",
+    "summary.riskText": "{high} alto/custom, {unknown} desconocido, {medium} medio, {low} bajo",
+    "posture.audit": "Auditoría requerida",
+    "posture.custom": "Alcance con mucho custom",
+    "posture.highRisk": "Alcance de alto riesgo",
+    "posture.config": "Alcance con mucha configuración",
+    "posture.low": "Baja fricción",
+    "complexity.low": "Baja",
+    "complexity.medium": "Media",
+    "complexity.high": "Alta",
+    "complexity.unknownShort": "Desconocida",
+    "complexity.unknown": "Desconocida / requiere evaluación",
+    "rating.customBuild": "Build custom requerido",
+    "table.anyModule": "Cualquier módulo seleccionado",
+    "table.outsideScope": " Fuera de los módulos Odoo seleccionados.",
+    "priority.customLabel": "Conversación de build custom",
+    "priority.firstLabel": "Tratar primero",
+    "priority.laterLabel": "Tratar después",
+    "priority.liveReason": "Audita flujo de datos en producción, APIs, responsables y rollback antes de cambiar esta integración.",
+    "priority.customReason": "Confirma APIs, fuente de verdad, middleware y pruebas antes de comprometer fechas.",
+    "priority.highVolumeReason":
+      "Toca módulos Odoo seleccionados y el alto volumen diario hace importante definir reconciliación y manejo de fallas desde temprano.",
+    "priority.firstReason": "Toca módulos Odoo seleccionados y ayuda a definir reglas de fuente de verdad para el resto del alcance.",
+    "priority.laterReason": "Es útil conectarlo, pero depende menos de los módulos Odoo seleccionados para este primer alcance.",
+    "tooltip.complexity": "complejidad",
+    "errors.noSystems": "Selecciona al menos un sistema actual antes de avanzar a módulos Odoo.",
+    "errors.noModules": "Selecciona al menos un módulo Odoo.",
+    "errors.noStage": "Elige si ya estás en vivo en Odoo o todavía estás evaluando.",
+    "errors.noVolume": "Elige cuántos datos pasan por la operación por día.",
+    "errors.customSystem": "Escribe el nombre de un sistema antes de agregarlo.",
+    "errors.exportFirst": "Genera un mapa de complejidad antes de exportar el PDF.",
+    "pdf.title": "Mapa de Complejidad de Integración Odoo"
+  }
+};
 
 const SYSTEM_GROUPS = [
   {
@@ -64,6 +409,23 @@ const SYSTEM_ALIASES = {
   "Spreadsheets": "Spreadsheets (finance)",
   "Spreadsheet-based inventory": "Spreadsheet inventory",
   "Legacy flat files / CSV exports": "Legacy flat files / CSV"
+};
+
+const CATEGORY_LABEL_KEYS = {
+  "CRM": "category.crm",
+  "eCommerce": "category.ecommerce",
+  "Finance / Accounting": "category.finance",
+  "Logistics / Inventory": "category.logistics",
+  "Communication / Support": "category.communication",
+  "Data / Reporting": "category.reporting",
+  "Other": "category.other",
+  "Added systems": "category.added"
+};
+
+const MODULE_GROUP_LABEL_KEYS = {
+  "Core operations": "moduleGroup.core",
+  "Commerce and channels": "moduleGroup.channels",
+  "Service and back office": "moduleGroup.backOffice"
 };
 
 const COMPLEXITY_MATRIX = {
@@ -232,6 +594,50 @@ const selectedModules = new Set();
 const customSystems = [];
 let currentStep = 1;
 let currentRows = [];
+let currentLanguage = localStorage.getItem("odooMapperLanguage") || "en";
+
+function t(key, values = {}) {
+  const text = TRANSLATIONS[currentLanguage]?.[key] || TRANSLATIONS.en[key] || key;
+  return Object.entries(values).reduce((memo, [name, value]) => memo.replaceAll(`{${name}}`, value), text);
+}
+
+function applyTranslations() {
+  document.documentElement.lang = HTML_LANG[currentLanguage];
+  document.title = t("meta.title");
+  document.querySelector('meta[name="description"]')?.setAttribute("content", t("meta.description"));
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    element.textContent = t(element.dataset.i18n);
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
+    element.setAttribute("placeholder", t(element.dataset.i18nPlaceholder));
+  });
+
+  languageButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.lang === currentLanguage));
+  });
+
+  syncMenuLabel();
+}
+
+function setLanguage(language, { resetResult = false } = {}) {
+  if (!LANGUAGES.has(language)) return;
+
+  currentLanguage = language;
+  localStorage.setItem("odooMapperLanguage", language);
+  applyTranslations();
+  renderSystemGroups();
+  renderModuleGroups();
+
+  if (currentRows.length && !resetResult) {
+    currentRows = buildRows();
+    renderScopeSummary(currentRows);
+    renderStackMap(currentRows);
+    renderComplexityTable(currentRows);
+    renderPriorityList(currentRows);
+  }
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -302,62 +708,91 @@ function getKnownSystems() {
   return SYSTEM_GROUPS.flatMap((group) => group.systems);
 }
 
+function getOptimalColumns(count) {
+  if (count <= 4) return count;
+  for (const cols of [4, 3, 5, 6]) {
+    if (count % cols === 0) return cols;
+  }
+  return 4;
+}
+
 function renderSystemGroups() {
   const groups = customSystems.length
     ? [...SYSTEM_GROUPS, { name: "Added systems", systems: customSystems }]
     : SYSTEM_GROUPS;
 
   systemGroupsRoot.innerHTML = groups
-    .map(
-      (group) => `
-        <section class="choice-category" aria-label="${escapeHtml(group.name)}">
-          <h3 class="category-title">${escapeHtml(group.name)}</h3>
-          <div class="choice-grid">
-            ${group.systems.map((system) => renderSelectorCard(system, selectedSystems.has(system), getSystemMeta(system), "system")).join("")}
+    .map((group) => {
+      const cols = getOptimalColumns(group.systems.length);
+      return `
+        <section class="choice-category" aria-label="${escapeHtml(getGroupLabel(group.name))}">
+          <h3 class="category-title">${escapeHtml(getGroupLabel(group.name))}</h3>
+          <div class="choice-grid" style="grid-template-columns: repeat(${cols}, minmax(0, 1fr))">
+            ${group.systems.map((system) => renderSelectorCard(system, selectedSystems.has(system), "", "system", null)).join("")}
           </div>
         </section>
-      `
-    )
+      `;
+    })
     .join("");
 
   updateCounts();
 }
 
 function renderModuleGroups() {
-  moduleGroupsRoot.innerHTML = MODULE_GROUPS.map(
-    (group) => `
-      <section class="choice-category" aria-label="${escapeHtml(group.name)}">
-        <h3 class="category-title">${escapeHtml(group.name)}</h3>
-        <div class="choice-grid">
-          ${group.modules.map((moduleName) => renderSelectorCard(moduleName, selectedModules.has(moduleName), "Odoo module", "module")).join("")}
+  moduleGroupsRoot.innerHTML = MODULE_GROUPS.map((group) => {
+    const cols = getOptimalColumns(group.modules.length);
+    return `
+      <section class="choice-category" aria-label="${escapeHtml(getModuleGroupLabel(group.name))}">
+        <h3 class="category-title">${escapeHtml(getModuleGroupLabel(group.name))}</h3>
+        <div class="choice-grid" style="grid-template-columns: repeat(${cols}, minmax(0, 1fr))">
+          ${group.modules.map((moduleName) => renderSelectorCard(moduleName, selectedModules.has(moduleName), "", "module", null)).join("")}
         </div>
       </section>
-    `
-  ).join("");
+    `;
+  }).join("");
 
   updateCounts();
 }
 
-function renderSelectorCard(label, selected, meta, type) {
+function renderSelectorCard(label, selected, meta, type, complexityClass) {
   const dataAttr = type === "system" ? "data-system" : "data-module";
+  const badge = complexityClass
+    ? `<span class="card-badge ${escapeHtml(complexityClass)}">${escapeHtml(meta)}</span>`
+    : "";
 
   return `
     <button class="selector-card" type="button" ${dataAttr}="${escapeHtml(label)}" aria-pressed="${selected}">
       <span class="card-title">${escapeHtml(label)}</span>
-      <span class="card-meta">${escapeHtml(meta)}</span>
+      ${badge}
     </button>
   `;
 }
 
 function getSystemMeta(systemName) {
   const entry = getMatrixEntry(systemName);
-  if (entry.complexity === "Unknown") return "Needs assessment";
-  return `${entry.complexity} complexity`;
+  if (entry.complexity === "Unknown") return t("complexity.unknownShort");
+  return getComplexityLabel(entry.complexity);
+}
+
+function getSystemComplexityClass(systemName) {
+  return getComplexityClass(getMatrixEntry(systemName).complexity);
 }
 
 function updateCounts() {
-  systemCount.textContent = `${selectedSystems.size} selected`;
-  moduleCount.textContent = `${selectedModules.size} selected`;
+  systemCount.textContent = t("selected.count", { count: selectedSystems.size });
+  moduleCount.textContent = t("selected.count", { count: selectedModules.size });
+}
+
+function getGroupLabel(groupName) {
+  return t(CATEGORY_LABEL_KEYS[groupName] || groupName);
+}
+
+function getModuleGroupLabel(groupName) {
+  return t(MODULE_GROUP_LABEL_KEYS[groupName] || groupName);
+}
+
+function getComplexityLabel(complexity) {
+  return t(`complexity.${String(complexity).toLowerCase()}`);
 }
 
 function clearAlert() {
@@ -384,7 +819,7 @@ function setStep(step) {
 
 function validateStepOne() {
   if (!selectedSystems.size) {
-    showAlert("Select at least one current system before moving to Odoo modules.");
+    showAlert(t("errors.noSystems"));
     return false;
   }
   return true;
@@ -392,17 +827,17 @@ function validateStepOne() {
 
 function validateStepTwo() {
   if (!selectedModules.size) {
-    showAlert("Select at least one Odoo module.");
+    showAlert(t("errors.noModules"));
     return false;
   }
 
   if (!getRadioValue("odooStage")) {
-    showAlert("Choose whether you are already live on Odoo or still evaluating.");
+    showAlert(t("errors.noStage"));
     return false;
   }
 
   if (!getRadioValue("dataVolume")) {
-    showAlert("Choose how much data moves through your operations per day.");
+    showAlert(t("errors.noVolume"));
     return false;
   }
 
@@ -444,45 +879,53 @@ function renderScopeSummary(rows) {
   const unknownCount = rows.filter((row) => row.complexity === "Unknown").length;
   const mediumCount = rows.filter((row) => row.complexity === "Medium").length;
   const lowCount = rows.filter((row) => row.complexity === "Low").length;
-  const posture =
+  const postureKey =
     unknownCount > 0
-      ? "Audit required"
+      ? "posture.audit"
       : highCount > mediumCount + lowCount
-        ? "Custom-heavy scope"
+        ? "posture.custom"
         : highCount > 0
-          ? "High-risk scope"
+          ? "posture.highRisk"
           : mediumCount > 0
-            ? "Config-heavy scope"
-            : "Low-friction scope";
+            ? "posture.config"
+            : "posture.low";
 
   scopeSummary.innerHTML = `
     <div class="scope-card">
-      <span>Systems selected</span>
+      <span>${escapeHtml(t("summary.systems"))}</span>
       <strong>${rows.length}</strong>
       <p>${escapeHtml(formatPreviewList(rows.map((row) => row.systemName)))}</p>
     </div>
     <div class="scope-card">
-      <span>Odoo footprint</span>
-      <strong>${selectedModules.size} modules</strong>
+      <span>${escapeHtml(t("summary.footprint"))}</span>
+      <strong>${escapeHtml(t("summary.modules", { count: selectedModules.size }))}</strong>
       <p>${escapeHtml(formatPreviewList(Array.from(selectedModules)))}</p>
     </div>
     <div class="scope-card">
-      <span>Risk profile</span>
-      <strong>${escapeHtml(posture)}</strong>
-      <p>${highCount} high/custom, ${unknownCount} unknown, ${mediumCount} medium, ${lowCount} low</p>
+      <span>${escapeHtml(t("summary.risk"))}</span>
+      <strong>${escapeHtml(t(postureKey))}</strong>
+      <p>${escapeHtml(t("summary.riskText", { high: highCount, unknown: unknownCount, medium: mediumCount, low: lowCount }))}</p>
     </div>
     <div class="scope-card">
-      <span>Operating context</span>
-      <strong>${escapeHtml(getRadioValue("odooStage"))}</strong>
-      <p>${escapeHtml(getRadioValue("dataVolume"))}</p>
+      <span>${escapeHtml(t("summary.context"))}</span>
+      <strong>${escapeHtml(getStageLabel())}</strong>
+      <p>${escapeHtml(getVolumeLabel())}</p>
     </div>
   `;
 }
 
 function formatPreviewList(items) {
-  if (!items.length) return "None selected";
+  if (!items.length) return t("selected.none");
   if (items.length <= 2) return items.join(", ");
-  return `${items.slice(0, 2).join(", ")} +${items.length - 2} more`;
+  return t("selected.more", { items: items.slice(0, 2).join(", "), count: items.length - 2 });
+}
+
+function getStageLabel(value = getRadioValue("odooStage")) {
+  return value ? t(`stage.${value}`) : "";
+}
+
+function getVolumeLabel(value = getRadioValue("dataVolume")) {
+  return value ? t(`volume.${value}`) : "";
 }
 
 function renderStackMap(rows) {
@@ -525,13 +968,13 @@ function renderStackMap(rows) {
         data-system="${escapeHtml(row.systemName)}"
         role="button"
         tabindex="0"
-        aria-label="${escapeHtml(row.systemName)} complexity details"
+        aria-label="${escapeHtml(`${row.systemName} ${t("tooltip.complexity")}`)}"
       >
         <rect x="${(x - nodeWidth / 2).toFixed(1)}" y="${(y - nodeHeight / 2).toFixed(1)}" width="${nodeWidth}" height="${nodeHeight}" rx="8"></rect>
         <text x="${x.toFixed(1)}" y="${labelStartY.toFixed(1)}">
           ${labelLines.map((line, lineIndex) => `<tspan x="${x.toFixed(1)}" dy="${lineIndex === 0 ? 0 : 14}">${escapeHtml(line)}</tspan>`).join("")}
         </text>
-        <text class="node-rating" x="${x.toFixed(1)}" y="${(y + 27).toFixed(1)}">${escapeHtml(row.complexity)}</text>
+        <text class="node-rating" x="${x.toFixed(1)}" y="${(y + 27).toFixed(1)}">${escapeHtml(getComplexityShortLabel(row.complexity))}</text>
       </g>
     `);
   });
@@ -545,7 +988,7 @@ function renderStackMap(rows) {
     <g class="odoo-node" aria-label="Odoo center node">
       <rect x="${center.x - 100}" y="${odooY - 40}" width="200" height="80" rx="8"></rect>
       <text x="${center.x}" y="${odooY - 3}">Odoo</text>
-      <text class="odoo-subtext" x="${center.x}" y="${odooY + 19}">ERP center</text>
+      <text class="odoo-subtext" x="${center.x}" y="${odooY + 19}">${escapeHtml(t("map.center"))}</text>
     </g>
   `;
 
@@ -578,18 +1021,23 @@ function wrapSvgLabel(label) {
   return lines;
 }
 
+function getComplexityShortLabel(complexity) {
+  if (complexity === "Unknown") return t("complexity.unknownShort");
+  return getComplexityLabel(complexity);
+}
+
 function renderComplexityTable(rows) {
   complexityTableBody.innerHTML = rows
     .map((row) => {
       const ratingClass = getRatingClass(row);
-      const scopeSuffix = row.affectsSelectedModules ? "" : " Outside selected Odoo modules.";
+      const scopeSuffix = row.affectsSelectedModules ? "" : t("table.outsideScope");
 
       return `
         <tr>
-          <td data-label="System name">${escapeHtml(row.systemName)}</td>
-          <td data-label="Odoo module(s) affected">${escapeHtml(formatAffectedModules(row.modules))}</td>
-          <td data-label="Complexity rating"><span class="rating-pill ${escapeHtml(ratingClass)}">${escapeHtml(row.rating)}</span></td>
-          <td data-label="Primary risk or note">${escapeHtml(row.note + scopeSuffix)}</td>
+          <td data-label="${escapeHtml(t("table.system"))}">${escapeHtml(row.systemName)}</td>
+          <td data-label="${escapeHtml(t("table.modules"))}">${escapeHtml(formatAffectedModules(row.modules))}</td>
+          <td data-label="${escapeHtml(t("table.rating"))}"><span class="rating-pill ${escapeHtml(ratingClass)}">${escapeHtml(formatRating(row))}</span></td>
+          <td data-label="${escapeHtml(t("table.note"))}">${escapeHtml(row.note + scopeSuffix)}</td>
         </tr>
       `;
     })
@@ -597,8 +1045,14 @@ function renderComplexityTable(rows) {
 }
 
 function formatAffectedModules(modules) {
-  if (modules === "Any") return "Any selected module";
+  if (modules === "Any") return t("table.anyModule");
   return modules;
+}
+
+function formatRating(row) {
+  if (row.rating === "Custom build required") return t("rating.customBuild");
+  if (row.complexity === "Unknown") return t("complexity.unknown");
+  return getComplexityLabel(row.complexity);
 }
 
 function getRatingClass(row) {
@@ -625,9 +1079,9 @@ function renderPriorityList(rows) {
           <div class="priority-body">
             <div class="priority-topline">
               <strong>${escapeHtml(item.row.systemName)}</strong>
-              <span class="priority-chip ${escapeHtml(item.className)}">${escapeHtml(item.label)}</span>
+              <span class="priority-chip ${escapeHtml(item.className)}">${escapeHtml(t(item.labelKey))}</span>
             </div>
-            <p>${escapeHtml(item.reason)}</p>
+            <p>${escapeHtml(t(item.reasonKey))}</p>
           </div>
         </li>
       `
@@ -643,11 +1097,8 @@ function getPriority(row) {
     return {
       rank: 3,
       className: "custom",
-      label: "Custom build conversation",
-      reason:
-        stage === "Already live"
-          ? "Audit production data flow, API access, ownership, and rollback options before changing this integration."
-          : "Confirm APIs, source of truth, middleware, and testing scope before committing implementation dates."
+      labelKey: "priority.customLabel",
+      reasonKey: stage === "alreadyLive" ? "priority.liveReason" : "priority.customReason"
     };
   }
 
@@ -655,19 +1106,16 @@ function getPriority(row) {
     return {
       rank: 1,
       className: "first",
-      label: "Tackle first",
-      reason:
-        volume === "High (1000+)"
-          ? "It touches selected Odoo modules and high daily volume makes reconciliation and failure handling important early."
-          : "It touches selected Odoo modules and helps set source-of-truth rules for the rest of the scope."
+      labelKey: "priority.firstLabel",
+      reasonKey: volume === "high" ? "priority.highVolumeReason" : "priority.firstReason"
     };
   }
 
   return {
     rank: 2,
     className: "later",
-    label: "Tackle later",
-    reason: "Useful to connect, but it is less dependent on the Odoo modules selected for this first scope."
+    labelKey: "priority.laterLabel",
+    reasonKey: "priority.laterReason"
   };
 }
 
@@ -686,7 +1134,7 @@ function showTooltip(systemName, eventTarget) {
 
   mapTooltip.className = `map-tooltip ${row.complexityClass}`;
   mapTooltip.innerHTML = `
-    <strong>${escapeHtml(row.systemName)}: ${escapeHtml(row.complexity)} complexity</strong>
+    <strong>${escapeHtml(row.systemName)}: ${escapeHtml(getComplexityShortLabel(row.complexity))} ${escapeHtml(t("tooltip.complexity"))}</strong>
     <span>${escapeHtml(row.note)}</span>
   `;
   mapTooltip.hidden = false;
@@ -713,7 +1161,12 @@ function setMenuOpen(open) {
   if (!menuToggle || !siteHeader) return;
   siteHeader.classList.toggle("menu-open", open);
   menuToggle.setAttribute("aria-expanded", String(open));
-  menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  syncMenuLabel();
+}
+
+function syncMenuLabel() {
+  if (!menuToggle) return;
+  menuToggle.setAttribute("aria-label", t(isMenuOpen() ? "menu.close" : "menu.open"));
 }
 
 systemGroupsRoot.addEventListener("click", (event) => {
@@ -749,7 +1202,7 @@ moduleGroupsRoot.addEventListener("click", (event) => {
 document.querySelector("[data-add-custom-system]").addEventListener("click", () => {
   const customSystem = normalizeText(customSystemInput.value);
   if (!customSystem) {
-    showAlert("Enter a system name before adding it.");
+    showAlert(t("errors.customSystem"));
     return;
   }
 
@@ -833,6 +1286,13 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+languageButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setLanguage(button.dataset.lang);
+    setMenuOpen(false);
+  });
+});
+
 menuToggle?.addEventListener("click", () => {
   setMenuOpen(!isMenuOpen());
 });
@@ -841,6 +1301,28 @@ headerMenu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => setMenuOpen(false));
 });
 
-renderSystemGroups();
-renderModuleGroups();
+exportPdfButton?.addEventListener("click", exportResultsPdf);
+
+window.addEventListener("afterprint", () => {
+  document.body.classList.remove("printing-results");
+});
+
+function exportResultsPdf() {
+  if (!currentRows.length || currentStep !== 3) {
+    showAlert(t("errors.exportFirst"));
+    return;
+  }
+
+  hideTooltip();
+  const previousTitle = document.title;
+  document.title = t("pdf.title");
+  document.body.classList.add("printing-results");
+  setTimeout(() => {
+    window.print();
+    document.title = previousTitle;
+    setTimeout(() => document.body.classList.remove("printing-results"), 250);
+  }, 0);
+}
+
+setLanguage(LANGUAGES.has(currentLanguage) ? currentLanguage : "en");
 setStep(1);

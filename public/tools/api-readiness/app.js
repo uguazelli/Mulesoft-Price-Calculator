@@ -57,7 +57,6 @@ const TRANSLATIONS = {
     "hero.nextText": "A practical integration review path",
     "hero.positioning":
       "VeriDataPro helps companies connect Odoo, CRMs, ecommerce, finance tools, spreadsheets, databases, and internal systems.",
-    "hero.scrollCue": "Start assessment",
     "form.assessmentTitle": "Integration readiness",
     "form.assessmentText": "Use the option that best describes today. Estimates are enough.",
     "form.contactTitle": "Unlock full report",
@@ -182,7 +181,6 @@ const TRANSLATIONS = {
     "hero.nextText": "Caminho prático para revisão",
     "hero.positioning":
       "A VeriDataPro ajuda empresas a conectar Odoo, CRMs, ecommerce, ferramentas financeiras, planilhas, bancos de dados e sistemas internos.",
-    "hero.scrollCue": "Começar avaliação",
     "form.assessmentTitle": "Prontidão para integração",
     "form.assessmentText": "Use a opção que melhor descreve o cenário atual. Estimativas são suficientes.",
     "form.contactTitle": "Liberar relatório completo",
@@ -307,7 +305,6 @@ const TRANSLATIONS = {
     "hero.nextText": "Ruta práctica de revisión",
     "hero.positioning":
       "VeriDataPro ayuda a empresas a conectar Odoo, CRMs, ecommerce, herramientas financieras, hojas de cálculo, bases de datos y sistemas internos.",
-    "hero.scrollCue": "Comenzar evaluación",
     "form.assessmentTitle": "Preparación para integración",
     "form.assessmentText": "Usa la opción que mejor describe el escenario actual. Las estimaciones son suficientes.",
     "form.contactTitle": "Desbloquear reporte completo",

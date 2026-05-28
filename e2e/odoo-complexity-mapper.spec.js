@@ -1,11 +1,32 @@
 const { test, expect } = require("@playwright/test");
 
 test("Odoo complexity mapper generates a stack map and scoping outputs", async ({ page }) => {
+  async function openMobileMenuIfNeeded() {
+    const menuButton = page.locator("[data-menu-toggle]");
+    if (await menuButton.isVisible()) {
+      await menuButton.click();
+      await expect(menuButton).toHaveAttribute("aria-expanded", "true");
+    }
+  }
+
   await page.goto("/odoo-integration-complexity-mapper/");
   await expect(page).toHaveTitle(/Odoo Integration Complexity Mapper/);
   await expect(page.getByRole("heading", { name: "Odoo Integration Complexity Mapper" })).toBeVisible();
 
-  await page.getByRole("link", { name: /Start mapping/i }).click();
+  await openMobileMenuIfNeeded();
+  await page.getByRole("button", { name: "PT", exact: true }).click();
+  await expect(page.getByRole("heading", { name: /Mapeador de Complexidade/i })).toBeVisible();
+
+  await openMobileMenuIfNeeded();
+  await page.getByRole("button", { name: "ES", exact: true }).click();
+  await expect(page.getByRole("heading", { name: /Mapeador de Complejidad/i })).toBeVisible();
+
+  await openMobileMenuIfNeeded();
+  await page.getByRole("button", { name: "EN", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Odoo Integration Complexity Mapper" })).toBeVisible();
+
+  await expect(page.locator(".scroll-cue")).toHaveCount(0);
+  await page.locator("#mapper").scrollIntoViewIfNeeded();
   await page.getByRole("button", { name: /Salesforce/i }).click();
   await page.getByRole("button", { name: /Shopify/i }).click();
   await page.getByRole("button", { name: /Power BI \/ Tableau/i }).click();
@@ -39,6 +60,16 @@ test("Odoo complexity mapper generates a stack map and scoping outputs", async (
   await expect(page.getByText("Custom build conversation").first()).toBeVisible();
   await expect(page.getByText("Tackle first").first()).toBeVisible();
   await expect(page.getByText("Tackle later").first()).toBeVisible();
+  await expect(page.getByRole("button", { name: "Export result as PDF" })).toBeVisible();
+
+  await page.evaluate(() => {
+    window.__printCalled = false;
+    window.print = () => {
+      window.__printCalled = true;
+    };
+  });
+  await page.getByRole("button", { name: "Export result as PDF" }).click();
+  await expect.poll(() => page.evaluate(() => window.__printCalled)).toBe(true);
 
   const hasHorizontalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   expect(hasHorizontalOverflow).toBe(false);

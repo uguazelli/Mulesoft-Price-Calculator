@@ -37,7 +37,6 @@ const TRANSLATIONS = {
     "hero.planText": "Turn findings into practical next steps",
     "hero.note":
       "This is a practical Word document for internal workshops. The form unlocks the download and helps VeriDataPro understand who is using the pack.",
-    "hero.scrollCue": "Get the audit pack",
     "preview.inventoryTitle": "Map the systems involved",
     "preview.inventoryText":
       "Capture system purpose, owner, users, criticality, API availability, and pain level before choosing a solution.",
@@ -110,7 +109,6 @@ const TRANSLATIONS = {
     "hero.planText": "Transforme achados em próximos passos práticos",
     "hero.note":
       "Este é um documento Word prático para workshops internos. O formulário libera o download e ajuda a VeriDataPro a entender quem está usando o pacote.",
-    "hero.scrollCue": "Baixar pacote",
     "preview.inventoryTitle": "Mapeie os sistemas envolvidos",
     "preview.inventoryText":
       "Capture finalidade, responsável, usuários, criticidade, disponibilidade de API e nível de dor antes de escolher uma solução.",
@@ -183,7 +181,6 @@ const TRANSLATIONS = {
     "hero.planText": "Convierte hallazgos en próximos pasos prácticos",
     "hero.note":
       "Este es un documento Word práctico para workshops internos. El formulario libera la descarga y ayuda a VeriDataPro a entender quién usa el pack.",
-    "hero.scrollCue": "Descargar pack",
     "preview.inventoryTitle": "Mapea los sistemas involucrados",
     "preview.inventoryText":
       "Captura propósito, responsable, usuarios, criticidad, disponibilidad de API y nivel de dolor antes de elegir una solución.",

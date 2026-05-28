@@ -23,8 +23,8 @@ test("calculator captures a lead and renders the report", async ({ page }) => {
   await openMobileMenuIfNeeded();
   await page.getByRole("button", { name: "EN", exact: true }).click();
   await expect(page.getByRole("heading", { name: /Find MuleSoft waste/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Start calculator/i })).toBeVisible();
-  await page.getByRole("link", { name: /Start calculator/i }).click();
+  await expect(page.locator(".scroll-cue")).toHaveCount(0);
+  await page.locator("#calculator").scrollIntoViewIfNeeded();
   await expect(page.getByRole("heading", { name: "MuleSoft usage" })).toBeVisible();
 
   await page.selectOption("select[name=deploymentModel]", "cloudhub2");

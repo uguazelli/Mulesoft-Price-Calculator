@@ -272,33 +272,6 @@ h1 {
   line-height: 1.55;
 }
 
-.scroll-cue {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 52px;
-  margin-top: 24px;
-  padding: 0 24px;
-  border: 0;
-  border-radius: 8px;
-  background: var(--cta);
-  color: var(--surface);
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 150ms ease, transform 100ms ease;
-}
-
-.scroll-cue:hover {
-  background: var(--cta-strong);
-  transform: translateY(-1px);
-}
-
-.scroll-cue svg {
-  width: 18px;
-  height: 18px;
-}
-
 .workspace {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
@@ -1183,13 +1156,6 @@ legend {
     line-height: 1.45;
   }
 
-  .scroll-cue {
-    width: 100%;
-    justify-content: center;
-    min-height: 48px;
-    margin-top: 14px;
-  }
-
   .risk-row {
     grid-template-columns: 1fr;
   }
@@ -1204,9 +1170,6 @@ legend {
     scroll-behavior: auto;
   }
 
-  .scroll-cue {
-    transition: none;
-  }
 }
 
 /* ─── Site footer ─── */
