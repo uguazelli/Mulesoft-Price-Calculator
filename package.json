@@ -1,7 +1,7 @@
 {
   "name": "veridatapro-integration-tools",
   "version": "1.0.0",
-  "description": "VeriDataPro lead-generation tools for MuleSoft cost review, API readiness, flat file validation, and integration audit packs.",
+  "description": "VeriDataPro lead-generation tools for MuleSoft cost review, API readiness, flat file validation, integration audit packs, and Odoo integration scoping.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

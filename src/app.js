@@ -8,6 +8,7 @@ const { TOOLS_INDEX_HTML_PATH } = require("./tools/directory/routes");
 const { FILE_VALIDATOR_HTML_PATH } = require("./tools/file-validator/routes");
 const { INTEGRATION_AUDIT_PACK_HTML_PATH, mountIntegrationAuditPackApi } = require("./tools/integration-audit-pack/routes");
 const { MULESOFT_CALCULATOR_HTML_PATH, mountMulesoftCalculatorApi } = require("./tools/mulesoft-calculator/routes");
+const { ODOO_COMPLEXITY_MAPPER_HTML_PATH } = require("./tools/odoo-complexity-mapper/routes");
 
 function buildConfig(options = {}) {
   const publicDir = options.publicDir || path.join(__dirname, "..", "public");
@@ -20,6 +21,11 @@ function buildConfig(options = {}) {
     fileValidator: normalizeBasePath(options.fileValidatorBasePath || process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator"),
     integrationAuditPack: normalizeBasePath(
       options.integrationAuditPackBasePath || process.env.INTEGRATION_AUDIT_PACK_BASE_PATH || "/integration-audit-pack"
+    ),
+    odooComplexityMapper: normalizeBasePath(
+      options.odooComplexityMapperBasePath ||
+        process.env.ODOO_COMPLEXITY_MAPPER_BASE_PATH ||
+        "/odoo-integration-complexity-mapper"
     )
   };
   const storage = {
@@ -66,6 +72,11 @@ function createApp(options = {}) {
     basePath: config.paths.integrationAuditPack,
     publicDir: config.publicDir,
     htmlPath: INTEGRATION_AUDIT_PACK_HTML_PATH
+  });
+  mountStaticTool(app, {
+    basePath: config.paths.odooComplexityMapper,
+    publicDir: config.publicDir,
+    htmlPath: ODOO_COMPLEXITY_MAPPER_HTML_PATH
   });
 
   app.get("/health", (req, res) => {

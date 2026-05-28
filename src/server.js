@@ -6,6 +6,8 @@ const mulesoftBasePath = normalizeBasePath(process.env.BASE_PATH || "/mulesoft-c
 const apiReadinessBasePath = normalizeBasePath(process.env.API_READINESS_BASE_PATH || "/api-readiness-assessment") || "/";
 const fileValidatorBasePath = normalizeBasePath(process.env.FILE_VALIDATOR_BASE_PATH || "/file-validator") || "/";
 const integrationAuditPackBasePath = normalizeBasePath(process.env.INTEGRATION_AUDIT_PACK_BASE_PATH || "/integration-audit-pack") || "/";
+const odooComplexityMapperBasePath =
+  normalizeBasePath(process.env.ODOO_COMPLEXITY_MAPPER_BASE_PATH || "/odoo-integration-complexity-mapper") || "/";
 const app = createApp();
 
 app.listen(port, () => {
@@ -15,4 +17,5 @@ app.listen(port, () => {
   console.log(`API readiness assessment: http://localhost:${port}${apiReadinessBasePath}`);
   console.log(`File validator: http://localhost:${port}${fileValidatorBasePath}`);
   console.log(`Integration audit pack: http://localhost:${port}${integrationAuditPackBasePath}`);
+  console.log(`Odoo complexity mapper: http://localhost:${port}${odooComplexityMapperBasePath}`);
 });

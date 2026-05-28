@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Odoo Integration Complexity Mapper | VeriDataPro</title>
+    <meta
+      name="description"
+      content="A browser-based Odoo integration scoping tool that maps system complexity, affected modules, risks, and implementation priorities."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="__BASE_PATH__/shared/Veridata_Icon-no-bg%20green.png" type="image/png" />
+    <link rel="stylesheet" href="__BASE_PATH__/shared/styles.css" />
+    <link rel="stylesheet" href="__BASE_PATH__/tools/odoo-complexity-mapper/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="https://veridatapro.com/" target="_blank" rel="noreferrer" aria-label="VeriDataPro home">
+        <span class="brand-mark">
+          <img src="__BASE_PATH__/shared/Veridata_Icon-no-bg%20green.png" alt="" />
+        </span>
+        <span>
+          <strong>VeriDataPro</strong>
+          <small>Systems integration and automation</small>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="Open menu"
+        aria-controls="header-menu"
+        aria-expanded="false"
+      >
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <nav id="header-menu" class="header-actions" aria-label="Primary links" data-header-menu>
+        <a href="https://veridatapro.com/odoo/" target="_blank" rel="noreferrer">Odoo services</a>
+        <a href="https://veridatapro.com/integrations/" target="_blank" rel="noreferrer">Integrations</a>
+        <a href="https://veridatapro.com/" target="_blank" rel="noreferrer">veridatapro.com</a>
+      </nav>
+    </header>
+
+    <main class="shell mapper-shell">
+      <section class="intro mapper-intro" aria-labelledby="page-title">
+        <div class="intro-card mapper-hero">
+          <p class="eyebrow">Odoo scoping tool</p>
+          <h1 id="page-title">Odoo Integration Complexity Mapper</h1>
+          <p class="lede">
+            Select the systems around Odoo, the Odoo modules in scope, and get a first-pass architecture map with
+            complexity, risk notes, and implementation priority.
+          </p>
+          <a class="scroll-cue" href="#mapper">Start mapping</a>
+          <p class="mapper-note">
+            Directional scoping only. Final estimates still require API access, data samples, and source-of-truth decisions.
+          </p>
+        </div>
+      </section>
+
+      <section id="mapper" class="mapper-board" aria-label="Odoo integration complexity mapper">
+        <div class="mapper-stepper" aria-label="Tool progress">
+          <span class="step-token is-active" data-step-token="1">1. Your stack</span>
+          <span class="step-token" data-step-token="2">2. Odoo modules</span>
+          <span class="step-token" data-step-token="3">3. Results</span>
+        </div>
+
+        <div class="mapper-alert" id="mapperAlert" role="alert" hidden></div>
+
+        <section class="step-panel" data-step-panel="1" aria-labelledby="stack-title">
+          <div class="section-heading mapper-heading">
+            <div>
+              <p class="step-label">Step 1</p>
+              <h2 id="stack-title">Which systems does your business currently run?</h2>
+              <p>Select every system that creates, receives, or reports on operational data.</p>
+            </div>
+            <span class="selection-meter" data-system-count>0 selected</span>
+          </div>
+
+          <div id="systemGroups" class="choice-groups"></div>
+
+          <div class="custom-system-row" aria-label="Add a custom system">
+            <label for="customSystemInput">
+              <span>System not listed</span>
+              <input id="customSystemInput" type="text" maxlength="80" placeholder="Example: in-house quoting app" />
+            </label>
+            <button class="secondary-action" type="button" data-add-custom-system>Add system</button>
+          </div>
+
+          <div class="step-actions">
+            <button class="primary-action" type="button" data-next-step="2">Continue to Odoo modules</button>
+          </div>
+        </section>
+
+        <section class="step-panel" data-step-panel="2" aria-labelledby="modules-title" hidden>
+          <div class="section-heading mapper-heading">
+            <div>
+              <p class="step-label">Step 2</p>
+              <h2 id="modules-title">Which Odoo modules are you using or planning to use?</h2>
+              <p>Choose the Odoo footprint these integrations need to support.</p>
+            </div>
+            <span class="selection-meter" data-module-count>0 selected</span>
+          </div>
+
+          <div id="moduleGroups" class="choice-groups module-groups"></div>
+
+          <div class="quick-questions">
+            <fieldset class="quick-question">
+              <legend>Are you already live on Odoo or still evaluating?</legend>
+              <div class="radio-row">
+                <label><input type="radio" name="odooStage" value="Already live" /> <span>Already live</span></label>
+                <label><input type="radio" name="odooStage" value="Currently evaluating" /> <span>Currently evaluating</span></label>
+                <label><input type="radio" name="odooStage" value="Just starting research" /> <span>Just starting research</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="quick-question">
+              <legend>How much data moves through your operations per day?</legend>
+              <div class="radio-row">
+                <label><input type="radio" name="dataVolume" value="Low (under 100 transactions)" /> <span>Low (under 100 transactions)</span></label>
+                <label><input type="radio" name="dataVolume" value="Medium (100-1000)" /> <span>Medium (100-1000)</span></label>
+                <label><input type="radio" name="dataVolume" value="High (1000+)" /> <span>High (1000+)</span></label>
+                <label><input type="radio" name="dataVolume" value="I don't know" /> <span>I don't know</span></label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="step-actions split">
+            <button class="secondary-action" type="button" data-prev-step="1">Back</button>
+            <button class="primary-action" type="button" data-generate-results>Generate complexity map</button>
+          </div>
+        </section>
+
+        <section class="step-panel results-panel" data-step-panel="3" aria-labelledby="results-title" hidden>
+          <div class="section-heading mapper-heading">
+            <div>
+              <p class="step-label">Step 3</p>
+              <h2 id="results-title">Odoo integration complexity results</h2>
+              <p>Use this as a scoping conversation starter before committing budget or delivery dates.</p>
+            </div>
+          </div>
+
+          <div id="scopeSummary" class="scope-summary" aria-label="Scope summary"></div>
+
+          <article class="result-block map-block" aria-labelledby="map-title">
+            <div class="block-heading">
+              <div>
+                <p class="block-kicker">A / Visual stack map</p>
+                <h3 id="map-title">Systems around Odoo</h3>
+              </div>
+              <div class="map-legend" aria-label="Complexity legend">
+                <span><i class="legend-line low"></i>Low</span>
+                <span><i class="legend-line medium"></i>Medium</span>
+                <span><i class="legend-line high"></i>High</span>
+                <span><i class="legend-line unknown"></i>Unknown</span>
+              </div>
+            </div>
+            <div class="diagram-wrap" id="diagramWrap">
+              <svg id="stackMap" class="stack-map" role="img" aria-label="Odoo integration complexity map"></svg>
+              <div id="mapTooltip" class="map-tooltip" hidden></div>
+            </div>
+          </article>
+
+          <article class="result-block" aria-labelledby="breakdown-title">
+            <div class="block-heading">
+              <div>
+                <p class="block-kicker">B / Complexity breakdown</p>
+                <h3 id="breakdown-title">Integration table</h3>
+              </div>
+            </div>
+            <div class="table-frame mapper-table-frame">
+              <table class="complexity-table">
+                <thead>
+                  <tr>
+                    <th scope="col">System name</th>
+                    <th scope="col">Odoo module(s) affected</th>
+                    <th scope="col">Complexity rating</th>
+                    <th scope="col">Primary risk or note</th>
+                  </tr>
+                </thead>
+                <tbody id="complexityTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="result-block" aria-labelledby="priority-title">
+            <div class="block-heading">
+              <div>
+                <p class="block-kicker">C / Priority order</p>
+                <h3 id="priority-title">Recommended sequencing</h3>
+              </div>
+            </div>
+            <ol id="priorityList" class="priority-list"></ol>
+          </article>
+
+          <div class="mapper-cta">
+            <h3>Ready to scope this properly?</h3>
+            <p>Share this map with your team, then book a 30-minute call to turn these signals into a phased, budgetable delivery plan.</p>
+            <div class="cta-actions">
+              <a href="https://veridatapro.com/contact" target="_blank" rel="noreferrer">Book a scoping call</a>
+              <a href="https://veridatapro.com/odoo/" target="_blank" rel="noreferrer">Odoo services</a>
+            </div>
+          </div>
+
+          <div class="step-actions split">
+            <button class="secondary-action" type="button" data-prev-step="2">Back to modules</button>
+            <button class="primary-action" type="button" data-reset-tool>Start over</button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand-col">
+          <a class="brand footer-brand" href="https://veridatapro.com/" target="_blank" rel="noreferrer">
+            <span class="brand-mark">
+              <img src="__BASE_PATH__/shared/Veridata_Icon-no-bg%20green.png" alt="" />
+            </span>
+            <span><strong>VeriDataPro</strong></span>
+          </a>
+        </div>
+        <nav class="footer-nav-col">
+          <p class="footer-col-title">Navigation</p>
+          <a href="https://veridatapro.com/" target="_blank" rel="noreferrer">Home</a>
+          <a href="https://veridatapro.com/pricing" target="_blank" rel="noreferrer">Pricing</a>
+          <a href="https://veridatapro.com/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>
+        </nav>
+        <nav class="footer-nav-col">
+          <p class="footer-col-title">Services</p>
+          <a href="https://veridatapro.com/odoo/" target="_blank" rel="noreferrer">Odoo Integration &amp; Automation</a>
+          <a href="https://veridatapro.com/integrations/" target="_blank" rel="noreferrer">Business System Integrations</a>
+          <a href="https://veridatapro.com/pricing" target="_blank" rel="noreferrer">Pricing &amp; Entry Points</a>
+        </nav>
+        <div class="footer-legal-col">
+          <p>&copy; 2026 VeriDataPro. All rights reserved.</p>
+          <p>Registered in Wyoming, USA &middot; <a href="mailto:hello@veridatapro.com">hello@veridatapro.com</a></p>
+          <p>All engagements are architect-led. No outsourcing. No tech body shopping.</p>
+          <p class="footer-note">This mapper is a directional architecture aid, not a fixed implementation quote.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="__BASE_PATH__/tools/odoo-complexity-mapper/app.js" defer></script>
+  </body>
+</html>

@@ -9,6 +9,10 @@ test("docs directory lists every available tool URL", async ({ page }) => {
   await expect(page.getByRole("link", { name: "/api-readiness-assessment/" })).toHaveAttribute("href", /\/api-readiness-assessment\/$/);
   await expect(page.getByRole("link", { name: "/file-validator/" })).toHaveAttribute("href", /\/file-validator\/$/);
   await expect(page.getByRole("link", { name: "/integration-audit-pack/" })).toHaveAttribute("href", /\/integration-audit-pack\/$/);
+  await expect(page.getByRole("link", { name: "/odoo-integration-complexity-mapper/" })).toHaveAttribute(
+    "href",
+    /\/odoo-integration-complexity-mapper\/$/
+  );
 
   const menuButton = page.locator("[data-menu-toggle]");
   if (await menuButton.isVisible()) {

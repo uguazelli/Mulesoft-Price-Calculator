@@ -1,13 +1,14 @@
 # VeriDataPro Integration Tools
 
-Plain Node.js + Express app for VeriDataPro lead generation. It currently includes four no-framework tools:
+Plain Node.js + Express app for VeriDataPro lead generation. It currently includes five no-framework tools:
 
 - MuleSoft Cost & Utilization Risk Calculator
 - API Readiness Assessment Tool
 - Flat File Validation Tool
 - Integration Audit Template Pack
+- Odoo Integration Complexity Mapper
 
-The MuleSoft, API readiness, and audit pack tools capture qualified lead details and save submissions to CSV. The flat file validator runs fully in the browser and does not upload files to the server.
+The MuleSoft, API readiness, and audit pack tools capture qualified lead details and save submissions to CSV. The flat file validator and Odoo complexity mapper run fully in the browser and do not upload files to the server.
 
 ## Run Locally
 
@@ -23,6 +24,7 @@ The app listens on these paths by default:
 - `http://localhost:3000/api-readiness-assessment`
 - `http://localhost:3000/file-validator`
 - `http://localhost:3000/integration-audit-pack`
+- `http://localhost:3000/odoo-integration-complexity-mapper`
 
 Environment variables:
 
@@ -36,6 +38,7 @@ Environment variables:
 - `FILE_VALIDATOR_BASE_PATH`: flat file validator URL path, default `/file-validator`
 - `INTEGRATION_AUDIT_PACK_BASE_PATH`: audit pack URL path, default `/integration-audit-pack`
 - `INTEGRATION_AUDIT_PACK_CSV_PATH`: audit pack CSV output path, default `data/integration-audit-pack-leads.csv`
+- `ODOO_COMPLEXITY_MAPPER_BASE_PATH`: Odoo mapper URL path, default `/odoo-integration-complexity-mapper`
 
 ## Docker Compose
 
@@ -61,12 +64,14 @@ Compose syncs `src/` and `public/` into the running container and restarts the s
 - `GET /file-validator`: client-side flat file validation frontend
 - `GET /integration-audit-pack`: audit pack lead form frontend
 - `POST /integration-audit-pack/api/request`: validates input, saves the lead, and returns the document download URL
+- `GET /odoo-integration-complexity-mapper`: client-side Odoo integration complexity mapper frontend
 - `GET /health`: basic health check for deployment
 - `GET /docs/health`: docs directory health check
 - `GET /mulesoft-calculator/health`: tool-level health check
 - `GET /api-readiness-assessment/health`: tool-level health check
 - `GET /file-validator/health`: tool-level health check
 - `GET /integration-audit-pack/health`: tool-level health check
+- `GET /odoo-integration-complexity-mapper/health`: tool-level health check
 
 ## Project Structure
 
@@ -78,6 +83,7 @@ public/
     api-readiness/                # API readiness frontend
     file-validator/               # flat file validator frontend
     integration-audit-pack/       # gated Word document download frontend
+    odoo-complexity-mapper/       # Odoo complexity mapper frontend
 
 src/
   app.js                          # Express app composition
@@ -88,6 +94,7 @@ src/
     api-readiness/                # readiness API, validation, scoring, CSV store
     file-validator/               # static tool registration only; analysis runs in browser
     integration-audit-pack/       # audit pack API, validation, CSV store, static document registration
+    odoo-complexity-mapper/       # static tool registration only; analysis runs in browser
 ```
 
 ## Tests

@@ -30,8 +30,10 @@ test("all tool frontends and health checks are mounted", async () => {
     const apiReadiness = await fetch(`${baseUrl}/api-readiness-assessment/`);
     const fileValidator = await fetch(`${baseUrl}/file-validator/`);
     const integrationAuditPack = await fetch(`${baseUrl}/integration-audit-pack/`);
+    const odooComplexityMapper = await fetch(`${baseUrl}/odoo-integration-complexity-mapper/`);
     const fileValidatorHealth = await fetch(`${baseUrl}/file-validator/health`);
     const integrationAuditPackHealth = await fetch(`${baseUrl}/integration-audit-pack/health`);
+    const odooComplexityMapperHealth = await fetch(`${baseUrl}/odoo-integration-complexity-mapper/health`);
 
     assert.equal(health.status, 200);
     assert.equal(docs.status, 200);
@@ -40,14 +42,17 @@ test("all tool frontends and health checks are mounted", async () => {
     assert.equal(apiReadiness.status, 200);
     assert.equal(fileValidator.status, 200);
     assert.equal(integrationAuditPack.status, 200);
+    assert.equal(odooComplexityMapper.status, 200);
     assert.equal(fileValidatorHealth.status, 200);
     assert.equal(integrationAuditPackHealth.status, 200);
+    assert.equal(odooComplexityMapperHealth.status, 200);
 
     const docsHtml = await docs.text();
     assert.match(docsHtml, /Tool URLs/);
     assert.match(docsHtml, /MuleSoft Cost &amp; Utilization Risk Calculator/);
     assert.match(await fileValidator.text(), /Flat File Validation Tool/);
     assert.match(await integrationAuditPack.text(), /Integration Audit Template Pack/);
+    assert.match(await odooComplexityMapper.text(), /Odoo Integration Complexity Mapper/);
   } finally {
     await close(server);
   }
