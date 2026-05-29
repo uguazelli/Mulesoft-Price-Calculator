@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs/promises");
 const os = require("node:os");
 const path = require("node:path");
-const { createApp } = require("../src/app");
+const { createApp } = require("../../src/app");
 
 function listen(app) {
   return new Promise((resolve) => {

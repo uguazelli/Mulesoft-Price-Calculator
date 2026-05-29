@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { calculateAssessment } = require("../src/tools/mulesoft-calculator/calculator");
+const { calculateAssessment } = require("../../src/tools/mulesoft-calculator/calculator");
 
 const baseInput = {
   fullName: "Alex Rivera",

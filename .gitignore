@@ -5,4 +5,4 @@ npm-debug.log*
 coverage/
 data/*.csv
 playwright-report/
-test-results/
+tests/test-results/

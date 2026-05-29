@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { calculateAssessmentResult } = require("../src/tools/api-readiness/scoringService");
+const { calculateAssessmentResult } = require("../../src/tools/api-readiness/scoringService");
 
 const readyAnswers = {
   language: "en",
